@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, landmarks, images, schedules;
+DROP TABLE IF EXISTS users, landmarks, images, schedules, city, city_landmarks, images;
 
 CREATE TABLE users (
 	user_id SERIAL,
