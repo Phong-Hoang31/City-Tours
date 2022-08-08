@@ -15,12 +15,12 @@ CREATE TABLE landmarks (
     landmark_name varchar(50) NOT NULL,
     venue varchar(50) NOT NULL,
     description varchar(500) NOT NULL,
-    up_ratings integer,
-    down_ratings integer
+    up_ratings integer NOT NULL,
+    down_ratings integer NOT NULL
     );
 
 CREATE TABLE images (
-    landmark_id integer FOREIGN KEY,
+    landmark_id integer FOREIGN KEY NOT NULL,
     url varchar(200) PRIMARY KEY
 );
 
