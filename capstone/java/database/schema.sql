@@ -13,7 +13,7 @@ CREATE TABLE users (
 CREATE TABLE landmarks (
     landmark_id SERIAL PRIMARY KEY,
     landmark_name varchar(50) NOT NULL,
-    venue varchar(50) NOT NULL,
+    category varchar(50) NOT NULL,
     description varchar(500) NOT NULL,
     up_ratings integer NOT NULL,
     down_ratings integer NOT NULL
@@ -22,6 +22,13 @@ CREATE TABLE landmarks (
 CREATE TABLE images (
     landmark_id integer FOREIGN KEY NOT NULL,
     url varchar(200) PRIMARY KEY
+);
+
+CREATE TABLE schedules (
+    landmark_id integer FOREIGN KEY NOT NULL,
+    open_time time NOT NULL,
+    close_time time NOT NULL,
+    day_of_week integer
 );
 
 COMMIT TRANSACTION;
