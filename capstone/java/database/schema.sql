@@ -28,7 +28,7 @@ CREATE TABLE schedules (
     landmark_id integer FOREIGN KEY NOT NULL,
     open_time time NOT NULL,
     close_time time NOT NULL,
-    day_of_week integer
+    day_of_week integer NOT NULL
 );
 
 COMMIT TRANSACTION;
