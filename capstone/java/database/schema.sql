@@ -21,7 +21,7 @@ CREATE TABLE landmarks (
 
 CREATE TABLE images (
     landmark_id integer,
-    url varchar(200),
+    url varchar(8000),
     PRIMARY KEY(url),
     FOREIGN KEY(landmark_id) references landmarks(landmark_id)
 );
