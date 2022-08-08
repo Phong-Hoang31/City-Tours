@@ -9,6 +9,7 @@ export default {
     getLandmarks() {
         return http.get('/landmarks');
     },
+
     // getLandmark(landmarkId) {
     //     return http.get(`/landmarks/${landmarkId}`)
     // },

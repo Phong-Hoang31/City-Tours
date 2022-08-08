@@ -3,13 +3,18 @@
   <div v-for="landmark in landmarks"
       v-bind:key="landmark.id"
      >
+      <h2>{{ landmark.landmarkName }}</h2>
+      <h4>{{ landmark.description }}</h4>
+      <h4>{{ landmark.category }}</h4>
+      <h4>{{ landmark.upRatings }} thumbs up</h4>
+      <h4>{{ landmark.downRatings }} thumbs down</h4>
 
   </div>
   </div>
 </template>
 
 <script>
-import landmarkService from "../services/LandmarkServices";
+import landmarkServices from "../services/LandmarkServices";
 
 export default {
   name: "landmark-list",
@@ -26,7 +31,7 @@ export default {
     };
   },
   created() {
-    landmarkService.getLandmarks().then((response) => {
+    landmarkServices.getLandmarks().then((response) => {
       this.landmarks = response.data;
     });
   },
