@@ -34,4 +34,15 @@ CREATE TABLE schedules (
     FOREIGN KEY(landmark_id) references landmarks(landmark_id)
 );
 
+CREATE TABLE city (
+    city_id SERIAL PRIMARY KEY,
+    city_name varchar(50)
+);
+
+CREATE TABLE city_landmarks (
+    city_id integer,
+    landmark_id integer,
+    PRIMARY KEY(city_id, landmark_id)
+);
+
 COMMIT TRANSACTION;
