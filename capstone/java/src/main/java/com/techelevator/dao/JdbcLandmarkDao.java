@@ -3,10 +3,12 @@ package com.techelevator.dao;
 import com.techelevator.model.Landmark;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcLandmarkDao implements LandmarkDao {
 
     JdbcTemplate jdbcTemplate;
@@ -15,10 +17,10 @@ public class JdbcLandmarkDao implements LandmarkDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Landmark> getLandmarksByName(String landmarkName) {
+    public List<Landmark> getLandmarks() {
         List<Landmark> landmarkList = new ArrayList<>();
-        String sql = "SELECT * FROM landmarks WHERE ?";
-        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkName);
+        String sql = "SELECT * FROM landmarks";
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql);
 
         while(sqlRowSet.next()) {
             landmarkList.add(mapToRowSet(sqlRowSet));

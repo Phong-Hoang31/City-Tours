@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LandmarkDao {
 
-    List<Landmark> getLandmarksByName(String landmarkName);
+    List<Landmark> getLandmarks();
 
 
 }
