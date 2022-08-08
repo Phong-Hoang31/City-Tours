@@ -1,4 +1,12 @@
 package com.techelevator.dao;
 
-public class LandmarkDao {
+import com.techelevator.model.Landmark;
+
+import java.util.List;
+
+public interface LandmarkDao {
+
+    List<Landmark> getLandmarksByName(String landmarkName);
+
+
 }
