@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, landmarks, images;
+DROP TABLE IF EXISTS users, landmarks, images, schedules;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -19,16 +19,19 @@ CREATE TABLE landmarks (
     down_ratings integer NOT NULL
     );
 
-CREATE TABLE images (
-    landmark_id integer FOREIGN KEY NOT NULL,
-    url varchar(200) PRIMARY KEY
-);
-
-CREATE TABLE schedules (
-    landmark_id integer FOREIGN KEY NOT NULL,
-    open_time time NOT NULL,
-    close_time time NOT NULL,
-    day_of_week integer NOT NULL
-);
+--CREATE TABLE images (
+--    landmark_id,
+--    url varchar(200) PRIMARY KEY,
+--    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
+--);
+--
+--CREATE TABLE schedules (
+--    landmark_id,
+--    open_time time NOT NULL,
+--    close_time time NOT NULL,
+--    day_of_week integer NOT NULL,
+--    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
+--
+--);
 
 COMMIT TRANSACTION;
