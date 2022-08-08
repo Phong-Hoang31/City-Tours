@@ -1,15 +1,37 @@
 <template>
-  <div class="landmark" v-bind:key="landmark.id">
-    <h4>{{ landmark.landmarkName }}</h4>
-    <div class="photos">
-      <img />
-    </div>
-    <h3>{{ landmark.category }}</h3>
-    <p>{{ landmark.description }}</p>
+<div>
+  <div v-for="landmark in landmarks"
+      v-bind:key="landmark.id"
+     >
+
+  </div>
   </div>
 </template>
 
 <script>
+import landmarkService from "../services/LandmarkServices";
+
+export default {
+  name: "landmark-list",
+  // methods: {
+  //   // TODO: Make this method valid
+  // },
+  //   //  getLandmark(landmarkId) {
+  //   //    this.$router.push(`/landmarks/${landmarkId}`)
+  //   //  }, 
+    
+  data() {
+    return {
+      landmarks: [],
+    };
+  },
+  created() {
+    landmarkService.getLandmarks().then((response) => {
+      this.landmarks = response.data;
+    });
+  },
+};
+
 </script>
 
 <style>
