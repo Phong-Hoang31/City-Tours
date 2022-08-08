@@ -19,19 +19,19 @@ CREATE TABLE landmarks (
     down_ratings integer NOT NULL
     );
 
---CREATE TABLE images (
---    landmark_id,
---    url varchar(200) PRIMARY KEY,
---    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
---);
---
---CREATE TABLE schedules (
---    landmark_id,
---    open_time time NOT NULL,
---    close_time time NOT NULL,
---    day_of_week integer NOT NULL,
---    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
---
---);
+CREATE TABLE images (
+    landmark_id integer,
+    url varchar(200),
+    PRIMARY KEY(url),
+    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
+);
+
+CREATE TABLE schedules (
+    landmark_id integer,
+    open_time time NOT NULL,
+    close_time time NOT NULL,
+    day_of_week integer NOT NULL,
+    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
+);
 
 COMMIT TRANSACTION;
