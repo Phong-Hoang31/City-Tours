@@ -17,3 +17,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+div {
+  border: 2px solid black;
+  text-align: center;
+}
+
+img {
+  max-height: 300px;
+}
+</style>
