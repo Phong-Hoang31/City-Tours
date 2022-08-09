@@ -25,7 +25,4 @@ public class LandmarkController {
         return landmarkDao.getLandmarks();
     }
 
-//    @GetMapping(path = "landmarks/{landmarkId}/images")
-//    public ArrayList<String> getImagesByLandmarkId(@PathVariable int landmarkId) { return landmarkDao.getImagesByLandmarkId(landmarkId);}
-
 }
