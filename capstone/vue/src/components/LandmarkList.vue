@@ -4,6 +4,7 @@
       v-bind:key="landmark.id"
      >
       <h2>{{ landmark.landmarkName }}</h2>
+      <img :src="landmark.imageUrlList[0] ">
       <h4>{{ landmark.description }}</h4>
       <h4>{{ landmark.category }}</h4>
       <h4>{{ landmark.upRatings }} thumbs up</h4>
