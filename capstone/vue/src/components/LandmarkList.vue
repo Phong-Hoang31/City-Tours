@@ -1,6 +1,16 @@
 <template>
   <div>
-    <input type="text" id="firstNameFilter" v-model="filter.landmarkName" />
+    <div>
+      <input
+        type="text"
+        id="searchLandmark"
+        placeholder="Search for landmarks..."
+        v-model="filter.landmarkName"
+      />
+    </div>
+    <div v-for="landmark in filteredList" v-bind:key="landmark.id">
+      <landmark :landmark="landmark" />
+    </div>
   </div>
 </template>
 
@@ -9,6 +19,7 @@ import Landmark from "./Landmark.vue";
 import landmarkServices from "../services/LandmarkServices";
 
 export default {
+  name: "landmark-list",
   data() {
     return {
       filter: {
@@ -16,7 +27,6 @@ export default {
       },
     };
   },
-  name: "landmark-list",
   /*
   methods: {
   TODO: Make this method valid
@@ -33,9 +43,9 @@ export default {
   },
   computed: {
     filteredList() {
-      let filteredLandmarks = this.Landmark;
+      let filteredLandmarks = this.$store.state.landmarks;
       if (this.filter.landmarkName != "") {
-        filteredLandmarks = filteredLandmarks.filter((Landmark) =>
+        filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
           Landmark.landmarkName
             .toLowerCase()
             .includes(this.filter.landmarkName.toLowerCase())
@@ -44,7 +54,6 @@ export default {
       return filteredLandmarks;
     },
   },
-
   components: {
     Landmark,
   },
