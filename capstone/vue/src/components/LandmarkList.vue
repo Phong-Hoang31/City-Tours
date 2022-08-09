@@ -1,42 +1,35 @@
 <template>
-<div>
-  <div v-for="landmark in landmarks"
-      v-bind:key="landmark.id"
-     >
-      <h2>{{ landmark.landmarkName }}</h2>
-      <h4>{{ landmark.description }}</h4>
-      <h4>{{ landmark.category }}</h4>
-      <h4>{{ landmark.upRatings }} thumbs up</h4>
-      <h4>{{ landmark.downRatings }} thumbs down</h4>
-
-  </div>
+  <div>
+    <div v-for="landmark in $store.state.landmarks" v-bind:key="landmark.id">
+      <landmark :landmark="landmark" />
+    </div>
   </div>
 </template>
 
 <script>
+import Landmark from "./Landmark.vue";
 import landmarkServices from "../services/LandmarkServices";
 
 export default {
   name: "landmark-list",
-  // methods: {
-  //   // TODO: Make this method valid
-  // },
-  //   //  getLandmark(landmarkId) {
-  //   //    this.$router.push(`/landmarks/${landmarkId}`)
-  //   //  }, 
-    
-  data() {
-    return {
-      landmarks: [],
-    };
+  /*
+  methods: {
+  TODO: Make this method valid
   },
+  getLandmark(landmarkId) {
+  this.$router.push(`/landmarks/${landmarkId}`)
+  },
+  */
+
   created() {
     landmarkServices.getLandmarks().then((response) => {
-      this.landmarks = response.data;
+      this.$store.commit("POPULATE_LANDMARKS", response.data);
     });
   },
+  components: {
+    Landmark,
+  },
 };
-
 </script>
 
 <style>
