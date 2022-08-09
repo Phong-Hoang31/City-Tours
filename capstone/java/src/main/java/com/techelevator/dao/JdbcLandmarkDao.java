@@ -12,7 +12,6 @@ import java.util.List;
 public class JdbcLandmarkDao implements LandmarkDao {
 
     JdbcTemplate jdbcTemplate;
-
     public JdbcLandmarkDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -28,6 +27,18 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return landmarkList;
     }
 
+    private ArrayList<String> getImagesByLandmarkId(int landmarkId) {
+
+        ArrayList<String> imageUrls = new ArrayList<String>();
+        String sql = "SELECT url FROM images WHERE landmark_id = ?";
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
+
+        while(sqlRowSet.next()) {
+            imageUrls.add(sqlRowSet.getString("url"));
+        }
+        return imageUrls;
+    }
+
     private Landmark mapToRowSet(SqlRowSet sqlRowSet) {
         Landmark landmark = new Landmark();
         landmark.setLandmarkID(sqlRowSet.getInt("landmark_id"));
@@ -36,6 +47,8 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setDescription(sqlRowSet.getString("description"));
         landmark.setUpRatings(sqlRowSet.getInt("up_ratings"));
         landmark.setDownRatings(sqlRowSet.getInt("down_ratings"));
+        landmark.setImageUrlList(getImagesByLandmarkId(landmark.getLandmarkID()));
+
         return landmark;
      }
 
