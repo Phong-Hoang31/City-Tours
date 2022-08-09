@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div v-for="landmark in $store.state.landmarks" v-bind:key="landmark.id">
-      <landmark :landmark="landmark" />
-    </div>
+    <input type="text" id="firstNameFilter" v-model="filter.landmarkName" />
   </div>
 </template>
 
@@ -11,6 +9,13 @@ import Landmark from "./Landmark.vue";
 import landmarkServices from "../services/LandmarkServices";
 
 export default {
+  data() {
+    return {
+      filter: {
+        landmarkName: "",
+      },
+    };
+  },
   name: "landmark-list",
   /*
   methods: {
@@ -26,6 +31,20 @@ export default {
       this.$store.commit("POPULATE_LANDMARKS", response.data);
     });
   },
+  computed: {
+    filteredList() {
+      let filteredLandmarks = this.Landmark;
+      if (this.filter.landmarkName != "") {
+        filteredLandmarks = filteredLandmarks.filter((Landmark) =>
+          Landmark.landmarkName
+            .toLowerCase()
+            .includes(this.filter.landmarkName.toLowerCase())
+        );
+      }
+      return filteredLandmarks;
+    },
+  },
+
   components: {
     Landmark,
   },
