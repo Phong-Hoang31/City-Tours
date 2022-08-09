@@ -1,7 +1,19 @@
 <template>
   <div>
     <h2>{{ landmark.landmarkName }}</h2>
-    <img :src="landmark.imageUrlList[0]" />
+
+      <v-carousel>
+      <v-carousel-item
+        v-for="(imageUrl,i) in landmark.imageUrlList"
+        :key="i"
+        :src="imageUrl"
+        reverse-transition="fade-transition"
+        transition="fade-transition"
+
+      ></v-carousel-item>
+    </v-carousel>
+
+    <!-- <img :src="landmark.imageUrlList[0]" /> -->
     <h4>{{ landmark.description }}</h4>
     <h4>{{ landmark.category }}</h4>
     <h4>{{ landmark.upRatings }} thumbs up</h4>
