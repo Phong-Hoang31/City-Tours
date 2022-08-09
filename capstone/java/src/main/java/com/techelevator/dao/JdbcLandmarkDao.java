@@ -27,6 +27,16 @@ public class JdbcLandmarkDao implements LandmarkDao {
         }
         return landmarkList;
     }
+    public List<Category> getCategories() {
+        List<Category> categoryList = new ArrayList<>();
+        String sql = "SELECT category FROM landmarks";
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql);
+
+        while(sqlRowSet.next()) {
+            landmarkList.add(mapToRowSet(sqlRowSet));
+        }
+        return categoryList;
+    }
 
     private Landmark mapToRowSet(SqlRowSet sqlRowSet) {
         Landmark landmark = new Landmark();

@@ -7,6 +7,7 @@ import java.util.List;
 public interface LandmarkDao {
 
     List<Landmark> getLandmarks();
+    List<Category> getCategories();
 
 
 }
