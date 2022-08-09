@@ -20,6 +20,7 @@ public class LandmarkController {
         this.landmarkDao = landmarkDao;
     }
 
+    @ResponseStatus(value = HttpStatus.OK)
     @GetMapping(path = "landmarks")
     public List<Landmark> getAllLandmarks() {
         return landmarkDao.getLandmarks();
