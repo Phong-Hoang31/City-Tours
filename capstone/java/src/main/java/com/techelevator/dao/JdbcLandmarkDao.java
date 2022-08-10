@@ -1,15 +1,13 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.DayOfWeek;
 import com.techelevator.model.Landmark;
+import com.techelevator.model.Schedule;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class JdbcLandmarkDao implements LandmarkDao {
@@ -43,14 +41,14 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return imageUrls;
     }
 
-    public ArrayList<DayOfWeek> getSchedulesByLandmarkId(int landmarkId) {
+    public ArrayList<Schedule> getSchedulesByLandmarkId(int landmarkId) {
 
-        ArrayList<DayOfWeek> scheduleList = new ArrayList<>();
+        ArrayList<Schedule> scheduleList = new ArrayList<>();
         String sql = "SELECT * FROM schedules WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
 
         while (sqlRowSet.next()) {
-            scheduleList.add(mapToDayObject(sqlRowSet));
+            scheduleList.add(mapToSchedule(sqlRowSet));
         }
         return scheduleList;
     }
@@ -70,14 +68,14 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return landmark;
     }
 
-    private DayOfWeek mapToDayObject(SqlRowSet sqlRowSet) {
-        DayOfWeek dayOfWeek = new DayOfWeek();
+    private Schedule mapToSchedule(SqlRowSet sqlRowSet) {
+        Schedule schedule = new Schedule();
 
-        dayOfWeek.setDayName(sqlRowSet.getString("day_of_week"));
-        dayOfWeek.setOpenTime(sqlRowSet.getTime("open_time"));
-        dayOfWeek.setCloseTime(sqlRowSet.getTime("close_time"));
+        schedule.setDayName(sqlRowSet.getString("day_of_week"));
+        schedule.setOpenTime(sqlRowSet.getTime("open_time"));
+        schedule.setCloseTime(sqlRowSet.getTime("close_time"));
 
-        return dayOfWeek;
+        return schedule;
 
     }
 }
