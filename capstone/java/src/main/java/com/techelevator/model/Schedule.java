@@ -3,34 +3,23 @@ package com.techelevator.model;
 import java.sql.Time;
 
 public class Schedule {
-    private int landmarkID;
-    private Time openTime;
-    private Time closeTime;
-    private int dayOfWeek;
+    String dayName;
+    Time openTime;
+    Time closeTime;
 
-    public Schedule() {}
-
-    public Schedule(int landmarkID, Time openTime, Time closeTime, int dayOfWeek) {
-        this.landmarkID = landmarkID;
+    public Schedule(String dayName, Time openTime, Time closeTime) {
+        this.dayName = dayName;
         this.openTime = openTime;
         this.closeTime = closeTime;
-        this.dayOfWeek = dayOfWeek;
+    }
+    public Schedule() {};
+
+    public String getDayName() {
+        return dayName;
     }
 
-    public int getLandmarkID() {
-        return landmarkID;
-    }
-
-    public void setLandmarkID(int landmarkID) {
-        this.landmarkID = landmarkID;
-    }
-
-    public Time getCloseTime() {
-        return closeTime;
-    }
-
-    public void setCloseTime(Time closeTime) {
-        this.closeTime = closeTime;
+    public void setDayName(String dayName) {
+        this.dayName = dayName;
     }
 
     public Time getOpenTime() {
@@ -41,11 +30,11 @@ public class Schedule {
         this.openTime = openTime;
     }
 
-    public int getDayOfWeek() {
-        return dayOfWeek;
+    public Time getCloseTime() {
+        return closeTime;
     }
 
-    public void setDayOfWeek(int dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+    public void setCloseTime(Time closeTime) {
+        this.closeTime = closeTime;
     }
 }
