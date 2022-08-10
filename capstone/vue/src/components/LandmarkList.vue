@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <div>
-      <input
-        type="text"
-        id="searchLandmark"
-        placeholder="Search for landmarks..."
-        v-model="filter.landmarkName"
-      />
-      <div style="background-color: pink; padding: 1rem;">
+
+  <div id="grid">
+    <div id="searchBar">
+      <v-col>
+        <v-text-field
+          v-model="filter.landmarkName"
+          label="Enter search here..."
+          filled
+        ></v-text-field>
+      </v-col>
+    </div>
+         <div style="background-color: pink; padding: 1rem;">
         <div id="categorySelector" v-for="category of landmarkCategories" v-bind:key="category.id"
 > 
 
@@ -22,9 +25,11 @@
         </div>
   
       </div>
-    </div>
-    <div v-for="landmark in filteredList" v-bind:key="landmark.id">
-      <landmark :landmark="landmark" />
+    <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
+    <div id="landmarkListContainer">
+      <div v-for="landmark in filteredList" v-bind:key="landmark.id">
+        <landmark :landmark="landmark" />
+      </div>
     </div>
   </div>
 </template>
@@ -43,15 +48,6 @@ export default {
       }
     };
   },
-  /*
-  methods: {
-  TODO: Make this method valid
-  },
-  getLandmark(landmarkId) {
-  this.$router.push(`/landmarks/${landmarkId}`)
-  },
-  */
-
   created() {
     landmarkServices.getLandmarks().then((response) => {
       this.$store.commit("POPULATE_LANDMARKS", response.data);
@@ -103,9 +99,34 @@ export default {
 </script>
 
 <style scoped>
-#searchLandmark {
-  background-color: #faf0e6;
-  padding: 1.5rem;
+#searchBar {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  grid-area: ga-searchBar;
+}
+
+#landmarkListContainer {
+  grid-area: ga-landmarkList;
+}
+
+#logo {
+  grid-area: ga-logo;
+}
+
+img {
+  max-block-size: 100px;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas:
+    "ga-logo ga-searchBar ."
+    ". ga-landmarkList ."
+    ". ga-landmarkList .";
 }
 
 #categorySelector {

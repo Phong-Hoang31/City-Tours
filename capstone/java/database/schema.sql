@@ -30,7 +30,7 @@ CREATE TABLE schedules (
     landmark_id integer,
     open_time time NOT NULL,
     close_time time NOT NULL,
-    day_of_week integer NOT NULL,
+    day_of_week varchar(50) NOT NULL,
     FOREIGN KEY(landmark_id) references landmarks(landmark_id)
 );
 

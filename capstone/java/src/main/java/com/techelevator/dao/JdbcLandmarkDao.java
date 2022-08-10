@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Landmark;
+import com.techelevator.model.Schedule;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import java.util.List;
 public class JdbcLandmarkDao implements LandmarkDao {
 
     JdbcTemplate jdbcTemplate;
+
     public JdbcLandmarkDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -21,22 +23,34 @@ public class JdbcLandmarkDao implements LandmarkDao {
         String sql = "SELECT * FROM landmarks";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql);
 
-        while(sqlRowSet.next()) {
+        while (sqlRowSet.next()) {
             landmarkList.add(mapToRowSet(sqlRowSet));
         }
         return landmarkList;
     }
 
-    private ArrayList<String> getImagesByLandmarkId(int landmarkId) {
+    public ArrayList<String> getImagesByLandmarkId(int landmarkId) {
 
         ArrayList<String> imageUrls = new ArrayList<String>();
         String sql = "SELECT url FROM images WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
 
-        while(sqlRowSet.next()) {
+        while (sqlRowSet.next()) {
             imageUrls.add(sqlRowSet.getString("url"));
         }
         return imageUrls;
+    }
+
+    public ArrayList<Schedule> getSchedulesByLandmarkId(int landmarkId) {
+
+        ArrayList<Schedule> scheduleList = new ArrayList<>();
+        String sql = "SELECT * FROM schedules WHERE landmark_id = ?";
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
+
+        while (sqlRowSet.next()) {
+            scheduleList.add(mapToSchedule(sqlRowSet));
+        }
+        return scheduleList;
     }
 
     private Landmark mapToRowSet(SqlRowSet sqlRowSet) {
@@ -49,8 +63,19 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setDownRatings(sqlRowSet.getInt("down_ratings"));
 
         landmark.setImageUrlList(getImagesByLandmarkId(landmark.getLandmarkID()));
+        landmark.setScheduleList(getSchedulesByLandmarkId(landmark.getLandmarkID()));
 
         return landmark;
-     }
+    }
 
+    private Schedule mapToSchedule(SqlRowSet sqlRowSet) {
+        Schedule schedule = new Schedule();
+
+        schedule.setDayName(sqlRowSet.getString("day_of_week"));
+        schedule.setOpenTime(sqlRowSet.getTime("open_time"));
+        schedule.setCloseTime(sqlRowSet.getTime("close_time"));
+
+        return schedule;
+
+    }
 }
