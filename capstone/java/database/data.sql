@@ -8,7 +8,7 @@ VALUES ('Cincinnati Art Museum', 'Art Museum', 'The Cincinnati Art Museum is an 
 ('Reds Stadium', 'Stadium', 'Great American Ball Park is a baseball stadium in Cincinnati, Ohio. It serves as the home stadium of the Cincinnati Reds of Major League Baseball, and opened on March 31, 2003, replacing Cinergy Field, the Reds home field from 1970 to 2002.', 245, 12),
 ('Skyline Chili', 'Restaurant', 'Skyline Chili is a chain of Cincinnati-style chili restaurants based in Cincinnati, Ohio. Founded in 1949 by Greek immigrant Nicholas Lambrinides, Skyline Chili is named for the view of Cincinnatis skyline that Lambrinides could see from his first restaurant, opened in the section of town now known as Price Hill.', 9001, 10),
 ('Roebling Suspension Bridge', 'Suspension Bridge', 'The John A. Roebling Suspension Bridge, originally known as the Cincinnati-Covington Bridge, spans the Ohio River between Cincinnati, Ohio, and Covington, Kentucky. ', 6001, 82),
-('Esporta', 'Gym', 'LA Fitness is an American gym chain with more than 700 clubs across the United States and Canada. The company was formed in 1984 and is based in Irvine, California.', 405, 135);
+('Cincinnati Zoo & Botanical Garden', 'Zoo', 'The Cincinnati Zoo & Botanical Garden is the second oldest zoo in the United States, founded in 1873 and officially opening in 1875, after the Roger Williams Park Zoo. It is located in the Avondale neighborhood of Cincinnati, Ohio.', 405, 11);
 
 INSERT INTO schedules(landmark_id, open_time, close_time, day_of_week)
 VALUES (1, '08:00:00', '20:00:00', 'Monday'),
@@ -64,8 +64,5 @@ VALUES (1, 'https://cdn2.cincinnatimagazine.com/wp-content/uploads/sites/5/2019/
 (3, 'https://www.skylinechili.com/wp-content/uploads/2019/03/menu-coney-rotated90.png'),
 (3, 'https://www.gannett-cdn.com/presto/2019/12/13/PCIN/79fb37ba-cf5b-48bc-a1c0-d1e6e909cdd6-Kaple.jpg?crop=2047,1151,x1,y597&width=2047&height=1151&format=pjpg&auto=webp'),
 (4, 'https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/3/roebling-to-cincy-sunset-mountain-dreams.jpg'),
-(5, 'https://s3-media0.fl.yelpcdn.com/bphoto/WFQInBZ_kCCrr7KxMfSf-g/348s.jpg'),
-(5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHS7qwt5xgRwb6V_9229am9PE781F5rCGh7gTgXFtZoPNdncaPFXoNDNLgTLM4Zlj5l8g&usqp=CAU'),
-(5, 'https://images.fitnessintl.com/images/CMS/ESP/HomePage/TopCarousel_VideoBG/JoinNow_Rate_Desktop_20220404.jpg');
-
+(5, 'https://www.turnerconstruction.com/Files/ProjectImage?url=%2Fsites%2Fmarketingstories%2FMarketing%20Story%20Images%2Foriginal.4c4ef000-53a6-4820-b71b-9a9d81ca9df0.jpg&width=707&height=470&crop=True&jpegQuality=95');
 COMMIT TRANSACTION;

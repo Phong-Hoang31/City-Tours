@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Cincinnati Local Looks</h1>
+    <h3>CINCINNATI LOCAL LOOKS</h3>
     <landmark-list />
   </div>
 </template>
@@ -17,7 +17,8 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+h3 {
+  text-align: center;
   letter-spacing: 0.75rem;
 }
 </style>

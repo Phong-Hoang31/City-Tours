@@ -9,6 +9,7 @@
         ></v-text-field>
       </v-col>
     </div>
+    <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <div id="landmarkListContainer">
       <div v-for="landmark in filteredList" v-bind:key="landmark.id">
         <landmark :landmark="landmark" />
@@ -66,11 +67,21 @@ export default {
   grid-area: ga-landmarkList;
 }
 
+#logo {
+  grid-area: ga-logo;
+}
+
+img {
+  max-block-size: 100px;
+  border-radius: 50%;
+  justify-self: center;
+}
+
 #grid {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
-    ". ga-searchBar ."
+    "ga-logo ga-searchBar ."
     ". ga-landmarkList ."
     ". ga-landmarkList .";
 }
