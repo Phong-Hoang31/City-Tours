@@ -7,12 +7,21 @@
         placeholder="Search for landmarks..."
         v-model="filter.landmarkName"
       />
+      <div style="background-color: pink; padding: 1rem;">
+        <div id="categorySelector" v-for="category of landmarkCategories" v-bind:key="category.id"
+> 
+
+             <label for="category"> {{ category }}
        <input
-        type="text"
-        id="categoryFilter"
-        placeholder="Search for landmark category..."
+       name="categoryChoice"
+        type="radio"
+        id="category"
+         :value="category"
         v-model="filter.landmarkCategory"
-      />
+      /></label>
+        </div>
+  
+      </div>
     </div>
     <div v-for="landmark in filteredList" v-bind:key="landmark.id">
       <landmark :landmark="landmark" />
@@ -67,7 +76,25 @@ export default {
       }
       return filteredLandmarks;
     },
+        landmarkCategories() {
+// TODO: remove duplicates
+      let landmarkCategories = [];
+      for(let landmark of this.$store.state.landmarks) {
+        landmarkCategories.push(landmark.category);
+    }
+    return landmarkCategories;
   },
+  },
+  // methods: {
+//     landmarkCategories() {
+// // TODO: remove duplicates
+//       let landmarkCategories = [];
+//       for(let landmark of this.$store.state.landmarks) {
+//         landmarkCategories.push(landmark.category);
+//     }
+//     return landmarkCategories;
+//   },
+//   },
   components: {
     Landmark,
   },
@@ -79,4 +106,9 @@ export default {
   background-color: #faf0e6;
   padding: 1.5rem;
 }
+
+#categorySelector {
+  padding-down: 1rem;
+}
+
 </style>
