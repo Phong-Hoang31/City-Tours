@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+      <img src="public\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'logout' }"
