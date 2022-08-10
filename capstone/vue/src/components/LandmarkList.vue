@@ -7,6 +7,12 @@
         placeholder="Search for landmarks..."
         v-model="filter.landmarkName"
       />
+       <input
+        type="text"
+        id="categoryFilter"
+        placeholder="Search for landmark category..."
+        v-model="filter.landmarkCategory"
+      />
     </div>
     <div v-for="landmark in filteredList" v-bind:key="landmark.id">
       <landmark :landmark="landmark" />
@@ -24,7 +30,8 @@ export default {
     return {
       filter: {
         landmarkName: "",
-      },
+         landmarkCategory: "",
+      }
     };
   },
   /*
@@ -49,6 +56,13 @@ export default {
           Landmark.landmarkName
             .toLowerCase()
             .includes(this.filter.landmarkName.toLowerCase())
+        );
+      }
+      if (this.filter.landmarkCategory != "") {
+        filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
+          Landmark.category
+            .toLowerCase()
+            .includes(this.filter.landmarkCategory.toLowerCase())
         );
       }
       return filteredLandmarks;
