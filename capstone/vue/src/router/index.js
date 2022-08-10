@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import LandmarkList from '@/components/LandmarkList.vue';
+// import LandmarkList from '@/components/LandmarkList.vue';
 
 Vue.use(Router)
 
@@ -54,14 +54,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: "/landmarks",
-      name: "landmarks",
-      component: LandmarkList,
-      meta: {
-        requiresAuth: false
-      }
-    }
+    // {
+    //   path: "/landmarks",
+    //   name: "landmarks",
+    //   component: LandmarkList,
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // }
   ]
 })
 
