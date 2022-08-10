@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div>
-      <input
-        type="text"
-        id="searchLandmark"
-        placeholder="Search for landmarks..."
-        v-model="filter.landmarkName"
-      />
+    <div id="searchBar">
+      <v-col cols="12" sm="5">
+        <v-text-field
+          v-model="filter.landmarkName"
+          label="Enter search here..."
+          filled
+        ></v-text-field>
+      </v-col>
     </div>
     <div v-for="landmark in filteredList" v-bind:key="landmark.id">
       <landmark :landmark="landmark" />
@@ -61,8 +62,9 @@ export default {
 </script>
 
 <style scoped>
-#searchLandmark {
-  background-color: #faf0e6;
-  padding: 1.5rem;
+#searchBar {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
 }
 </style>

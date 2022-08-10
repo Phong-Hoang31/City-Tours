@@ -16,11 +16,13 @@
 
       <v-card-actions>
         <v-btn color="blue">
-          {{ landmark.upRatings }} <i class="fa-regular fa-thumbs-up"></i>
+          {{ landmark.upRatings }}
+          <i class="fa-regular fa-thumbs-up"></i>
         </v-btn>
 
         <v-btn color="red">
-          {{ landmark.downRatings }} <i class="fa-regular fa-thumbs-down"></i>
+          {{ landmark.downRatings }}
+          <i class="fa-regular fa-thumbs-down"></i>
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -67,6 +69,23 @@ export default {
   flex-direction: row;
   justify-content: center;
   margin-bottom: 20px;
+}
+button {
+  width: 30%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
 }
 /* 
 .container {

@@ -15,3 +15,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+h1 {
+  letter-spacing: 0.75rem;
+}
+</style>
