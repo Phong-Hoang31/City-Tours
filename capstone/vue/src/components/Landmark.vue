@@ -1,11 +1,47 @@
 <template>
-  <div class="container">
+  <div class="wrapper">
+    <v-card class="mx-auto" width="400">
+      <v-img
+        class="white--text align-end"
+        height="200px"
+        :src="landmark.imageUrlList[0]"
+      >
+        <v-card-title>{{ landmark.landmarkName }}</v-card-title>
+      </v-img>
+
+      <v-card-subtitle class="pb-0">{{ landmark.category }} </v-card-subtitle>
+
+      <v-card-text class="text--primary">
+        <div>{{ landmark.description }}</div>
+
+        <div>Whitsunday Island, Whitsunday Islands</div>
+      </v-card-text>
+
+      <v-card-actions>
+        <v-btn color="blue">
+          {{ landmark.upRatings }} <i class="fa-regular fa-thumbs-up"></i>
+        </v-btn>
+
+        <v-btn color="red">
+          {{ landmark.downRatings }} <i class="fa-regular fa-thumbs-down"></i>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </div>
+
+  <!-- <div class="container">
     <h2>{{ landmark.landmarkName }}</h2>
     <h4>{{ landmark.description }}</h4>
     <h4>{{ landmark.category }}</h4>
-    <h4>{{ landmark.upRatings }} <i class="fa-regular fa-thumbs-up"></i></h4>
     <h4>
-      {{ landmark.downRatings }} <i class="fa-regular fa-thumbs-down"></i>
+      <span style="color: blue"
+        >{{ landmark.upRatings }} <i class="fa-regular fa-thumbs-up"></i
+      ></span>
+    </h4>
+    <h4>
+      <span style="color: red">
+        {{ landmark.downRatings }} <i class="fa-regular fa-thumbs-down"></i
+      ></span>
     </h4>
     <v-carousel>
       <v-carousel-item
@@ -16,7 +52,7 @@
         transition="fade-transition"
       ></v-carousel-item>
     </v-carousel>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -28,7 +64,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .container {
   padding: 1rem;
   margin: 25px auto 25px auto;
