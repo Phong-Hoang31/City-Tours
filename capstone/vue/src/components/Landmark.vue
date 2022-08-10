@@ -6,15 +6,12 @@
         height="200px"
         :src="landmark.imageUrlList[0]"
       >
-        <v-card-title>{{ landmark.landmarkName }}</v-card-title>
       </v-img>
 
+      <v-card-title>{{ landmark.landmarkName }}</v-card-title>
       <v-card-subtitle class="pb-0">{{ landmark.category }} </v-card-subtitle>
-
       <v-card-text class="text--primary">
         <div>{{ landmark.description }}</div>
-
-        <div>Whitsunday Island, Whitsunday Islands</div>
       </v-card-text>
 
       <v-card-actions>
@@ -71,7 +68,7 @@ export default {
   justify-content: center;
   margin-bottom: 20px;
 }
-
+/* 
 .container {
   padding: 1rem;
   margin: 25px auto 25px auto;
@@ -82,9 +79,5 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   max-width: 500px;
-}
-img {
-  padding: 1rem;
-  height: 250px;
-}
+} */
 </style>
