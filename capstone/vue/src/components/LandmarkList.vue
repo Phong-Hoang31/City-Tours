@@ -67,6 +67,7 @@ export default {
             .includes(this.filter.landmarkName.toLowerCase())
         );
       }
+      //TODO: fix bug with using search and radio buttons for combined filtering
       if (this.filter.landmarkCategory != "") {
         filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
           Landmark.category
