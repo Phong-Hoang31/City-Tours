@@ -10,12 +10,13 @@ public class Landmark {
     private int upRatings;
     private int downRatings;
     private ArrayList<String> imageUrlList;
+    private ArrayList<DayOfWeek> scheduleList;
 
     public Landmark() {
 
     }
 
-    public Landmark(int landmarkID, String landmarkName, String category, String description, int upRatings, int downRatings, ArrayList<String> imageUrlList) {
+    public Landmark(int landmarkID, String landmarkName, String category, String description, int upRatings, int downRatings, ArrayList<String> imageUrlList, ArrayList<DayOfWeek> scheduleList) {
         this.landmarkID = landmarkID;
         this.landmarkName = landmarkName;
         this.category = category;
@@ -23,6 +24,7 @@ public class Landmark {
         this.upRatings = upRatings;
         this.downRatings = downRatings;
         this.imageUrlList = imageUrlList;
+        this.scheduleList = scheduleList;
     }
 
     public int getLandmarkID() {
@@ -79,5 +81,13 @@ public class Landmark {
 
     public void setImageUrlList(ArrayList<String> imageUrlList) {
         this.imageUrlList = imageUrlList;
+    }
+
+    public ArrayList<DayOfWeek> getScheduleList() {
+        return scheduleList;
+    }
+
+    public void setScheduleList(ArrayList<DayOfWeek> scheduleList) {
+        this.scheduleList = scheduleList;
     }
 }
