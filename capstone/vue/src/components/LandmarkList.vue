@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="grid">
     <div id="searchBar">
-      <v-col cols="12" sm="5">
+      <v-col>
         <v-text-field
           v-model="filter.landmarkName"
           label="Enter search here..."
@@ -9,8 +9,10 @@
         ></v-text-field>
       </v-col>
     </div>
-    <div v-for="landmark in filteredList" v-bind:key="landmark.id">
-      <landmark :landmark="landmark" />
+    <div id="landmarkListContainer">
+      <div v-for="landmark in filteredList" v-bind:key="landmark.id">
+        <landmark :landmark="landmark" />
+      </div>
     </div>
   </div>
 </template>
@@ -28,15 +30,6 @@ export default {
       },
     };
   },
-  /*
-  methods: {
-  TODO: Make this method valid
-  },
-  getLandmark(landmarkId) {
-  this.$router.push(`/landmarks/${landmarkId}`)
-  },
-  */
-
   created() {
     landmarkServices.getLandmarks().then((response) => {
       this.$store.commit("POPULATE_LANDMARKS", response.data);
@@ -66,5 +59,19 @@ export default {
   padding: 1rem;
   display: flex;
   justify-content: center;
+  grid-area: ga-searchBar;
+}
+
+#landmarkListContainer {
+  grid-area: ga-landmarkList;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas:
+    ". ga-searchBar ."
+    ". ga-landmarkList ."
+    ". ga-landmarkList .";
 }
 </style>
