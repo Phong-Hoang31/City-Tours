@@ -9,14 +9,11 @@
       >
     </div>
     <router-view />
-    <div id="footer">
-      <v-footer padless>
-        <v-col class="text-center" cols="12">
-          {{ new Date().getFullYear() }} —
-          <strong>Cincinnati Local Looks</strong>
-        </v-col>
-      </v-footer>
-    </div>
+
+    <footer id="footer" class="text-center">
+      {{ new Date().getFullYear() }} —
+      <strong>Cincinnati Local Looks</strong>
+    </footer>
   </div>
 </template>
 
@@ -66,5 +63,10 @@ a::before {
 #footer {
   border-top: 1px solid black;
   padding: 1rem;
+  margin-top: 180px;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
 }
 </style>
