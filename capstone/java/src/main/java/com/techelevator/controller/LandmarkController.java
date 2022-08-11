@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.model.Landmark;
+import com.techelevator.model.Schedule;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +25,10 @@ public class LandmarkController {
     public List<Landmark> getAllLandmarks() {
         return landmarkDao.getLandmarks();
     }
-
-
+    @GetMapping(path = "landmarks/schedule/{landmarkId}")
+    ArrayList<Schedule> getSchedulesByLandmarkId(@PathVariable int landmarkId) {
+        return landmarkDao.getSchedulesByLandmarkId(landmarkId);
+    }
     }
 
 //    @GetMapping(path = "landmarks/{landmarkId}/images")
