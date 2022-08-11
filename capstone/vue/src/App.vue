@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <img src="public\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'home' }">HOME</router-link>&nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
-        >Logout</router-link
+        >LOGOUT</router-link
       >
     </div>
     <router-view />
@@ -35,6 +34,9 @@ a {
   text-decoration: none;
   color: black;
   position: relative;
+  letter-spacing: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 a::before {
@@ -56,7 +58,7 @@ a::before {
   bottom: 0;
   left: 0;
   inset: 0 0 0 0;
-  background: rgb(238, 130, 238);
+  background: rgb(170, 112, 195);
   z-index: -1;
   transition: transform 0.3s ease;
 }
