@@ -9,7 +9,7 @@
         ></v-text-field>
       </v-col>
     </div>
-    <div id="radioSelector">
+    <div id="categoryFilterBox">
       <div
         id="categorySelector"
         v-for="category of landmarkCategories"
@@ -55,21 +55,38 @@ export default {
     });
   },
   computed: {
+    /**
+     * filteredList() first checks for the filter by category, if it is used
+     * then we enter a nested conditional to account for the value bound to
+     * the searchbar (landmarkName). If we don't use the filter by category
+     * and only use the searchbar, then we bounce to the second check i.e.
+     * the 'else if' statement.
+     */
     filteredList() {
       let filteredLandmarks = this.$store.state.landmarks;
-      if (this.filter.landmarkName != "") {
-        filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
-          Landmark.landmarkName
-            .toLowerCase()
-            .includes(this.filter.landmarkName.toLowerCase())
-        );
-      }
-      //TODO: fix bug with using search and radio buttons for combined filtering
+
       if (this.filter.landmarkCategory != "") {
         filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
           Landmark.category
             .toLowerCase()
             .includes(this.filter.landmarkCategory.toLowerCase())
+        );
+        if (this.filter.landmarkName != "") {
+          filteredLandmarks = this.$store.state.landmarks.filter(
+            (Landmark) =>
+              Landmark.landmarkName
+                .toLowerCase()
+                .includes(this.filter.landmarkName.toLowerCase()) &&
+              Landmark.category
+                .toLowerCase()
+                .includes(this.filter.landmarkCategory.toLowerCase())
+          );
+        }
+      } else if (this.filter.landmarkName != "") {
+        filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
+          Landmark.landmarkName
+            .toLowerCase()
+            .includes(this.filter.landmarkName.toLowerCase())
         );
       }
       return filteredLandmarks;
@@ -83,16 +100,6 @@ export default {
       return landmarkCategories;
     },
   },
-  // methods: {
-  //     landmarkCategories() {
-  // // TODO: remove duplicates
-  //       let landmarkCategories = [];
-  //       for(let landmark of this.$store.state.landmarks) {
-  //         landmarkCategories.push(landmark.category);
-  //     }
-  //     return landmarkCategories;
-  //   },
-  //   },
   components: {
     Landmark,
   },
@@ -134,7 +141,7 @@ img {
   padding-bottom: 1rem;
 }
 
-#radioSelector {
+#categoryFilterBox {
   grid-area: ga-radioSelector;
   justify-self: center;
   border: 1px solid black;
