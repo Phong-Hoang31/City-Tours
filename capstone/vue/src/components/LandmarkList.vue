@@ -1,5 +1,5 @@
 <template>
-  <div id="grid" class="hidden">
+  <div id="grid">
     <div id="searchBar">
       <v-col>
         <v-text-field
@@ -9,25 +9,34 @@
         ></v-text-field>
       </v-col>
     </div>
-    <div id="radioSelector">
-      <div
-        id="categorySelector"
-        v-for="category of landmarkCategories"
-        v-bind:key="category.id"
-      >
-        <label for="category">
-          {{ category }}
-          <input
-            name="categoryChoice"
-            type="radio"
-            id="category"
-            :value="category"
-            v-model="filter.landmarkCategory"
-        /></label>
-      </div>
-    </div>
-    <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <create-itinerary id="createItinerary"></create-itinerary>
+    <v-card id="categoryFilterBox" class="mx-auto" max-width="400" tile>
+      <v-list shaped>
+        <v-subheader>CATEGORIES</v-subheader>
+        <v-list-item-group>
+          <v-list-item
+            v-for="category of landmarkCategories"
+            :key="category.id"
+            @click="
+              {
+                filter.landmarkCategory = category;
+              }
+            "
+            @dblclick="
+              {
+                filter.landmarkCategory = '';
+              }
+            "
+          >
+            <v-list-item-content>
+              <v-list-item-title v-text="category"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-card>
+
+    <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <div id="landmarkListContainer">
       <div v-for="landmark in filteredList" v-bind:key="landmark.id">
         <landmark :landmark="landmark" />
@@ -40,6 +49,7 @@
 import Landmark from "./Landmark.vue";
 import landmarkServices from "../services/LandmarkServices";
 import CreateItinerary from "./CreateItinerary.vue";
+//import CreateItinerary from "./CreateItinerary.vue";
 
 export default {
   name: "landmark-list",
@@ -57,21 +67,38 @@ export default {
     });
   },
   computed: {
+    /**
+     * filteredList() first checks for the filter by category, if it is used
+     * then we enter a nested conditional to account for the value bound to
+     * the searchbar (landmarkName). If we don't use the filter by category
+     * and only use the searchbar, then we bounce to the second check i.e.
+     * the 'else if' statement.
+     */
     filteredList() {
       let filteredLandmarks = this.$store.state.landmarks;
-      if (this.filter.landmarkName != "") {
-        filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
-          Landmark.landmarkName
-            .toLowerCase()
-            .includes(this.filter.landmarkName.toLowerCase())
-        );
-      }
-      //TODO: fix bug with using search and radio buttons for combined filtering
+
       if (this.filter.landmarkCategory != "") {
         filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
           Landmark.category
             .toLowerCase()
             .includes(this.filter.landmarkCategory.toLowerCase())
+        );
+        if (this.filter.landmarkName != "") {
+          filteredLandmarks = this.$store.state.landmarks.filter(
+            (Landmark) =>
+              Landmark.landmarkName
+                .toLowerCase()
+                .includes(this.filter.landmarkName.toLowerCase()) &&
+              Landmark.category
+                .toLowerCase()
+                .includes(this.filter.landmarkCategory.toLowerCase())
+          );
+        }
+      } else if (this.filter.landmarkName != "") {
+        filteredLandmarks = this.$store.state.landmarks.filter((Landmark) =>
+          Landmark.landmarkName
+            .toLowerCase()
+            .includes(this.filter.landmarkName.toLowerCase())
         );
       }
       return filteredLandmarks;
@@ -85,16 +112,6 @@ export default {
       return landmarkCategories;
     },
   },
-  // methods: {
-  //     landmarkCategories() {
-  // // TODO: remove duplicates
-  //       let landmarkCategories = [];
-  //       for(let landmark of this.$store.state.landmarks) {
-  //         landmarkCategories.push(landmark.category);
-  //     }
-  //     return landmarkCategories;
-  //   },
-  //   },
   components: {
     Landmark,
     CreateItinerary,
@@ -137,17 +154,23 @@ img {
   padding-bottom: 1rem;
 }
 
-#radioSelector {
+#categoryFilterBox {
   grid-area: ga-radioSelector;
   justify-self: center;
-  border: 1px solid black;
-  padding: 2rem;
+  padding: 1rem;
+
+  /* border: 1px solid black;
   text-transform: uppercase;
   font-size: 0.75rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.1rem; */
+}
+
+.hidden {
+  display: none;
 }
 
 #createItinerary {
   grid-area: ga-createItinerary;
+  justify-self: center;
 }
 </style>
