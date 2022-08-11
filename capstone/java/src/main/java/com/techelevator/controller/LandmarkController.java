@@ -29,6 +29,10 @@ public class LandmarkController {
     ArrayList<Schedule> getSchedulesByLandmarkId(@PathVariable int landmarkId) {
         return landmarkDao.getSchedulesByLandmarkId(landmarkId);
     }
+    @GetMapping(path = "landmarks/{landmarkId}")
+    public Landmark getLandmarksById (@PathVariable int landmarkId){
+        return landmarkDao.getLandmarksById(landmarkId);
+    }
     }
 
 //    @GetMapping(path = "landmarks/{landmarkId}/images")
