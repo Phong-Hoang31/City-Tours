@@ -15,12 +15,12 @@
         v-for="category of landmarkCategories"
         v-bind:key="category.id"
       >
-        <label for="category">
+        <label :for="category">
           {{ category }}
           <input
             name="categoryChoice"
             type="radio"
-            id="category"
+            :id="category"
             :value="category"
             v-model="filter.landmarkCategory"
         /></label>
