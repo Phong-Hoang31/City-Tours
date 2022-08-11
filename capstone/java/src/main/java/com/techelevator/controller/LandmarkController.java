@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.Exceptions.LandmarksNotFoundException;
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.model.Landmark;
 import com.techelevator.model.Schedule;
@@ -22,12 +23,16 @@ public class LandmarkController {
     }
 
     @GetMapping(path = "landmarks")
-    public List<Landmark> getAllLandmarks() {
+    public List<Landmark> getAllLandmarks() throws LandmarksNotFoundException{
         return landmarkDao.getLandmarks();
     }
     @GetMapping(path = "landmarks/schedule/{landmarkId}")
     ArrayList<Schedule> getSchedulesByLandmarkId(@PathVariable int landmarkId) {
         return landmarkDao.getSchedulesByLandmarkId(landmarkId);
+    }
+    @GetMapping(path = "landmarks/{landmarkId}")
+    public Landmark getLandmarksById (@PathVariable int landmarkId) throws LandmarksNotFoundException {
+        return landmarkDao.getLandmarksById(landmarkId);
     }
     }
 
