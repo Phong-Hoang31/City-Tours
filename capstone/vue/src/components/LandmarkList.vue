@@ -9,23 +9,33 @@
         ></v-text-field>
       </v-col>
     </div>
-    <div id="categoryFilterBox">
-      <div
-        id="categorySelector"
-        v-for="category of landmarkCategories"
-        v-bind:key="category.id"
-      >
-        <label :for="category">
-          {{ category }}
-          <input
-            name="categoryChoice"
-            type="radio"
-            :id="category"
-            :value="category"
-            v-model="filter.landmarkCategory"
-        /></label>
-      </div>
-    </div>
+
+    <v-card id="categoryFilterBox" class="mx-auto" max-width="400" tile>
+      <v-list shaped>
+        <v-subheader>CATEGORIES</v-subheader>
+        <v-list-item-group>
+          <v-list-item
+            v-for="category of landmarkCategories"
+            :key="category.id"
+            @click="
+              {
+                filter.landmarkCategory = category;
+              }
+            "
+            @dblclick="
+              {
+                filter.landmarkCategory = '';
+              }
+            "
+          >
+            <v-list-item-content>
+              <v-list-item-title v-text="category"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-card>
+
     <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <div id="landmarkListContainer">
       <div v-for="landmark in filteredList" v-bind:key="landmark.id">
@@ -144,10 +154,15 @@ img {
 #categoryFilterBox {
   grid-area: ga-radioSelector;
   justify-self: center;
-  border: 1px solid black;
-  padding: 2rem;
+  padding: 1rem;
+
+  /* border: 1px solid black;
   text-transform: uppercase;
   font-size: 0.75rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.1rem; */
+}
+
+.hidden {
+  display: none;
 }
 </style>
