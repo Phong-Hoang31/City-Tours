@@ -1,15 +1,11 @@
 <template>
-    <div>
-
-    </div>
+  <div></div>
 </template>
 
 <script>
-
-
-    export default {
-        name: "category-filter",
- computed: {
+export default {
+  name: "category-filter",
+  computed: {
     filteredLandmarks() {
       const reviewsFilter = this.$store.state.filter;
       const reviews = this.$store.state.reviews;
@@ -18,9 +14,8 @@
       });
     },
   },
-    };
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
