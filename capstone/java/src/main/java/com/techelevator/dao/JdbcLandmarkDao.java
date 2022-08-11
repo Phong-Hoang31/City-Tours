@@ -20,7 +20,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
 
     public List<Landmark> getLandmarks() {
         List<Landmark> landmarkList = new ArrayList<>();
-        String sql = "SELECT * FROM landmarks";
+        String sql = "SELECT * FROM landmark";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql);
 
         while (sqlRowSet.next()) {
@@ -32,7 +32,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
     public ArrayList<String> getImagesByLandmarkId(int landmarkId) {
 
         ArrayList<String> imageUrls = new ArrayList<String>();
-        String sql = "SELECT url FROM images WHERE landmark_id = ?";
+        String sql = "SELECT url FROM image WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
 
         while (sqlRowSet.next()) {
@@ -44,7 +44,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
     public ArrayList<Schedule> getSchedulesByLandmarkId(int landmarkId) {
 
         ArrayList<Schedule> scheduleList = new ArrayList<>();
-        String sql = "SELECT * FROM schedules WHERE landmark_id = ?";
+        String sql = "SELECT * FROM schedule WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
 
         while (sqlRowSet.next()) {

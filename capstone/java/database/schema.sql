@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, landmarks, images, schedules, city, city_landmarks, images;
+DROP TABLE IF EXISTS users, landmark, image, schedule, city, city_landmark, intinerary, itinerary_landmark;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -10,7 +10,7 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
-CREATE TABLE landmarks (
+CREATE TABLE landmark (
     landmark_id SERIAL PRIMARY KEY,
     landmark_name varchar(50) NOT NULL,
     category varchar(50) NOT NULL,
@@ -19,19 +19,19 @@ CREATE TABLE landmarks (
     down_ratings integer NOT NULL
     );
 
-CREATE TABLE images (
+CREATE TABLE image (
     landmark_id integer,
     url varchar(8000),
     PRIMARY KEY(url),
-    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
+    FOREIGN KEY(landmark_id) references landmark(landmark_id)
 );
 
-CREATE TABLE schedules (
+CREATE TABLE schedule (
     landmark_id integer,
     open_time time NOT NULL,
     close_time time NOT NULL,
     day_of_week varchar(50) NOT NULL,
-    FOREIGN KEY(landmark_id) references landmarks(landmark_id)
+    FOREIGN KEY(landmark_id) references landmark(landmark_id)
 );
 
 CREATE TABLE city (
@@ -39,7 +39,21 @@ CREATE TABLE city (
     city_name varchar(50)
 );
 
-CREATE TABLE city_landmarks (
+CREATE TABLE intinerary (
+    intinerary_id SERIAL PRIMARY KEY,
+    intinerary_name varchar(50),
+	user_id integer,
+	FOREIGN KEY(user_id) references users(user_id)
+);
+
+CREATE TABLE itinerary_landmark (
+	intinerary_id integer,
+	landmark_id integer,
+	PRIMARY KEY(intinerary_id, landmark_id)
+);
+
+
+CREATE TABLE city_landmark (
     city_id integer,
     landmark_id integer,
     PRIMARY KEY(city_id, landmark_id)
