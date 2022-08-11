@@ -58,8 +58,15 @@ VALUES (1, 1),
 (1, 2),
 (1, 5);
 
--- INSERT INTO itinerary_landmark
+INSERT INTO itinerary(itinerary_name, user_id)
+VALUES ('someDumbName', 1);
 
+INSERT INTO itinerary_landmark(itinerary_id, landmark_id)
+VALUES (1, 1),
+(1, 2),
+(1, 3),
+(2,4),
+(2,5);
 
 INSERT INTO image(landmark_id, url)
 VALUES (1, 'https://cdn2.cincinnatimagazine.com/wp-content/uploads/sites/5/2019/07/AUG19_Tourist_CAM03.jpg'),
