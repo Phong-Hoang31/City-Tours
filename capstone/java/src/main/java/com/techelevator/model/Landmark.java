@@ -3,7 +3,7 @@ package com.techelevator.model;
 import java.util.ArrayList;
 
 public class Landmark {
-    private int landmarkID;
+    private int landmarkId;
     private String landmarkName;
     private String category;
     private String description;
@@ -16,8 +16,8 @@ public class Landmark {
 
     }
 
-    public Landmark(int landmarkID, String landmarkName, String category, String description, int upRatings, int downRatings, ArrayList<String> imageUrlList, ArrayList<Schedule> scheduleList) {
-        this.landmarkID = landmarkID;
+    public Landmark(int landmarkId, String landmarkName, String category, String description, int upRatings, int downRatings, ArrayList<String> imageUrlList, ArrayList<Schedule> scheduleList) {
+        this.landmarkId = landmarkId;
         this.landmarkName = landmarkName;
         this.category = category;
         this.description = description;
@@ -28,11 +28,11 @@ public class Landmark {
     }
 
     public int getLandmarkID() {
-        return landmarkID;
+        return landmarkId;
     }
 
-    public void setLandmarkID(int landmarkID) {
-        this.landmarkID = landmarkID;
+    public void setLandmarkID(int landmarkId) {
+        this.landmarkId = landmarkId;
     }
 
     public String getLandmarkName() {

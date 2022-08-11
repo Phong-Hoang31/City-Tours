@@ -29,6 +29,21 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return landmarkList;
     }
 
+    public ArrayList<Landmark> getLandmarksByItineraryId(int itineraryId) {
+
+        ArrayList<Landmark> landmarks = new ArrayList<Landmark>();
+        String sql = "SELECT * from itinerary \n" +
+                "JOIN itinerary_landmark ON itinerary_landmark.itinerary_id = itinerary.itinerary_id \n " +
+                "JOIN landmark on itinerary_landmark.landmark_id = landmark.landmark_id \n" +
+                "WHERE itinerary.itinerary_id = ?";
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, itineraryId);
+
+        while (sqlRowSet.next()) {
+            landmarks.add(mapToRowSet(sqlRowSet));
+        }
+        return landmarks;
+    }
+
     public ArrayList<String> getImagesByLandmarkId(int landmarkId) {
 
         ArrayList<String> imageUrls = new ArrayList<String>();
@@ -52,10 +67,11 @@ public class JdbcLandmarkDao implements LandmarkDao {
         }
         return scheduleList;
     }
+
     @Override
     public Landmark getLandmarksById(int landmarkId) {
         Landmark landmark = new Landmark();
-        String sql = "Select * FROM landmarks\n" +
+        String sql = "SELECT * FROM landmarks\n" +
                 "WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
         if (sqlRowSet.next()){
@@ -88,6 +104,5 @@ public class JdbcLandmarkDao implements LandmarkDao {
         schedule.setCloseTime(sqlRowSet.getTime("close_time"));
 
         return schedule;
-
     }
 }

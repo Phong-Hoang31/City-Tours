@@ -26,10 +26,7 @@ public class LandmarkController {
     public List<Landmark> getAllLandmarks() throws LandmarksNotFoundException{
         return landmarkDao.getLandmarks();
     }
-    @GetMapping(path = "landmarks/schedule/{landmarkId}")
-    ArrayList<Schedule> getSchedulesByLandmarkId(@PathVariable int landmarkId) {
-        return landmarkDao.getSchedulesByLandmarkId(landmarkId);
-    }
+
     @GetMapping(path = "landmarks/{landmarkId}")
     public Landmark getLandmarksById (@PathVariable int landmarkId) throws LandmarksNotFoundException {
         return landmarkDao.getLandmarksById(landmarkId);
