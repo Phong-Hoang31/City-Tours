@@ -1,5 +1,4 @@
 <template>
-
   <div id="grid">
     <div id="searchBar">
       <v-col>
@@ -10,21 +9,23 @@
         ></v-text-field>
       </v-col>
     </div>
-         <div style="background-color: pink; padding: 1rem;">
-        <div id="categorySelector" v-for="category of landmarkCategories" v-bind:key="category.id"
-> 
-
-             <label for="category"> {{ category }}
-       <input
-       name="categoryChoice"
-        type="radio"
-        id="category"
-         :value="category"
-        v-model="filter.landmarkCategory"
-      /></label>
-        </div>
-  
+    <div id="radioSelector">
+      <div
+        id="categorySelector"
+        v-for="category of landmarkCategories"
+        v-bind:key="category.id"
+      >
+        <label for="category">
+          {{ category }}
+          <input
+            name="categoryChoice"
+            type="radio"
+            id="category"
+            :value="category"
+            v-model="filter.landmarkCategory"
+        /></label>
       </div>
+    </div>
     <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <div id="landmarkListContainer">
       <div v-for="landmark in filteredList" v-bind:key="landmark.id">
@@ -44,8 +45,8 @@ export default {
     return {
       filter: {
         landmarkName: "",
-         landmarkCategory: "",
-      }
+        landmarkCategory: "",
+      },
     };
   },
   created() {
@@ -73,25 +74,25 @@ export default {
       }
       return filteredLandmarks;
     },
-        landmarkCategories() {
-// TODO: remove duplicates
+    landmarkCategories() {
+      // TODO: remove duplicates
       let landmarkCategories = [];
-      for(let landmark of this.$store.state.landmarks) {
+      for (let landmark of this.$store.state.landmarks) {
         landmarkCategories.push(landmark.category);
-    }
-    return landmarkCategories;
-  },
+      }
+      return landmarkCategories;
+    },
   },
   // methods: {
-//     landmarkCategories() {
-// // TODO: remove duplicates
-//       let landmarkCategories = [];
-//       for(let landmark of this.$store.state.landmarks) {
-//         landmarkCategories.push(landmark.category);
-//     }
-//     return landmarkCategories;
-//   },
-//   },
+  //     landmarkCategories() {
+  // // TODO: remove duplicates
+  //       let landmarkCategories = [];
+  //       for(let landmark of this.$store.state.landmarks) {
+  //         landmarkCategories.push(landmark.category);
+  //     }
+  //     return landmarkCategories;
+  //   },
+  //   },
   components: {
     Landmark,
   },
@@ -125,12 +126,21 @@ img {
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
     "ga-logo ga-searchBar ."
-    ". ga-landmarkList ."
+    "ga-radioSelector ga-landmarkList ."
     ". ga-landmarkList .";
 }
 
 #categorySelector {
-  padding-down: 1rem;
+  padding-bottom: 1rem;
 }
 
+#radioSelector {
+  grid-area: ga-radioSelector;
+  justify-self: center;
+  border: 1px solid black;
+  padding: 2rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1rem;
+}
 </style>
