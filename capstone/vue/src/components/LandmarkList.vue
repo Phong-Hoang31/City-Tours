@@ -1,5 +1,5 @@
 <template>
-  <div id="grid">
+  <div id="grid" class="hidden">
     <div id="searchBar">
       <v-col>
         <v-text-field
@@ -39,7 +39,7 @@
 <script>
 import Landmark from "./Landmark.vue";
 import landmarkServices from "../services/LandmarkServices";
-import CreateItinerary from './CreateItinerary.vue';
+import CreateItinerary from "./CreateItinerary.vue";
 
 export default {
   name: "landmark-list",
@@ -150,5 +150,4 @@ img {
 #createItinerary {
   grid-area: ga-createItinerary;
 }
-
 </style>
