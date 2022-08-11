@@ -35,7 +35,6 @@ public class ItineraryController {
     public List<Itinerary> getItineraries (Principal principal)  {
         int userId = userDao.findIdByUsername(principal.getName());
             return itineraryDao.getItinerariesByUserId(userId);
-
     }
 
 

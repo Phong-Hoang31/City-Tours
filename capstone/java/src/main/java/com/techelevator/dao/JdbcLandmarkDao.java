@@ -71,7 +71,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
     @Override
     public Landmark getLandmarksById(int landmarkId) {
         Landmark landmark = new Landmark();
-        String sql = "SELECT * FROM landmarks\n" +
+        String sql = "SELECT * FROM landmark \n" +
                 "WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
         if (sqlRowSet.next()){
