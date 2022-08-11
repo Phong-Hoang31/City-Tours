@@ -47,6 +47,7 @@
 
 <script>
 import itineraryServices from "../services/ItineraryServices";
+
 export default {
   name: "create-itinerary",
   data() {
@@ -57,9 +58,11 @@ export default {
     };
   },
   created() {
-    this.userId = this.$store.state.user.id;
-    this.itinerary.userId = this.userId;
+    // this.userId = this.$store.state.user.id;
+    // this.itinerary.userId = this.userId;
+
   },
+  
   methods: {
     submitForm() {
       itineraryServices

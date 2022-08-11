@@ -8,6 +8,7 @@ import com.techelevator.model.Itinerary;
 import com.techelevator.model.Landmark;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
+//@PreAuthorize("isAuthenticated()")
 public class ItineraryController {
 
     private ItineraryDao itineraryDao;

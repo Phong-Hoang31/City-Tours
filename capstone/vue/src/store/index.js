@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     landmarks: [],
+    itineraries: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +42,9 @@ export default new Vuex.Store({
     },
     POPULATE_LANDMARKS(state, payload) {
       state.landmarks = payload;
+    },
+    POPULATE_ITINERARIES(state, payload) {
+      state.itineraries = payload;
     }
   }
 })
