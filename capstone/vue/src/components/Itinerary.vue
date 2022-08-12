@@ -1,0 +1,50 @@
+<template>
+  <div class="wrapper">
+    <v-card class="mx-auto" width="400">
+      <v-img
+        class="white--text align-end"
+        height="200px"
+        src="https://best-itinerary.com/wp-content/uploads/2019/05/map-4x.png"
+      >
+      </v-img>
+
+      <v-card-title>{{ itinerary.itineraryName }}</v-card-title>
+      <v-card-subtitle class="pb-0"
+        >{{ itinerary.itineraryDate }}
+      </v-card-subtitle>
+      <v-card-text class="text--primary">
+        <div>This is an itinerary</div>
+      </v-card-text>
+
+      <v-card-actions>
+        <v-btn color="blue">
+          Button 1
+          <i class="fa-regular fa-thumbs-up"></i>
+        </v-btn>
+
+        <v-btn color="red">
+          Button 2
+          <i class="fa-regular fa-thumbs-down"></i>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Itinerary",
+  props: {
+    itinerary: Object,
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+</style>

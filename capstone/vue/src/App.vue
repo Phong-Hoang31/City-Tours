@@ -2,6 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">HOME</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'itineraries' }"
+        >MY ITINERARIES</router-link
+      >&nbsp;|&nbsp;
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
