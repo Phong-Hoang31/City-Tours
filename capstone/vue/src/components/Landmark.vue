@@ -28,21 +28,7 @@
     </v-card>
   </div>
 
-  <!-- <div class="container">
-    <h2>{{ landmark.landmarkName }}</h2>
-    <h4>{{ landmark.description }}</h4>
-    <h4>{{ landmark.category }}</h4>
-    <h4>
-      <span style="color: blue"
-        >{{ landmark.upRatings }} <i class="fa-regular fa-thumbs-up"></i
-      ></span>
-    </h4>
-    <h4>
-      <span style="color: red">
-        {{ landmark.downRatings }} <i class="fa-regular fa-thumbs-down"></i
-      ></span>
-    </h4>
-    <v-carousel>
+  <!-- <v-carousel>
       <v-carousel-item
         v-for="(imageUrl, i) in landmark.imageUrlList"
         :key="i"
@@ -50,8 +36,7 @@
         reverse-transition="fade-transition"
         transition="fade-transition"
       ></v-carousel-item>
-    </v-carousel>
-  </div> -->
+    </v-carousel> -->
 </template>
 
 <script>

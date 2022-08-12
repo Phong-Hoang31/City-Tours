@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class JdbcItineraryDao implements ItineraryDao{
     };
 
     public Itinerary getItineraryById(int itineraryId) {
-        Itinerary itinerary = new Itinerary();
+        Itinerary itinerary;
 
         String sql = "SELECT * from itinerary \n" +
                 "WHERE itinerary_id = ?";
@@ -46,6 +47,12 @@ public class JdbcItineraryDao implements ItineraryDao{
         }
         return null;
     };
+
+    public void createItinerary(String itinerary_name, String starting_point, LocalDate localDate, int user_id) {
+        String sql = "INSERT INTO itinerary(itinerary_name, starting_point, itinerary_date, user_id)" +
+                " VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, itinerary_name, starting_point, localDate, user_id);
+    }
 
     private Itinerary mapToRowSet(SqlRowSet sqlRowSet) {
         Itinerary itinerary = new Itinerary();
