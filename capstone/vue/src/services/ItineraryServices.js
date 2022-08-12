@@ -8,7 +8,6 @@ export default {
             name: itinerary.name,
             startingPoint: itinerary.startingPoint,
             date: itinerary.date,
-            user: this.$store.state.user
         });
     },
 

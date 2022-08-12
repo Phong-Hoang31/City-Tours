@@ -69,7 +69,6 @@ export default {
   created() {
     // this.userId = this.$store.state.user.id;
     // this.itinerary.userId = this.userId;
-
   },
   
   methods: {

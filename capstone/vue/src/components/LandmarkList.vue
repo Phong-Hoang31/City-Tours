@@ -158,11 +158,6 @@ img {
   grid-area: ga-radioSelector;
   justify-self: center;
   padding: 1rem;
-
-  /* border: 1px solid black;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.1rem; */
 }
 
 .hidden {

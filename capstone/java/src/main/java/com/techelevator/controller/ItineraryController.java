@@ -5,6 +5,7 @@ import com.techelevator.dao.ItineraryDao;
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Itinerary;
+import com.techelevator.model.ItineraryDTO;
 import com.techelevator.model.Landmark;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
@@ -18,14 +19,15 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 public class ItineraryController {
 
     private ItineraryDao itineraryDao;
     private UserDao userDao;
     private LandmarkDao landmarkDao;
 
-    public ItineraryController(ItineraryDao itineraryDao, UserDao userDao, LandmarkDao landmarkDao) {
+    public ItineraryController(ItineraryDao itineraryDao, UserDao userDao,
+                               LandmarkDao landmarkDao) {
         this.itineraryDao = itineraryDao;
         this.userDao = userDao;
         this.landmarkDao = landmarkDao;
@@ -35,5 +37,14 @@ public class ItineraryController {
     public List<Itinerary> getItineraries (Principal principal)  {
         int userId = userDao.findIdByUsername(principal.getName());
             return itineraryDao.getItinerariesByUserId(userId);
+    }
+
+    @PostMapping(path = "/itineraries")
+    public void createItinerary(@RequestBody Itinerary itinerary, Principal principal) {
+        int userId = userDao.findIdByUsername(principal.getName());
+        itineraryDao.createItinerary(itinerary.getItineraryName(),
+                itinerary.getStartingPoint(),
+                itinerary.getItineraryDate(),
+                userId);
     }
 }
