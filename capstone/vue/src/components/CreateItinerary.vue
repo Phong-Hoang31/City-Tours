@@ -32,11 +32,11 @@
           v-model="itinerary.itineraryStart"
         />
       </div>
-        <div class="form-group">
+      <div class="form-group">
         <label for="itineraryDate">Date of Itinerary: </label>
         <input
           id="itineraryDate"
-          type="text"
+          type="date"
           class="form-control"
           v-model="itinerary.itineraryDate"
         />
@@ -70,7 +70,7 @@ export default {
     // this.userId = this.$store.state.user.id;
     // this.itinerary.userId = this.userId;
   },
-  
+
   methods: {
     submitForm() {
       itineraryServices

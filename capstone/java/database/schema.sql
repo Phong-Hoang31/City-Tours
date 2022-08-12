@@ -47,9 +47,9 @@ CREATE TABLE city_landmark (
 
 CREATE TABLE itinerary (
     itinerary_id SERIAL PRIMARY KEY,
-    itinerary_name varchar(50),
-	starting_point varchar(50),
-	itinerary_date date,
+    itinerary_name varchar(50) not null,
+	starting_point varchar(50) not null,
+	itinerary_date date not null,
 	user_id integer,
 	FOREIGN KEY(user_id) references users(user_id)
 );

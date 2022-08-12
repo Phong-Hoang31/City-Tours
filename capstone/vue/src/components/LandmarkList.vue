@@ -49,7 +49,6 @@
 import Landmark from "./Landmark.vue";
 import landmarkServices from "../services/LandmarkServices";
 import CreateItinerary from "./CreateItinerary.vue";
-//import CreateItinerary from "./CreateItinerary.vue";
 
 export default {
   name: "landmark-list",

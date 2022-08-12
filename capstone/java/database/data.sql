@@ -59,8 +59,8 @@ VALUES (1, 1),
 (1, 5);
 
 INSERT INTO itinerary(itinerary_name, user_id, starting_point, itinerary_date)
-VALUES ('itinerary_1', 1, '42 Starting St.', '8/19/2022');
-VALUES ('itinerary_2', 2, '43 Starting St.', '8/20/2022');
+VALUES ('itinerary_1', 1, '42 Starting St.', '20220811');
+VALUES ('itinerary_2', 2, '43 Starting St.', '20220812');
 
 
 INSERT INTO itinerary_landmark(itinerary_id, landmark_id)
