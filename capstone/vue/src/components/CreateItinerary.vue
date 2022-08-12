@@ -29,7 +29,7 @@
           id="startPoint"
           type="text"
           class="form-control"
-          v-model="itinerary.itineraryStart"
+          v-model="itinerary.startingPoint"
         />
       </div>
       <div class="form-group">
@@ -64,17 +64,13 @@ export default {
       showForm: false,
       userId: null,
       itinerary: {
-        
-            name: "",
-            startingPoint: "",
-            date: "",
+        name: "",
+        startingPoint: "",
+        date: "",
       },
     };
   },
-  created() {
-    // this.userId = this.$store.state.user.id;
-    // this.itinerary.userId = this.userId;
-  },
+  created() {},
 
   methods: {
     submitForm() {

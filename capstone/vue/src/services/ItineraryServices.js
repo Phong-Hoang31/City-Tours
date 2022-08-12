@@ -6,10 +6,6 @@ export default {
         return axios.post(`/itineraries`, itinerary)
     },
 
-    // getItineraryByUserId(userId) {
-    //     return http.get(`/itinerary/${userId}`);
-    // },
-
     getAllItineraries() {
         return axios.get('/itineraries')
     },
