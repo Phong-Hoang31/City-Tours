@@ -32,6 +32,15 @@
           v-model="itinerary.itineraryStart"
         />
       </div>
+        <div class="form-group">
+        <label for="itineraryDate">Date of Itinerary: </label>
+        <input
+          id="itineraryDate"
+          type="text"
+          class="form-control"
+          v-model="itinerary.itineraryDate"
+        />
+      </div>
       <button class="btn btn-submit btn-info" type="submit">Submit</button>
       <button
         class="btn btn-cancel btn-secondary"

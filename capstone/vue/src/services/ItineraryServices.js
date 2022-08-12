@@ -1,15 +1,17 @@
 import axios from 'axios';
 
-
-
 export default {
 
-    // createItinerary(startingPoint, date) {
-    //     return http.post(`/createItinerary`, {
-    //         startingPoint: startingPoint,
-    //         date: date
-    //     });
-    // },
+    createItinerary(itinerary) {
+        return axios.post(`/itineraries`, {
+
+            name: itinerary.name,
+            startingPoint: itinerary.startingPoint,
+            date: itinerary.date,
+            user: this.$store.state.user
+        });
+    },
+
     // getItineraryByUserId(userId) {
     //     return http.get(`/itinerary/${userId}`);
     // },

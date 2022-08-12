@@ -12,9 +12,9 @@ export default {
 
     getImagesByLandmarkId(landmarkId) {
         return http.get(`/landmarks/${landmarkId}/images`);
-    }
+    },
 
-    // getLandmark(landmarkId) {
-    //     return http.get(`/landmarks/${landmarkId}`)
-    // },
+    getLandmark(landmarkId) {
+        return http.get(`/landmarks/${landmarkId}`)
+    },
 }
