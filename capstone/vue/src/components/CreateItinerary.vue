@@ -63,7 +63,12 @@ export default {
     return {
       showForm: false,
       userId: null,
-      itinerary: {},
+      itinerary: {
+        
+            name: "",
+            startingPoint: "",
+            date: "",
+      },
     };
   },
   created() {
