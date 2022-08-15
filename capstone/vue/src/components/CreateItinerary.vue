@@ -1,19 +1,67 @@
 <template>
   <div class="body">
-    <button
+    <v-expansion-panels focusable>
+      <v-expansion-panel>
+        <v-expansion-panel-header>CREATE ITINERARY</v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <form class="form" v-on:submit.prevent="submitForm">
+            <div class="form-group">
+              <label for="itineraryName">Itinerary Name: </label>
+              <input
+                id="itineraryId"
+                type="text"
+                class="form-control"
+                v-model="itinerary.itineraryName"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="startingPoint">Starting Point: </label>
+              <input
+                id="startPoint"
+                type="text"
+                class="form-control"
+                v-model="itinerary.startingPoint"
+              />
+            </div>
+            <div class="form-group">
+              <label for="itineraryDate">Date of Itinerary: </label>
+              <input
+                id="itineraryDate"
+                type="date"
+                class="form-control"
+                v-model="itinerary.itineraryDate"
+              />
+            </div>
+            <button class="btn btn-submit btn-info" type="submit">
+              Submit
+            </button>
+            <button
+              class="btn btn-cancel btn-secondary"
+              type="button"
+              value="cancel"
+              v-on:click="clearForm"
+            >
+              Clear
+            </button>
+          </form>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+    <!-- <button
       id="show-form-button"
       href="#"
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"
     >
       CREATE ITINERARY
-    </button>
-    <form
+    </button> -->
+    <!-- <form
       class="form"
       v-on:submit.prevent="submitForm"
       v-if="showForm === true"
-    >
-      <div class="form-group">
+    > -->
+    <!-- <div class="form-group">
         <label for="itineraryName">Itinerary Name: </label>
         <input
           id="itineraryId"
@@ -50,7 +98,7 @@
       >
         Cancel
       </button>
-    </form>
+    </form> -->
   </div>
 </template>
 
@@ -85,9 +133,8 @@ export default {
           console.log(error);
         });
     },
-    cancelForm() {
+    clearForm() {
       this.itinerary = {};
-      this.showForm = false;
       /**
        * I commented this out because it caused the page to reload,
        * and I don't think we want that.
