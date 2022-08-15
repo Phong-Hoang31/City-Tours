@@ -42,8 +42,8 @@ public class ItineraryController {
                 userId);
     }
 
-    @PostMapping(path = "/itineraries/{id}")
-    public void addLandmarkToItinerary(@RequestBody Landmark landmark, @PathVariable int itineraryId) {
+    @PostMapping(path = "/itineraries/{itineraryId}")
+    public void addLandmarkToItinerary(@RequestBody Landmark landmark, @PathVariable Integer itineraryId) {
         Itinerary itinerary = itineraryDao.getItineraryById(itineraryId);
         itineraryDao.addLandmarkToItinerary(landmark, itinerary);
     }

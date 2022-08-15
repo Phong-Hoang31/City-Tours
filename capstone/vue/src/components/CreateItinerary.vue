@@ -141,6 +141,18 @@ export default {
        * this.$router.go();
        */
     },
+    addLandmarkToItinerary(itinerary, landmark) {
+      itineraryServices
+        .addLandmarkToItinerary(itinerary, landmark)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            this.$router.go();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
 };
 </script>
