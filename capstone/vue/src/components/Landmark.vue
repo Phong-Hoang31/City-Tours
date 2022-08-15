@@ -1,6 +1,16 @@
 <template>
   <div class="wrapper">
     <v-card class="mx-auto" width="400">
+      <!-- <v-carousel>
+        <v-carousel-item
+          v-for="(imageUrl, i) in landmark.imageUrlList"
+          :key="i"
+          :src="imageUrl"
+          reverse-transition="fade-transition"
+          transition="fade-transition"
+          height="200px"
+        ></v-carousel-item>
+      </v-carousel> -->
       <v-img
         class="white--text align-end"
         height="200px"
@@ -31,16 +41,6 @@
       </v-card-actions> -->
     </v-card>
   </div>
-
-  <!-- <v-carousel>
-      <v-carousel-item
-        v-for="(imageUrl, i) in landmark.imageUrlList"
-        :key="i"
-        :src="imageUrl"
-        reverse-transition="fade-transition"
-        transition="fade-transition"
-      ></v-carousel-item>
-    </v-carousel> -->
 </template>
 
 <script>
