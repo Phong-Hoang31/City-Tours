@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import Landmark from "./Landmark.vue";
 
 export default {
   name: "landmark_details",
