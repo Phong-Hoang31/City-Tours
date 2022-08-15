@@ -9,27 +9,27 @@
       Show Details
     </button>
     <form
-      class="form"
+      id="detailsForm"
       v-on:submit.prevent="submitForm"
       v-if="showForm === true"
     >
       <div class="form-group">
-        <label for="landmarkAddress">Address: </label>
-        <p>Needs to wire address in here</p>
+        <h6 for="landmarkAddress">Address:</h6>
+        <p>{{ landmark.address }}</p>
       </div>
 
       <div class="form-group">
         <ul for="Schedule">
-          Open Hours:
+          <h6>Open Hours:</h6>
           <li v-for="time in landmark.scheduleList" :key="time.id">
             {{ time.dayName }}
-            {{ time.openTime }} - {{ time.closeTime }}
+            ({{ time.openTime }} - {{ time.closeTime }})
           </li>
         </ul>
       </div>
       <div class="form-group">
-        <label for="landmarkPrice">Price: </label>
-        <p>Needs to wire price here</p>
+        <h6 for="landmarkPrice">Price:</h6>
+        {{ landmark.price }}
       </div>
       <button
         class="btn btn-cancel btn-secondary"
@@ -83,5 +83,12 @@ button {
   border-radius: 5px;
   transition: 0.2s ease-in;
   cursor: pointer;
+}
+#detailsForm {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
 }
 </style>
