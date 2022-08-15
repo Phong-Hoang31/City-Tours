@@ -4,6 +4,7 @@ import com.techelevator.dao.ItineraryDao;
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Itinerary;
+import com.techelevator.model.Landmark;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +40,11 @@ public class ItineraryController {
                 itinerary.getStartingPoint(),
                 itinerary.getItineraryDate(),
                 userId);
+    }
+
+    @PostMapping(path = "/itineraries/{id}")
+    public void addLandmarkToItinerary(@RequestBody Landmark landmark, @PathVariable int itineraryId) {
+        Itinerary itinerary = itineraryDao.getItineraryById(itineraryId);
+        itineraryDao.addLandmarkToItinerary(landmark, itinerary);
     }
 }

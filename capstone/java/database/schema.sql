@@ -57,6 +57,7 @@ CREATE TABLE itinerary (
 CREATE TABLE itinerary_landmark (
 	itinerary_id integer,
 	landmark_id integer,
+	landmark_order integer,
 	PRIMARY KEY(itinerary_id, landmark_id)
 );
 
