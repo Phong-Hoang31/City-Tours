@@ -88,7 +88,11 @@ export default {
     cancelForm() {
       this.itinerary = {};
       this.showForm = false;
-      this.$router.go();
+      /**
+       * I commented this out because it caused the page to reload,
+       * and I don't think we want that.
+       * this.$router.go();
+       */
     },
   },
 };

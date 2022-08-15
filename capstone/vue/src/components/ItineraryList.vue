@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <div v-for="itinerary of itineraries" :key="itinerary.id">
-      <itinerary :itinerary="itinerary" />
+  <div id="grid">
+    <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
+    <div id="itineraryListContainer">
+      <div v-for="itinerary of itineraries" :key="itinerary.id">
+        <itinerary :itinerary="itinerary" />
+      </div>
     </div>
   </div>
 </template>
@@ -29,4 +32,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#itineraryListContainer {
+  grid-area: ga-itineraryList;
+}
+
+#logo {
+  grid-area: ga-logo;
+  max-block-size: 100px;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+img {
+  max-block-size: 100px;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: "ga-logo ga-itineraryList .";
+}
 </style>

@@ -19,12 +19,7 @@
             :key="category.id"
             @click="
               {
-                filter.landmarkCategory = category;
-              }
-            "
-            @dblclick="
-              {
-                filter.landmarkCategory = '';
+                categoryCheck(category);
               }
             "
           >
@@ -111,6 +106,18 @@ export default {
       return landmarkCategories;
     },
   },
+  methods: {
+    /**
+     * Made this method to handle category filtering.
+     * Now if you click on a category once it filters by it,
+     * and if the same category is clicked again the category filter is cleared.
+     */
+    categoryCheck(category) {
+      this.filter.landmarkCategory == category
+        ? (this.filter.landmarkCategory = "")
+        : (this.filter.landmarkCategory = category);
+    },
+  },
   components: {
     Landmark,
     CreateItinerary,
@@ -132,9 +139,6 @@ export default {
 
 #logo {
   grid-area: ga-logo;
-}
-
-img {
   max-block-size: 100px;
   border-radius: 50%;
   justify-self: center;
