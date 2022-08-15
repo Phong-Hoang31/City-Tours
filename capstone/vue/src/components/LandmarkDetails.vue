@@ -45,7 +45,6 @@
 </template>
 
 <script>
-
 export default {
   name: "landmark_details",
   props: ["landmark"],
@@ -87,9 +86,12 @@ button {
   transition: 0.2s ease-in;
   cursor: pointer;
 }
+#detailsForm {
+  margin-top: 1rem;
+}
 
-span {
-  font-weight: 700;
+ul {
+  list-style: none;
 }
 .schedule-info {
   font-size: 1.3em;
