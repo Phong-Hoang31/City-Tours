@@ -21,6 +21,10 @@
       <div class="form-group">
         <ul for="Schedule">
           Open Hours:
+          <li v-for="time in landmark.scheduleList" :key="time.id">
+            {{ time.dayName }}
+            {{ time.openTime }} - {{ time.closeTime }}
+          </li>
         </ul>
       </div>
       <div class="form-group">
@@ -42,9 +46,7 @@
 <script>
 export default {
   name: "landmark_details",
-  props: {
-    landmark: Object,
-  },
+  props: ["landmark"],
   data() {
     return {
       showForm: false,

@@ -12,7 +12,7 @@
       <v-card-subtitle class="pb-0">{{ landmark.category }} </v-card-subtitle>
       <v-card-text class="text--primary">
         <div>{{ landmark.description }}</div>
-        <landmark-details />
+        <landmark-details :landmark="landmark" />
       </v-card-text>
       <!--       
   Taking the up and down vote button functionality out of thumbnail card.
