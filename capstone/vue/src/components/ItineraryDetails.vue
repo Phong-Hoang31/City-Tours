@@ -1,5 +1,5 @@
 <template>
- <div class="body">
+  <div class="body">
     <button
       id="show-form-button"
       type="button"
@@ -9,12 +9,16 @@
       Show Details
     </button>
     <form
-      class="form"
+      id="detailsForm"
       v-on:submit.prevent="submitForm"
       v-if="showForm === true"
     >
-      <div class="form-group">
-
+      <div
+        class="form-group"
+        v-for="(landmark, index) in itinerary.landmarkList"
+        :key="landmark.id"
+      >
+        <h6>{{ index + 1 }}: {{ landmark.landmarkName }}</h6>
       </div>
 
       <button
@@ -30,20 +34,21 @@
 </template>
 
 <script>
-    export default {
-         name: "itinerary-details",
-         data() {
+export default {
+  name: "itinerary-details",
+  props: ["itinerary"],
+  data() {
     return {
       showForm: false,
       userId: null,
     };
   },
-   methods: {
+  methods: {
     cancelForm() {
       this.showForm = false;
     },
   },
-};  
+};
 </script>
 
 <style scoped>
@@ -63,5 +68,13 @@ button {
   border-radius: 5px;
   transition: 0.2s ease-in;
   cursor: pointer;
+}
+
+#detailsForm {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
 }
 </style>

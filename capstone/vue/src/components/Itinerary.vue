@@ -28,7 +28,7 @@
           <i class="fa-regular fa-thumbs-down"></i>
         </v-btn>
       </v-card-actions> -->
-    </v-card>
+    </v-card>   
   </div>
 </template>
 
@@ -45,6 +45,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .wrapper {
   display: flex;
   flex-direction: row;

@@ -6,12 +6,14 @@
         <itinerary :itinerary="itinerary" />
       </div>
     </div>
+        <create-itinerary id = "createItinerary"/>
   </div>
 </template>
 
 <script>
 import itineraryServices from "../services/ItineraryServices";
 import Itinerary from "./Itinerary.vue";
+import CreateItinerary from "@/components/CreateItinerary.vue"
 
 export default {
   name: "itinerary-list",
@@ -27,6 +29,7 @@ export default {
   },
   components: {
     Itinerary,
+    CreateItinerary
   },
 };
 </script>
@@ -54,6 +57,11 @@ img {
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
     "ga-logo . ."
-    ". ga-itineraryList .";
+    ". ga-itineraryList ga-createItinerary";
+}
+
+#createItinerary {
+  grid-area: ga-createItinerary;
+  justify-self: center;
 }
 </style>
