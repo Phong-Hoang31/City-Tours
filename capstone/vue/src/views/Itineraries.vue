@@ -1,7 +1,7 @@
 <template>
   <div class="itineraries">
     <h3>MY ITINERARIES</h3>
-    <ItineraryList />
+    <itinerary-list />
   </div>
 </template>
 
