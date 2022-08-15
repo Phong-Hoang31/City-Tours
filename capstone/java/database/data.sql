@@ -63,12 +63,12 @@ VALUES ('itinerary_1', 1, '42 Starting St.', '20220811');
 VALUES ('itinerary_2', 2, '43 Starting St.', '20220812');
 
 
-INSERT INTO itinerary_landmark(itinerary_id, landmark_id)
-VALUES (1, 1),
-(1, 2),
-(1, 3),
-(2,4),
-(2,5);
+INSERT INTO itinerary_landmark(itinerary_id, landmark_id, landmark_order)
+VALUES (1, 1, 1),
+(1, 2, 2),
+(1, 3, 3),
+(2,4, 1),
+(2,5, 2);
 
 INSERT INTO image(landmark_id, url)
 VALUES (1, 'https://cdn2.cincinnatimagazine.com/wp-content/uploads/sites/5/2019/07/AUG19_Tourist_CAM03.jpg'),
