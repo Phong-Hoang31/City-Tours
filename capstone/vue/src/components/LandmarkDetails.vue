@@ -20,18 +20,11 @@
 
       <div class="form-group">
         <ul for="Schedule">
-          <div class="schedule-info">Open Hours:</div>
-          <li v-for="time in landmark.scheduleList" :key="time.id">
-            <span>{{ time.dayName }} :</span> {{ time.openTime | fo }}
-            -
-            {{ time.closeTime }}
-
-        <ul for="Schedule">
           <h6>Open Hours:</h6>
           <li v-for="time in landmark.scheduleList" :key="time.id">
-            {{ time.dayName }}
-            ({{ time.openTime | formatTime }} - {{ time.closeTime | formatTime}})
-
+            <span>{{ time.dayName }}</span>
+            ({{ time.openTime | formatTime }} -
+            {{ time.closeTime | formatTime }})
           </li>
         </ul>
       </div>
