@@ -15,7 +15,7 @@
     >
       <div class="form-group">
         <label for="landmarkAddress">Address: </label>
-        <p>Needs to wire address in here</p>
+        <p>{{ landmark.address }}</p>
       </div>
 
       <div class="form-group">
@@ -29,7 +29,7 @@
       </div>
       <div class="form-group">
         <label for="landmarkPrice">Price: </label>
-        <p>Needs to wire price here</p>
+        <p>{{ landmark.price }}</p>
       </div>
       <button
         class="btn btn-cancel btn-secondary"
@@ -83,5 +83,8 @@ button {
   border-radius: 5px;
   transition: 0.2s ease-in;
   cursor: pointer;
+}
+div.form-group {
+  margin: 0px 0px 16px;
 }
 </style>

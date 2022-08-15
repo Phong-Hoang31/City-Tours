@@ -12,6 +12,21 @@ public class Landmark {
     private ArrayList<String> imageUrlList;
     private ArrayList<Schedule> scheduleList;
     private int landmarkOrder = 0;
+    private String address;
+
+    public Landmark(int landmarkId, String landmarkName, String category, String description, int upRatings, int downRatings, ArrayList<String> imageUrlList, ArrayList<Schedule> scheduleList, int landmarkOrder, String address, String price) {
+        this.landmarkId = landmarkId;
+        this.landmarkName = landmarkName;
+        this.category = category;
+        this.description = description;
+        this.upRatings = upRatings;
+        this.downRatings = downRatings;
+        this.imageUrlList = imageUrlList;
+        this.scheduleList = scheduleList;
+        this.landmarkOrder = landmarkOrder;
+        this.address = address;
+        this.price = price;
+    }
 
     public Landmark() {
 
@@ -101,4 +116,22 @@ public class Landmark {
     public void setLandmarkOrder(int landmarkOrder) {
         this.landmarkOrder = landmarkOrder;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    private String price;
 }
