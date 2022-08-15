@@ -22,8 +22,9 @@
         <ul for="Schedule">
           <h6>Open Hours:</h6>
           <li v-for="time in landmark.scheduleList" :key="time.id">
-            {{ time.dayName }}
-            ({{ time.openTime }} - {{ time.closeTime }})
+            <span>{{ time.dayName }}</span>
+            ({{ time.openTime | formatTime }} -
+            {{ time.closeTime | formatTime }})
           </li>
         </ul>
       </div>
@@ -44,6 +45,8 @@
 </template>
 
 <script>
+import Landmark from "./Landmark.vue";
+
 export default {
   name: "landmark_details",
   props: ["landmark"],
@@ -66,6 +69,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 button {
   width: 30%;
@@ -84,11 +88,13 @@ button {
   transition: 0.2s ease-in;
   cursor: pointer;
 }
-#detailsForm {
-  margin-top: 1rem;
-}
 
-ul {
-  list-style: none;
+span {
+  font-weight: 700;
+}
+.schedule-info {
+  font-size: 1.3em;
+  font-weight: 800;
+  margin-top: 1rem;
 }
 </style>
