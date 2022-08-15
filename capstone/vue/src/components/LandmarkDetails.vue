@@ -2,7 +2,7 @@
   <div class="body">
     <button
       id="show-form-button"
-      href="#"
+      type="button"
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"
     >
@@ -60,13 +60,28 @@ export default {
 
   methods: {
     cancelForm() {
-      this.itinerary = {};
       this.showForm = false;
-      this.$router.go();
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+button {
+  width: 30%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
 </style>
