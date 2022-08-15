@@ -14,6 +14,7 @@
       </v-card-subtitle>
       <v-card-text class="text--primary">
         <div>This is an itinerary</div>
+         <itinerary-details :itinerary="itinerary" />
       </v-card-text>
 
       <!-- <v-card-actions>
@@ -32,7 +33,10 @@
 </template>
 
 <script>
+import ItineraryDetails from "@/components/ItineraryDetails.vue";
+
 export default {
+    components: { ItineraryDetails },
   name: "Itinerary",
   props: {
     itinerary: Object,

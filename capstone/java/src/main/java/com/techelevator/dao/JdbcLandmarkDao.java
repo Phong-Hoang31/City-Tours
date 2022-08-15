@@ -89,6 +89,8 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setDescription(sqlRowSet.getString("description"));
         landmark.setUpRatings(sqlRowSet.getInt("up_ratings"));
         landmark.setDownRatings(sqlRowSet.getInt("down_ratings"));
+        landmark.setAddress(sqlRowSet.getString("address"));
+        landmark.setPrice(sqlRowSet.getString("price"));
 
         landmark.setImageUrlList(getImagesByLandmarkId(landmark.getLandmarkID()));
         landmark.setScheduleList(getSchedulesByLandmarkId(landmark.getLandmarkID()));

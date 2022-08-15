@@ -16,7 +16,9 @@ CREATE TABLE landmark (
     category varchar(50) NOT NULL,
     description varchar(500) NOT NULL,
     up_ratings integer NOT NULL,
-    down_ratings integer NOT NULL
+    down_ratings integer NOT NULL,
+	address varchar(500) NOT NULL,
+	price varchar(500) NOT NULL
     );
 
 CREATE TABLE image (

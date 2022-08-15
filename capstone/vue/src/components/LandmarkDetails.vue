@@ -9,28 +9,35 @@
       Show Details
     </button>
     <form
-      class="form"
+      id="detailsForm"
       v-on:submit.prevent="submitForm"
       v-if="showForm === true"
     >
       <div class="form-group">
-        <label for="landmarkAddress">Address: </label>
-        <p>Needs to wire address in here</p>
+        <h6 for="landmarkAddress">Address:</h6>
+        <p>{{ landmark.address }}</p>
       </div>
 
       <div class="form-group">
-        <ul style="list-style: none" for="Schedule">
+        <ul for="Schedule">
           <div class="schedule-info">Open Hours:</div>
           <li v-for="time in landmark.scheduleList" :key="time.id">
             <span>{{ time.dayName }} :</span> {{ time.openTime | fo }}
             -
             {{ time.closeTime }}
+
+        <ul for="Schedule">
+          <h6>Open Hours:</h6>
+          <li v-for="time in landmark.scheduleList" :key="time.id">
+            {{ time.dayName }}
+            ({{ time.openTime | formatTime }} - {{ time.closeTime | formatTime}})
+
           </li>
         </ul>
       </div>
       <div class="form-group">
-        <label for="landmarkPrice">Price: </label>
-        <p>Needs to wire price here</p>
+        <h6 for="landmarkPrice">Price:</h6>
+        {{ landmark.price }}
       </div>
       <button
         class="btn btn-cancel btn-secondary"
@@ -46,6 +53,7 @@
 
 <script>
 import Landmark from "./Landmark.vue";
+
 export default {
   name: "landmark_details",
   props: ["landmark"],
@@ -68,6 +76,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 button {
   width: 30%;
@@ -86,11 +95,13 @@ button {
   transition: 0.2s ease-in;
   cursor: pointer;
 }
+
 span {
   font-weight: 700;
 }
 .schedule-info {
   font-size: 1.3em;
   font-weight: 800;
+  margin-top: 1rem;
 }
 </style>
