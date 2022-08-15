@@ -20,6 +20,5 @@ export default {
 h3 {
   text-align: center;
   letter-spacing: 0.75rem;
-  margin-bottom: 20px;
 }
 </style>

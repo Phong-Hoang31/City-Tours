@@ -52,6 +52,8 @@ img {
 #grid {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  grid-template-areas: "ga-logo ga-itineraryList .";
+  grid-template-areas:
+    "ga-logo . ."
+    ". ga-itineraryList .";
 }
 </style>

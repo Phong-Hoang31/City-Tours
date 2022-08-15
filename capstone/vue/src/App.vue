@@ -26,8 +26,8 @@
 }
 
 #nav {
-  border-bottom: 1px solid black;
-  padding: 1rem;
+  box-shadow: 0px 1px 5000px 5px rgb(170, 112, 195);
+  padding: 2rem;
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-around;

@@ -16,7 +16,7 @@
         <div>This is an itinerary</div>
       </v-card-text>
 
-      <v-card-actions>
+      <!-- <v-card-actions>
         <v-btn color="blue">
           Button 1
           <i class="fa-regular fa-thumbs-up"></i>
@@ -26,7 +26,7 @@
           Button 2
           <i class="fa-regular fa-thumbs-down"></i>
         </v-btn>
-      </v-card-actions>
+      </v-card-actions> -->
     </v-card>
   </div>
 </template>
