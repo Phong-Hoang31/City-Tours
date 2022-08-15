@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.Exceptions.IItineraryNotFoundException;
 import com.techelevator.dao.ItineraryDao;
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.dao.UserDao;
@@ -28,7 +29,7 @@ public class ItineraryController {
     }
 
     @GetMapping(path = "/itineraries")
-    public List<Itinerary> getItineraries (Principal principal)  {
+    public List<Itinerary> getItineraries (Principal principal) throws IItineraryNotFoundException {
         int userId = userDao.findIdByUsername(principal.getName());
             return itineraryDao.getItinerariesByUserId(userId);
     }

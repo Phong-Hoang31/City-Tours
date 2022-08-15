@@ -45,8 +45,6 @@
 </template>
 
 <script>
-import Landmark from "./Landmark.vue";
-
 export default {
   name: "landmark_details",
   props: ["landmark"],
@@ -92,9 +90,13 @@ button {
 span {
   font-weight: 700;
 }
-.schedule-info {
+h6 {
   font-size: 1.3em;
   font-weight: 800;
   margin-top: 1rem;
+  color: #573b8a;
+}
+ul {
+  list-style: none;
 }
 </style>
