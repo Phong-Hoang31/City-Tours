@@ -19,11 +19,12 @@
       </div>
 
       <div class="form-group">
-        <ul for="Schedule">
-          Open Hours:
+        <ul style="list-style: none" for="Schedule">
+          <div class="schedule-info">Open Hours:</div>
           <li v-for="time in landmark.scheduleList" :key="time.id">
-            {{ time.dayName }}
-            {{ time.openTime }} - {{ time.closeTime }}
+            <span>{{ time.dayName }} :</span> {{ time.openTime | fo }}
+            -
+            {{ time.closeTime }}
           </li>
         </ul>
       </div>
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+import Landmark from "./Landmark.vue";
 export default {
   name: "landmark_details",
   props: ["landmark"],
@@ -83,5 +85,12 @@ button {
   border-radius: 5px;
   transition: 0.2s ease-in;
   cursor: pointer;
+}
+span {
+  font-weight: 700;
+}
+.schedule-info {
+  font-size: 1.3em;
+  font-weight: 800;
 }
 </style>

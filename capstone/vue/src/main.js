@@ -14,5 +14,13 @@ new Vue({
   router,
   store,
   vuetify,
+  filters(formatTime, value) {
+    if (value) {
+      const parts = value.split(":");
+      return +parts[0] + "h " + +parts[1] + "m";
+    } else {
+      return "unknown"
+    }
+  }
   render: h => h(App)
 }).$mount('#app')
