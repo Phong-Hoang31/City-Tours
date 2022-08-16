@@ -93,9 +93,13 @@ button {
 ul {
   list-style: none;
 }
-.schedule-info {
+h6 {
   font-size: 1.3em;
   font-weight: 800;
   margin-top: 1rem;
+  color: #573b8a;
+}
+ul {
+  list-style: none;
 }
 </style>

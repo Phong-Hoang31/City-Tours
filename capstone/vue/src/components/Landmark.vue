@@ -20,7 +20,7 @@
       >
       </v-img> -->
 
-      <v-card-title>{{ landmark.landmarkName }}</v-card-title>
+      <v-card-title class="title">{{ landmark.landmarkName }}</v-card-title>
       <v-card-subtitle class="pb-0">{{ landmark.category }} </v-card-subtitle>
       <v-card-text class="text--primary">
         <div>{{ landmark.description }}</div>
@@ -79,6 +79,12 @@ button {
   border-radius: 5px;
   transition: 0.2s ease-in;
   cursor: pointer;
+}
+.title {
+  font-size: 1.4em;
+  font-weight: 800;
+  margin-top: 1rem;
+  color: #573b8a;
 }
 /* 
 .container {
