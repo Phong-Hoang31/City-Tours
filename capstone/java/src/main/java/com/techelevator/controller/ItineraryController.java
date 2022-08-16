@@ -44,9 +44,8 @@ public class ItineraryController {
 
     @PostMapping(path = "/itineraries/{itineraryId}/{landmarkId}")
     public void addLandmarkToItinerary(@PathVariable Integer itineraryId, @PathVariable Integer landmarkId) {
-        Itinerary itinerary = itineraryDao.getItineraryById(itineraryId);
-        Landmark landmark = landmarkDao.getLandmarksById(landmarkId);
-        itineraryDao.addLandmarkToItinerary(landmark, itinerary);
+
+        itineraryDao.addLandmarkToItinerary(itineraryId, landmarkId);
     }
 
     @DeleteMapping (path = "/itineraries/{itineraryId}/{landmarkId}")
@@ -54,6 +53,7 @@ public class ItineraryController {
         Itinerary itinerary = itineraryDao.getItineraryById(itineraryId);
         Landmark landmark = landmarkDao.getLandmarksById(landmarkId);
 
-        itineraryDao.addLandmarkToItinerary(landmark, itinerary);
+
+
     }
 }
