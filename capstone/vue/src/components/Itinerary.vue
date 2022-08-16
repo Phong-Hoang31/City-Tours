@@ -18,8 +18,7 @@
          <button
       id="add-landmark-button"
       type="button"
-      v-on:click.prevent="showForm = true"
-      @click =  
+      v-on:click.prevent="showForm = true" 
     >
       Add Landmark
     </button>
