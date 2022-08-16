@@ -70,7 +70,6 @@ public class JdbcItineraryDao implements ItineraryDao{
         jdbcTemplate.update(sql, itineraryId, landmarkId);
     }
 
-<<<<<<< HEAD
     @Override
     public void deleteItinerary(int itineraryId) {
 
@@ -79,7 +78,6 @@ public class JdbcItineraryDao implements ItineraryDao{
 
     }
 
-=======
     public void updateItineraryStartingPoint(Integer itineraryId, String startingPoint) {
 
         String sql = "UPDATE itinerary \n" +
@@ -88,7 +86,6 @@ public class JdbcItineraryDao implements ItineraryDao{
 
         jdbcTemplate.update(sql, startingPoint, itineraryId);
     }
->>>>>>> fec7f9729facc5d70b6ddf7e9e0cb97ad059e7bc
 
     private Itinerary mapToRowSet(SqlRowSet sqlRowSet) {
         Itinerary itinerary = new Itinerary();
