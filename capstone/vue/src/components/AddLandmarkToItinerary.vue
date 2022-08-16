@@ -67,7 +67,17 @@ export default {
      * Might not need this if calling method directly from service in HTML
      */
     addLandmarkToItinerary(itinerary, landmark) {
-      ItineraryServices.addLandmarkToItinerary(itinerary, landmark);
+      ItineraryServices.addLandmarkToItinerary(itinerary, landmark)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            ItineraryServices.getAllItineraries().then((response) => {
+              this.$store.commit("POPULATE_ITINERARIES", response.data);
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
