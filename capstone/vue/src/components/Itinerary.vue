@@ -18,10 +18,7 @@
           id="add-landmark-button"
           :itinerary="itinerary"
         ></add-landmark-to-itinerary>
-        <itinerary-details
-          id="itinerary-details-button"
-          :itinerary="itinerary"
-        />
+        <itinerary-details id="itinerary-details" :itinerary="itinerary" />
       </v-card-text>
     </v-card>
   </div>
@@ -71,16 +68,17 @@ export default {
   grid-area: ga-add-landmark-button;
 }
 
-#itinerary-details-button {
-  grid-area: ga-itinerary-details-button;
+#itinerary-details {
+  grid-area: ga-itinerary-details;
 }
 
 #card-text-grid {
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
-    "ga-card-info ga-card-info"
-    "ga-add-landmark-button ga-itinerary-details-button";
+    "ga-card-info ga-card-info ga-card-info"
+    "ga-itinerary-details ga-itinerary-details ga-itinerary-details"
+    "ga-add-landmark-button ga-add-landmark-button ga-add-landmark-button";
 }
 
 button {
