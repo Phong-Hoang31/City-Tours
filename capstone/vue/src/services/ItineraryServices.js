@@ -11,6 +11,6 @@ export default {
     },
 
     addLandmarkToItinerary(itinerary, landmark) {
-        return axios.post(`/itineraries/${itinerary.itineraryId}`, landmark)
+        return axios.post(`/itineraries/${itinerary.itineraryId}/${landmark.landmarkID}`)
     }
 }
