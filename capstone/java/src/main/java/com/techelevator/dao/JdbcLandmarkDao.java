@@ -102,7 +102,8 @@ public class JdbcLandmarkDao implements LandmarkDao {
         Schedule schedule = new Schedule();
 
         schedule.setDayName(sqlRowSet.getString("day_of_week"));
-        schedule.setOpenTime(sqlRowSet.getTime("open_time"));
+        schedule.setOpenTime(schedule.convertTime(sqlRowSet.getTime("open_time"))));
+        schedule.setCloseTime(sqlRowSet.getTime("close_time");
         schedule.setCloseTime(sqlRowSet.getTime("close_time"));
 
         return schedule;

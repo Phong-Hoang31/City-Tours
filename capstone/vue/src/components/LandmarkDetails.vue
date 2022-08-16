@@ -22,9 +22,9 @@
         <ul for="Schedule">
           <h6>Open Hours:</h6>
           <li v-for="time in landmark.scheduleList" :key="time.id">
-            <span>{{ time.dayName }}</span>
-            ({{ time.openTime | formatTime }} -
-            {{ time.closeTime | formatTime }})
+            <span>{{ time.dayName }}:</span>
+            {{ time.openTime }} -
+            {{ time.closeTime }}
           </li>
         </ul>
       </div>
@@ -62,6 +62,16 @@ export default {
   methods: {
     cancelForm() {
       this.showForm = false;
+    },
+    formatAMPM(date) {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? "pm" : "am";
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      var strTime = hours + ":" + minutes + " " + ampm;
+      return strTime;
     },
   },
 };
@@ -101,5 +111,8 @@ h6 {
 }
 ul {
   list-style: none;
+}
+span {
+  font-weight: 600;
 }
 </style>

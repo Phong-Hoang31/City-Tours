@@ -1,18 +1,23 @@
 package com.techelevator.model;
 
 import java.sql.Time;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Schedule {
     String dayName;
-    Time openTime;
-    Time closeTime;
+    DateTimeFormatter openTime;
+    DateTimeFormatter closeTime;
 
-    public Schedule(String dayName, Time openTime, Time closeTime) {
+    public Schedule(String dayName, LocalTime openTime, LocalTime closeTime) {
         this.dayName = dayName;
-        this.openTime = openTime;
-        this.closeTime = closeTime;
+        this.openTime = convertTime(openTime);
+        this.closeTime = convertTime(closeTime);
+
     }
-    public Schedule() {};
+
+    public Schedule() {
+    }
 
     public String getDayName() {
         return dayName;
@@ -22,19 +27,35 @@ public class Schedule {
         this.dayName = dayName;
     }
 
-    public Time getOpenTime() {
+    public DateTimeFormatter getOpenTime() {
         return openTime;
     }
 
-    public void setOpenTime(Time openTime) {
+    public void setOpenTime(DateTimeFormatter openTime) {
         this.openTime = openTime;
     }
 
-    public Time getCloseTime() {
+    public DateTimeFormatter getCloseTime() {
         return closeTime;
     }
 
     public void setCloseTime(Time closeTime) {
         this.closeTime = closeTime;
     }
+
+    ;
+
+
+    public DateTimeFormatter convertTime(Time time) {
+        ;
+
+        String pattern = "hh:mm";
+
+
+        DateTimeFormatter format = DateTimeFormatter.ofPattern(pattern);
+        return format;
+
+
+    }
 }
+
