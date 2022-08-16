@@ -20,9 +20,7 @@
       >
         <!-- Pull in list of landmarks from the store, then iterate through in select 
 element. Each option (v-for on the option) will be a landmark. -->
-        <h6
-          @click="addLandmarkToItinerary(itinerary, landmark)"
-        >
+        <h6 @click="addLandmarkToItinerary(itinerary, landmark)">
           {{ landmark.landmarkName }}
         </h6>
       </div>
