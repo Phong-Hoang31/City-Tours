@@ -7,16 +7,37 @@
         :key="landmark.id"
       >
         <h6>{{ index + 1 }}: {{ landmark.landmarkName }}</h6>
-        <i class="fa-solid fa-trash-can"></i>
+        <i
+          @click="deleteLandmarkFromItinerary(itinerary, landmark)"
+          class="fa-solid fa-trash-can"
+        ></i>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import itineraryServices from "../services/ItineraryServices";
+
 export default {
   name: "itinerary-details",
   props: ["itinerary"],
+  methods: {
+    deleteLandmarkFromItinerary(itinerary, landmark) {
+      itineraryServices
+        .deleteLandmarkFromItinerary(itinerary, landmark)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            itineraryServices.getAllItineraries().then((response) => {
+              this.$store.commit("POPULATE_ITINERARIES", response.data);
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
 };
 </script>
 
@@ -50,5 +71,10 @@ button {
 
 ul {
   list-style: none;
+}
+
+i:hover {
+  cursor: pointer;
+  color: red;
 }
 </style>
