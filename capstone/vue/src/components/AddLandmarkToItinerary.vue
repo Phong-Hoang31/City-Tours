@@ -20,9 +20,7 @@
       >
         <!-- Pull in list of landmarks from the store, then iterate through in select 
 element. Each option (v-for on the option) will be a landmark. -->
-        <h6
-          @click="ItineraryServices.addLandmarkToItinerary(itinerary, landmark)"
-        >
+        <h6 @click="addLandmarkToItinerary(itinerary, landmark)">
           {{ landmark.landmarkName }}
         </h6>
       </div>
@@ -68,8 +66,8 @@ export default {
     /**
      * Might not need this if calling method directly from service in HTML
      */
-    addToItinerary(itinerary, landmark) {
-      ItineraryServices.addToItinerary(itinerary, landmark);
+    addLandmarkToItinerary(itinerary, landmark) {
+      ItineraryServices.addLandmarkToItinerary(itinerary, landmark);
     },
   },
 };
