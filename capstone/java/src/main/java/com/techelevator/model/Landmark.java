@@ -11,7 +11,7 @@ public class Landmark {
     private int downRatings;
     private ArrayList<String> imageUrlList;
     private ArrayList<Schedule> scheduleList;
-    private int landmarkOrder = 0;
+    private int landmarkOrder;
     private String address;
 
     public Landmark(int landmarkId, String landmarkName, String category, String description, int upRatings, int downRatings, ArrayList<String> imageUrlList, ArrayList<Schedule> scheduleList, int landmarkOrder, String address, String price) {

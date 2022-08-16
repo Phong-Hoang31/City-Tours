@@ -18,7 +18,15 @@ export default {
         return axios.delete(`/itineraries/${itinerary.itineraryId}/${landmark.landmarkID}`)
     },
 
-    updateItineraryStartingPoint(itinerary, startingPoint) {
-        return axios.put(`/itineraries/${itinerary.itineraryId}`, startingPoint)
+    updateItineraryStartingPoint(itineraryId, startingPoint) {
+        return axios.put(`/itineraries/${itineraryId}`, startingPoint)
+    },
+
+    incrementLandmarkOrder(itineraryId, landmarkOrder) {
+        return axios.put(`/itineraries/${itineraryId}/${landmarkOrder}/increment`)
+    },
+
+    decrementLandmarkOrder(itineraryId, landmarkOrder) {
+        return axios.put(`/itineraries/${itineraryId}/${landmarkOrder}/decrement`)
     }
 }

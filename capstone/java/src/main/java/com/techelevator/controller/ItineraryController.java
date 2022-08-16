@@ -20,8 +20,7 @@ public class ItineraryController {
     private UserDao userDao;
     private LandmarkDao landmarkDao;
 
-    public ItineraryController(ItineraryDao itineraryDao, UserDao userDao,
-                               LandmarkDao landmarkDao) {
+    public ItineraryController(ItineraryDao itineraryDao, UserDao userDao, LandmarkDao landmarkDao) {
         this.itineraryDao = itineraryDao;
         this.userDao = userDao;
         this.landmarkDao = landmarkDao;
@@ -44,24 +43,31 @@ public class ItineraryController {
 
     @PostMapping(path = "/itineraries/{itineraryId}/{landmarkId}")
     public void addLandmarkToItinerary(@PathVariable Integer itineraryId, @PathVariable Integer landmarkId) {
-
         itineraryDao.addLandmarkToItinerary(itineraryId, landmarkId);
     }
 
     @DeleteMapping (path = "/itineraries/{itineraryId}/{landmarkId}")
     public void deleteLandmarkFromItinerary(@PathVariable Integer itineraryId, @PathVariable Integer landmarkId) {
-
         itineraryDao.deleteLandmarkFromItinerary(itineraryId, landmarkId);
     }
 
     @PutMapping (path = "/itineraries/{itineraryId}")
     public void updateItineraryStartingPoint(@PathVariable Integer itineraryId, @RequestBody String startingPoint) {
-
         itineraryDao.updateItineraryStartingPoint(itineraryId, startingPoint);
     }
 
     @DeleteMapping (path = "/itineraries/{itineraryId}")
     public void deleteItinerary(@PathVariable Integer itineraryId){
         itineraryDao.deleteItinerary(itineraryId);
+    }
+
+    @PutMapping(path = "/itineraries/{itineraryId}/{currentLandmarkOrder}/increment")
+    public void incrementLandmarkOrder(@PathVariable Integer itineraryId, @PathVariable Integer currentLandmarkOrder) {
+        itineraryDao.incrementLandmarkOrder(itineraryId, currentLandmarkOrder);
+    }
+
+    @PutMapping(path = "/itineraries/{itineraryId}/{currentLandmarkOrder}/decrement")
+    public void decrementLandmarkOrder(@PathVariable Integer itineraryId, @PathVariable Integer currentLandmarkOrder) {
+        itineraryDao.decrementLandmarkOrder(itineraryId, currentLandmarkOrder);
     }
 }

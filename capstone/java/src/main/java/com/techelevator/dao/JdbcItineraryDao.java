@@ -77,6 +77,7 @@ public class JdbcItineraryDao implements ItineraryDao{
         jdbcTemplate.update(sql, itineraryId);
     }
 
+    @Override
     public void updateItineraryStartingPoint(Integer itineraryId, String startingPoint) {
 
         String sql = "UPDATE itinerary \n" +
@@ -84,6 +85,42 @@ public class JdbcItineraryDao implements ItineraryDao{
                 "WHERE itinerary_id = ?;";
 
         jdbcTemplate.update(sql, startingPoint, itineraryId);
+    }
+
+    @Override
+    public void incrementLandmarkOrder(Integer itineraryId, Integer currentLandmarkOrder) {
+
+        int landmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder);
+        int higherLandmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder + 1);
+
+        int higherLandmarkOrder = currentLandmarkOrder + 1;
+
+        String sql = "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?; " +
+                "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?;";
+
+        jdbcTemplate.update(sql, higherLandmarkOrder, landmarkId, currentLandmarkOrder, higherLandmarkId);
+    }
+
+    @Override
+    public void decrementLandmarkOrder(Integer itineraryId, Integer currentLandmarkOrder) {
+
+        int landmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder);
+        int lowerLandmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder - 1);
+
+        int lowerLandmarkOrder = currentLandmarkOrder - 1;
+
+        String sql = "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?; " +
+                "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?;";
+
+        jdbcTemplate.update(sql, lowerLandmarkOrder, landmarkId, currentLandmarkOrder, lowerLandmarkId);
     }
 
     private Itinerary mapToRowSet(SqlRowSet sqlRowSet) {
@@ -98,5 +135,18 @@ public class JdbcItineraryDao implements ItineraryDao{
         return itinerary;
     }
 
+    public int getLandmarkIdByOrder(Integer itineraryId, Integer landmarkOrder) {
 
+        int landmarkId;
+        String sql = "SELECT landmark_id FROM itinerary_landmark \n" +
+                "WHERE landmark_order = ? AND itinerary_id = ?;";
+
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkOrder, itineraryId);
+
+         if (sqlRowSet.next()){
+             landmarkId =  sqlRowSet.getInt("landmark_id");
+            return landmarkId;
+        }
+        return 0;
+    }
 }

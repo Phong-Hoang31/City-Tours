@@ -39,7 +39,9 @@ public class JdbcLandmarkDao implements LandmarkDao {
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, itineraryId);
 
         while (sqlRowSet.next()) {
-            landmarks.add(mapToRowSet(sqlRowSet));
+            Landmark landmark = mapToRowSet(sqlRowSet);
+            landmark.setLandmarkOrder(sqlRowSet.getInt("landmark_order"));
+            landmarks.add(landmark);
         }
         return landmarks;
     }
@@ -81,7 +83,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return null;
     }
 
-    private Landmark mapToRowSet(SqlRowSet sqlRowSet) {
+    public Landmark mapToRowSet(SqlRowSet sqlRowSet) {
         Landmark landmark = new Landmark();
         landmark.setLandmarkID(sqlRowSet.getInt("landmark_id"));
         landmark.setLandmarkName(sqlRowSet.getString("landmark_name"));

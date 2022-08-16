@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Itinerary;
-import com.techelevator.model.Landmark;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,5 +14,6 @@ public interface ItineraryDao {
     public void deleteLandmarkFromItinerary(Integer itineraryId, Integer landmarkId);
     public void deleteItinerary (int itineraryId);
     public void updateItineraryStartingPoint(Integer itineraryId, String startingPoint);
-
-    }
+    public void incrementLandmarkOrder(Integer itineraryId, Integer currentLandmarkOrder);
+    public void decrementLandmarkOrder(Integer itineraryId, Integer currentLandmarkOrder);
+}
