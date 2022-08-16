@@ -51,7 +51,17 @@ public class ItineraryController {
     @DeleteMapping (path = "/itineraries/{itineraryId}/{landmarkId}")
     public void deleteLandmarkFromItinerary(@PathVariable Integer itineraryId, @PathVariable Integer landmarkId) {
 
-        Itinerary itinerary = itineraryDao.getItineraryById(itineraryId);
-        Landmark landmark = landmarkDao.getLandmarksById(landmarkId);
+        itineraryDao.deleteLandmarkFromItinerary(itineraryId, landmarkId);
+    }
+
+    @PutMapping (path = "/itineraries/{itineraryId}")
+    public void updateItineraryStartingPoint(@PathVariable Integer itineraryId, @RequestBody String startingPoint) {
+
+        itineraryDao.updateItineraryStartingPoint(itineraryId, startingPoint);
+    }
+
+    @DeleteMapping (path = "/itineraries/{itineraryId}")
+    public void deleteItinerary(@PathVariable Integer itineraryId){
+        itineraryDao.deleteItinerary(itineraryId);
     }
 }

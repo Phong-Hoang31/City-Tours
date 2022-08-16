@@ -48,10 +48,10 @@ public class JdbcItineraryDao implements ItineraryDao{
         return null;
     };
 
-    public void createItinerary(String itinerary_name, String starting_point, LocalDate localDate, int user_id) {
+    public void createItinerary(String itineraryName, String startingPoint, LocalDate localDate, int userId) {
         String sql = "INSERT INTO itinerary(itinerary_name, starting_point, itinerary_date, user_id)" +
                 " VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, itinerary_name, starting_point, localDate, user_id);
+        jdbcTemplate.update(sql, itineraryName, startingPoint, localDate, userId);
     }
 
     public void addLandmarkToItinerary(Integer itineraryId, Integer landmarkId) {
@@ -63,12 +63,28 @@ public class JdbcItineraryDao implements ItineraryDao{
 
         jdbcTemplate.update(sql, itineraryId, landmarkId, itineraryLength + 1);
     }
+
     public void deleteLandmarkFromItinerary(Integer itineraryId, Integer landmarkId) {
 
         String sql = "DELETE FROM itinerary_landmark WHERE itinerary_id = ? AND landmark_id = ?;";
         jdbcTemplate.update(sql, itineraryId, landmarkId);
     }
 
+    @Override
+    public void deleteItinerary(int itineraryId) {
+
+        String sql = "DELETE FROM itinerary WHERE itinerary_Id = ? ";
+        jdbcTemplate.update(sql, itineraryId);
+    }
+
+    public void updateItineraryStartingPoint(Integer itineraryId, String startingPoint) {
+
+        String sql = "UPDATE itinerary \n" +
+                "SET starting_point = ? \n" +
+                "WHERE itinerary_id = ?;";
+
+        jdbcTemplate.update(sql, startingPoint, itineraryId);
+    }
 
     private Itinerary mapToRowSet(SqlRowSet sqlRowSet) {
         Itinerary itinerary = new Itinerary();
