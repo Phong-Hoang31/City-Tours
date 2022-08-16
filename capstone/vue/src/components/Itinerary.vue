@@ -14,21 +14,9 @@
       </v-card-subtitle>
       <v-card-text class="text--primary">
         <div>This is an itinerary</div>
-         <itinerary-details :itinerary="itinerary" />
+        <itinerary-details :itinerary="itinerary" />
       </v-card-text>
-
-      <!-- <v-card-actions>
-        <v-btn color="blue">
-          Button 1
-          <i class="fa-regular fa-thumbs-up"></i>
-        </v-btn>
-
-        <v-btn color="red">
-          Button 2
-          <i class="fa-regular fa-thumbs-down"></i>
-        </v-btn>
-      </v-card-actions> -->
-    </v-card>   
+    </v-card>
   </div>
 </template>
 
@@ -36,7 +24,7 @@
 import ItineraryDetails from "@/components/ItineraryDetails.vue";
 
 export default {
-    components: { ItineraryDetails },
+  components: { ItineraryDetails },
   name: "Itinerary",
   props: {
     itinerary: Object,
@@ -45,7 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .wrapper {
   display: flex;
   flex-direction: row;
