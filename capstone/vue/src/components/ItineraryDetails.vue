@@ -1,37 +1,14 @@
 <template>
   <div class="body">
-    <button
-      id="show-form-button"
-      type="button"
-      v-if="showForm === false"
-      v-on:click.prevent="showForm = true"
-    >
-      Show Details
-    </button>
-    <form
-      id="detailsForm"
-      v-on:submit.prevent="submitForm"
-      v-if="showForm === true"
-    >
+    <form id="detailsForm" v-on:submit.prevent="submitForm">
       <div
         class="form-group"
         v-for="(landmark, index) in itinerary.landmarkList"
         :key="landmark.id"
       >
-        <h6>
-          {{ index + 1 }}: {{ landmark.landmarkName }}
-          <i class="fa-solid fa-trash-can"></i>
-        </h6>
+        <h6>{{ index + 1 }}: {{ landmark.landmarkName }}</h6>
+        <i class="fa-solid fa-trash-can"></i>
       </div>
-
-      <button
-        class="btn btn-cancel btn-secondary"
-        type="button"
-        value="cancel"
-        v-on:click="cancelForm"
-      >
-        Hide Details
-      </button>
     </form>
   </div>
 </template>
@@ -40,17 +17,6 @@
 export default {
   name: "itinerary-details",
   props: ["itinerary"],
-  data() {
-    return {
-      showForm: false,
-      userId: null,
-    };
-  },
-  methods: {
-    cancelForm() {
-      this.showForm = false;
-    },
-  },
 };
 </script>
 
@@ -75,6 +41,11 @@ button {
 
 #detailsForm {
   margin-top: 1rem;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
 }
 
 ul {
