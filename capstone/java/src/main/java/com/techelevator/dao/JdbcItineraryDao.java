@@ -63,6 +63,12 @@ public class JdbcItineraryDao implements ItineraryDao{
 
         jdbcTemplate.update(sql, itineraryId, landmarkId, itineraryLength + 1);
     }
+    public void deleteLandmarkFromItinerary(Integer itineraryId, Integer landmarkId) {
+
+        String sql = "DELETE FROM itinerary_landmark WHERE itinerary_id = ? AND landmark_id = ?;";
+        jdbcTemplate.update(sql, itineraryId, landmarkId);
+    }
+
 
     private Itinerary mapToRowSet(SqlRowSet sqlRowSet) {
         Itinerary itinerary = new Itinerary();

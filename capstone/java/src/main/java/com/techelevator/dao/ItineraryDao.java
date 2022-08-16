@@ -12,5 +12,5 @@ public interface ItineraryDao {
     public List<Itinerary> getItinerariesByUserId(int userId);
     public void createItinerary(String itinerary_name, String starting_point, LocalDate localDate, int user_id);
     public void addLandmarkToItinerary(Integer itineraryId, Integer landmarkId);
-
+    public void deleteLandmarkFromItinerary(Integer itineraryId, Integer landmarkId);
     }
