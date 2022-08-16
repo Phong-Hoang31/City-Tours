@@ -4,7 +4,11 @@
       <v-expansion-panel>
         <v-expansion-panel-header>CREATE ITINERARY</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <form class="form" v-on:submit.prevent="submitForm">
+          <form
+            id="addItineraryForm"
+            class="form"
+            v-on:submit.prevent="submitForm"
+          >
             <div class="form-group">
               <label for="itineraryName">Itinerary Name: </label>
               <input
@@ -33,72 +37,23 @@
                 v-model="itinerary.itineraryDate"
               />
             </div>
-            <button class="btn btn-submit btn-info" type="submit">
-              Submit
-            </button>
-            <button
-              class="btn btn-cancel btn-secondary"
-              type="button"
-              value="cancel"
-              v-on:click="clearForm"
-            >
-              Clear
-            </button>
+            <div id="submitClearButtons">
+              <button class="btn btn-submit btn-info" type="submit">
+                Submit
+              </button>
+              <button
+                class="btn btn-cancel btn-secondary"
+                type="button"
+                value="cancel"
+                v-on:click="clearForm"
+              >
+                Clear
+              </button>
+            </div>
           </form>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-    <!-- <button
-      id="show-form-button"
-      href="#"
-      v-if="showForm === false"
-      v-on:click.prevent="showForm = true"
-    >
-      CREATE ITINERARY
-    </button> -->
-    <!-- <form
-      class="form"
-      v-on:submit.prevent="submitForm"
-      v-if="showForm === true"
-    > -->
-    <!-- <div class="form-group">
-        <label for="itineraryName">Itinerary Name: </label>
-        <input
-          id="itineraryId"
-          type="text"
-          class="form-control"
-          v-model="itinerary.itineraryName"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="startingPoint">Starting Point: </label>
-        <input
-          id="startPoint"
-          type="text"
-          class="form-control"
-          v-model="itinerary.startingPoint"
-        />
-      </div>
-      <div class="form-group">
-        <label for="itineraryDate">Date of Itinerary: </label>
-        <input
-          id="itineraryDate"
-          type="date"
-          class="form-control"
-          v-model="itinerary.itineraryDate"
-        />
-      </div>
-      <button class="btn btn-submit btn-info" type="submit">Submit</button>
-      <button
-        class="btn btn-cancel btn-secondary"
-        type="button"
-        value="cancel"
-        v-on:click="cancelForm"
-      >
-        Cancel
-      </button>
-    </form> -->
   </div>
 </template>
 
@@ -126,7 +81,10 @@ export default {
         .createItinerary(this.itinerary)
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
-            this.$router.go();
+            itineraryServices.getAllItineraries().then((response) => {
+              this.$store.commit("POPULATE_ITINERARIES", response.data);
+              this.itinerary = {};
+            });
           }
         })
         .catch((error) => {
@@ -141,21 +99,17 @@ export default {
        * this.$router.go();
        */
     },
-    addLandmarkToItinerary(itinerary, landmark) {
-      itineraryServices
-        .addLandmarkToItinerary(itinerary, landmark)
-        .then((response) => {
-          if (response.status === 201 || response.status === 200) {
-            this.$router.go();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+#addItineraryForm {
+  margin-top: 1rem;
+}
+
+#submitClearButtons {
+  display: flex;
+  justify-content: space-between;
+}
 </style>

@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Landmark;
 import com.techelevator.model.Schedule;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,4 +14,7 @@ public interface LandmarkDao {
     ArrayList<Schedule> getSchedulesByLandmarkId(int landmarkId);
     Landmark getLandmarksById(int landmarkId);
     ArrayList<Landmark> getLandmarksByItineraryId(int itineraryId);
+    Landmark mapToRowSet(SqlRowSet sqlRowSet);
+    Integer getRatingUpById (int landmarkId);
+    Integer getRatingDownById (int landmarkId);
 }

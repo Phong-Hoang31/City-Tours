@@ -1,51 +1,41 @@
 <template>
   <div class="body">
-    <button
-      id="show-form-button"
-      type="button"
-      v-if="showForm === false"
-      v-on:click.prevent="showForm = true"
-    >
-      Show Details
-    </button>
-    <form
-      id="detailsForm"
-      v-on:submit.prevent="submitForm"
-      v-if="showForm === true"
-    >
+    <form id="detailsForm" v-on:submit.prevent="submitForm">
       <div
         class="form-group"
         v-for="(landmark, index) in itinerary.landmarkList"
         :key="landmark.id"
       >
         <h6>{{ index + 1 }}: {{ landmark.landmarkName }}</h6>
+        <i
+          @click="deleteLandmarkFromItinerary(itinerary, landmark)"
+          class="fa-solid fa-trash-can"
+        ></i>
       </div>
-
-      <button
-        class="btn btn-cancel btn-secondary"
-        type="button"
-        value="cancel"
-        v-on:click="cancelForm"
-      >
-        Hide Details
-      </button>
     </form>
   </div>
 </template>
 
 <script>
+import itineraryServices from "../services/ItineraryServices";
+
 export default {
   name: "itinerary-details",
   props: ["itinerary"],
-  data() {
-    return {
-      showForm: false,
-      userId: null,
-    };
-  },
   methods: {
-    cancelForm() {
-      this.showForm = false;
+    deleteLandmarkFromItinerary(itinerary, landmark) {
+      itineraryServices
+        .deleteLandmarkFromItinerary(itinerary, landmark)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            itineraryServices.getAllItineraries().then((response) => {
+              this.$store.commit("POPULATE_ITINERARIES", response.data);
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
@@ -53,7 +43,7 @@ export default {
 
 <style scoped>
 button {
-  width: 30%;
+  width: 80%;
   height: 40px;
   margin: 10px auto;
   justify-content: center;
@@ -74,7 +64,17 @@ button {
   margin-top: 1rem;
 }
 
+.form-group {
+  display: flex;
+  justify-content: space-between;
+}
+
 ul {
   list-style: none;
+}
+
+i:hover {
+  cursor: pointer;
+  color: red;
 }
 </style>

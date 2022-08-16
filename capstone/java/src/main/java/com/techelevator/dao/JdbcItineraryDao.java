@@ -48,21 +48,79 @@ public class JdbcItineraryDao implements ItineraryDao{
         return null;
     };
 
-    public void createItinerary(String itinerary_name, String starting_point, LocalDate localDate, int user_id) {
+    public void createItinerary(String itineraryName, String startingPoint, LocalDate localDate, int userId) {
         String sql = "INSERT INTO itinerary(itinerary_name, starting_point, itinerary_date, user_id)" +
                 " VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, itinerary_name, starting_point, localDate, user_id);
+        jdbcTemplate.update(sql, itineraryName, startingPoint, localDate, userId);
     }
 
-    public void addLandmarkToItinerary(Landmark landmark, Itinerary itinerary) {
-        int landmarkId = landmark.getLandmarkID();
-        int itineraryId = itinerary.getItineraryId();
-        int itineraryLength = itinerary.getLandmarkList().size();
+    public void addLandmarkToItinerary(Integer itineraryId, Integer landmarkId) {
+
+        int itineraryLength = getItineraryById(itineraryId).getLandmarkList().size();
 
         String sql = "insert into itinerary_landmark(itinerary_id, landmark_id, landmark_order)" +
                 " values(?, ?, ?)";
-        jdbcTemplate.update(sql, itineraryId, landmarkId, itineraryLength + 1);
 
+        jdbcTemplate.update(sql, itineraryId, landmarkId, itineraryLength + 1);
+    }
+
+    public void deleteLandmarkFromItinerary(Integer itineraryId, Integer landmarkId) {
+
+        String sql = "DELETE FROM itinerary_landmark WHERE itinerary_id = ? AND landmark_id = ?;";
+        jdbcTemplate.update(sql, itineraryId, landmarkId);
+    }
+
+    @Override
+    public void deleteItinerary(int itineraryId) {
+
+        String sql = "DELETE FROM itinerary WHERE itinerary_Id = ? ";
+        jdbcTemplate.update(sql, itineraryId);
+    }
+
+    @Override
+    public void updateItineraryStartingPoint(Integer itineraryId, String startingPoint) {
+
+        String sql = "UPDATE itinerary \n" +
+                "SET starting_point = ? \n" +
+                "WHERE itinerary_id = ?;";
+
+        jdbcTemplate.update(sql, startingPoint, itineraryId);
+    }
+
+    @Override
+    public void incrementLandmarkOrder(Integer itineraryId, Integer currentLandmarkOrder) {
+
+        int landmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder);
+        int higherLandmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder + 1);
+
+        int higherLandmarkOrder = currentLandmarkOrder + 1;
+
+        String sql = "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?; " +
+                "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?;";
+
+        jdbcTemplate.update(sql, higherLandmarkOrder, landmarkId, currentLandmarkOrder, higherLandmarkId);
+    }
+
+    @Override
+    public void decrementLandmarkOrder(Integer itineraryId, Integer currentLandmarkOrder) {
+
+        int landmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder);
+        int lowerLandmarkId = getLandmarkIdByOrder(itineraryId, currentLandmarkOrder - 1);
+
+        int lowerLandmarkOrder = currentLandmarkOrder - 1;
+
+        String sql = "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?; " +
+                "UPDATE itinerary_landmark " +
+                "SET landmark_order = ? " +
+                "WHERE landmark_id = ?;";
+
+        jdbcTemplate.update(sql, lowerLandmarkOrder, landmarkId, currentLandmarkOrder, lowerLandmarkId);
     }
 
     private Itinerary mapToRowSet(SqlRowSet sqlRowSet) {
@@ -77,5 +135,18 @@ public class JdbcItineraryDao implements ItineraryDao{
         return itinerary;
     }
 
+    public int getLandmarkIdByOrder(Integer itineraryId, Integer landmarkOrder) {
 
+        int landmarkId;
+        String sql = "SELECT landmark_id FROM itinerary_landmark \n" +
+                "WHERE landmark_order = ? AND itinerary_id = ?;";
+
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkOrder, itineraryId);
+
+         if (sqlRowSet.next()){
+             landmarkId =  sqlRowSet.getInt("landmark_id");
+            return landmarkId;
+        }
+        return 0;
+    }
 }

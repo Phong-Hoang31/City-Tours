@@ -7,29 +7,29 @@
           label="Enter search here..."
           filled
         ></v-text-field>
+        <v-card id="categoryFilterBox" class="mx-auto" max-width="400" tile>
+          <v-list shaped>
+            <v-subheader>CATEGORIES</v-subheader>
+            <v-list-item-group>
+              <v-list-item
+                v-for="category of landmarkCategories"
+                :key="category.id"
+                @click="
+                  {
+                    categoryCheck(category);
+                  }
+                "
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="category"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </v-card>
       </v-col>
     </div>
     <create-itinerary id="createItinerary"></create-itinerary>
-    <v-card id="categoryFilterBox" class="mx-auto" max-width="400" tile>
-      <v-list shaped>
-        <v-subheader>CATEGORIES</v-subheader>
-        <v-list-item-group>
-          <v-list-item
-            v-for="category of landmarkCategories"
-            :key="category.id"
-            @click="
-              {
-                categoryCheck(category);
-              }
-            "
-          >
-            <v-list-item-content>
-              <v-list-item-title v-text="category"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-card>
 
     <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <div id="landmarkListContainer">
@@ -55,6 +55,10 @@ export default {
       },
     };
   },
+  /**
+   * Not sure if in production it makes sense to use created
+   * lifecycle hook in each component it is used individually.
+   */
   created() {
     landmarkServices.getLandmarks().then((response) => {
       this.$store.commit("POPULATE_LANDMARKS", response.data);
@@ -148,9 +152,9 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
-    "ga-logo ga-searchBar ."
-    "ga-radioSelector ga-landmarkList ga-createItinerary"
-    ". ga-landmarkList .";
+    "ga-logo . ."
+    "ga-searchBar ga-landmarkList ga-createItinerary"
+    "ga-radioSelector ga-landmarkList .";
 }
 
 #categorySelector {

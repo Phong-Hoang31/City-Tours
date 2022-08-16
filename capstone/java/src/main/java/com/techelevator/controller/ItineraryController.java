@@ -1,6 +1,5 @@
 package com.techelevator.controller;
 
-import com.techelevator.Exceptions.IItineraryNotFoundException;
 import com.techelevator.dao.ItineraryDao;
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.dao.UserDao;
@@ -21,15 +20,14 @@ public class ItineraryController {
     private UserDao userDao;
     private LandmarkDao landmarkDao;
 
-    public ItineraryController(ItineraryDao itineraryDao, UserDao userDao,
-                               LandmarkDao landmarkDao) {
+    public ItineraryController(ItineraryDao itineraryDao, UserDao userDao, LandmarkDao landmarkDao) {
         this.itineraryDao = itineraryDao;
         this.userDao = userDao;
         this.landmarkDao = landmarkDao;
     }
 
     @GetMapping(path = "/itineraries")
-    public List<Itinerary> getItineraries (Principal principal) throws IItineraryNotFoundException {
+    public List<Itinerary> getItineraries (Principal principal){
         int userId = userDao.findIdByUsername(principal.getName());
             return itineraryDao.getItinerariesByUserId(userId);
     }
@@ -43,9 +41,33 @@ public class ItineraryController {
                 userId);
     }
 
-    @PostMapping(path = "/itineraries/{itineraryId}")
-    public void addLandmarkToItinerary(@RequestBody Landmark landmark, @PathVariable Integer itineraryId) {
-        Itinerary itinerary = itineraryDao.getItineraryById(itineraryId);
-        itineraryDao.addLandmarkToItinerary(landmark, itinerary);
+    @PostMapping(path = "/itineraries/{itineraryId}/{landmarkId}")
+    public void addLandmarkToItinerary(@PathVariable Integer itineraryId, @PathVariable Integer landmarkId) {
+        itineraryDao.addLandmarkToItinerary(itineraryId, landmarkId);
+    }
+
+    @DeleteMapping (path = "/itineraries/{itineraryId}/{landmarkId}")
+    public void deleteLandmarkFromItinerary(@PathVariable Integer itineraryId, @PathVariable Integer landmarkId) {
+        itineraryDao.deleteLandmarkFromItinerary(itineraryId, landmarkId);
+    }
+
+    @PutMapping (path = "/itineraries/{itineraryId}")
+    public void updateItineraryStartingPoint(@PathVariable Integer itineraryId, @RequestBody String startingPoint) {
+        itineraryDao.updateItineraryStartingPoint(itineraryId, startingPoint);
+    }
+
+    @DeleteMapping (path = "/itineraries/{itineraryId}")
+    public void deleteItinerary(@PathVariable Integer itineraryId){
+        itineraryDao.deleteItinerary(itineraryId);
+    }
+
+    @PutMapping(path = "/itineraries/{itineraryId}/{currentLandmarkOrder}/increment")
+    public void incrementLandmarkOrder(@PathVariable Integer itineraryId, @PathVariable Integer currentLandmarkOrder) {
+        itineraryDao.incrementLandmarkOrder(itineraryId, currentLandmarkOrder);
+    }
+
+    @PutMapping(path = "/itineraries/{itineraryId}/{currentLandmarkOrder}/decrement")
+    public void decrementLandmarkOrder(@PathVariable Integer itineraryId, @PathVariable Integer currentLandmarkOrder) {
+        itineraryDao.decrementLandmarkOrder(itineraryId, currentLandmarkOrder);
     }
 }

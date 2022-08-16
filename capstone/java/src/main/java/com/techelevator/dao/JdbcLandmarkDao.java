@@ -39,7 +39,9 @@ public class JdbcLandmarkDao implements LandmarkDao {
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, itineraryId);
 
         while (sqlRowSet.next()) {
-            landmarks.add(mapToRowSet(sqlRowSet));
+            Landmark landmark = mapToRowSet(sqlRowSet);
+            landmark.setLandmarkOrder(sqlRowSet.getInt("landmark_order"));
+            landmarks.add(landmark);
         }
         return landmarks;
     }
@@ -70,7 +72,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
 
     @Override
     public Landmark getLandmarksById(int landmarkId) {
-        Landmark landmark = new Landmark();
+        Landmark landmark;
         String sql = "SELECT * FROM landmark \n" +
                 "WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
@@ -81,7 +83,20 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return null;
     }
 
-    private Landmark mapToRowSet(SqlRowSet sqlRowSet) {
+    @Override
+    public Integer getRatingUpById(int landmarkId) {
+        String sql = "SELECT up_ratings FROM landmark WHERE landmark_id = ?";
+        Integer upRatings = jdbcTemplate.queryForObject(sql, Integer.class, landmarkId);
+            return upRatings;
+        }
+    @Override
+    public Integer getRatingDownById(int landmarkId) {
+        String sql = "SELECT down_ratings FROM landmark WHERE landmark_id = ?";
+        Integer downRatings = jdbcTemplate.queryForObject(sql, Integer.class, landmarkId);
+            return downRatings;
+    }
+
+    public Landmark mapToRowSet(SqlRowSet sqlRowSet) {
         Landmark landmark = new Landmark();
         landmark.setLandmarkID(sqlRowSet.getInt("landmark_id"));
         landmark.setLandmarkName(sqlRowSet.getString("landmark_name"));

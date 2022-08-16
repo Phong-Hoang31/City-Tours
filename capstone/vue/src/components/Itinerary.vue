@@ -12,45 +12,73 @@
       <v-card-subtitle class="pb-0"
         >{{ itinerary.itineraryDate }}
       </v-card-subtitle>
-      <v-card-text class="text--primary">
-        <div>This is an itinerary</div>
-         <itinerary-details :itinerary="itinerary" />
+      <v-card-text id="card-text-grid" class="text--primary">
+        <div id="card-info">This is an itinerary</div>
+        <add-landmark-to-itinerary
+          id="add-landmark-button"
+          :itinerary="itinerary"
+        ></add-landmark-to-itinerary>
+        <itinerary-details id="itinerary-details" :itinerary="itinerary" />
       </v-card-text>
-
-      <!-- <v-card-actions>
-        <v-btn color="blue">
-          Button 1
-          <i class="fa-regular fa-thumbs-up"></i>
-        </v-btn>
-
-        <v-btn color="red">
-          Button 2
-          <i class="fa-regular fa-thumbs-down"></i>
-        </v-btn>
-      </v-card-actions> -->
-    </v-card>   
+    </v-card>
   </div>
 </template>
 
 <script>
 import ItineraryDetails from "@/components/ItineraryDetails.vue";
+import itineraryServices from "../services/ItineraryServices";
+import AddLandmarkToItinerary from "@/components/AddLandmarkToItinerary.vue";
 
 export default {
-    components: { ItineraryDetails },
+  components: { ItineraryDetails, AddLandmarkToItinerary },
   name: "Itinerary",
   props: {
     itinerary: Object,
+  },
+  methods: {
+    addLandmarkToItinerary(itinerary, landmark) {
+      itineraryServices
+        .addLandmarkToItinerary(itinerary, landmark)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            this.$router.go();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 .wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+#card-info {
+  grid-area: ga-card-info;
+}
+
+#add-landmark-button {
+  grid-area: ga-add-landmark-button;
+}
+
+#itinerary-details {
+  grid-area: ga-itinerary-details;
+}
+
+#card-text-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "ga-card-info ga-card-info ga-card-info"
+    "ga-itinerary-details ga-itinerary-details ga-itinerary-details"
+    "ga-add-landmark-button ga-add-landmark-button ga-add-landmark-button";
 }
 
 button {

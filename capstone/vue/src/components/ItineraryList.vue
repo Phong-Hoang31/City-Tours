@@ -2,26 +2,21 @@
   <div id="grid">
     <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <div id="itineraryListContainer">
-      <div v-for="itinerary of itineraries" :key="itinerary.id">
+      <div v-for="itinerary of $store.state.itineraries" :key="itinerary.id">
         <itinerary :itinerary="itinerary" />
       </div>
     </div>
-        <create-itinerary id = "createItinerary"/>
+    <create-itinerary id="createItinerary" />
   </div>
 </template>
 
 <script>
 import itineraryServices from "../services/ItineraryServices";
 import Itinerary from "./Itinerary.vue";
-import CreateItinerary from "@/components/CreateItinerary.vue"
+import CreateItinerary from "@/components/CreateItinerary.vue";
 
 export default {
   name: "itinerary-list",
-  data() {
-    return {
-      itineraries: this.$store.state.itineraries,
-    };
-  },
   created() {
     itineraryServices.getAllItineraries().then((response) => {
       this.$store.commit("POPULATE_ITINERARIES", response.data);
@@ -29,7 +24,7 @@ export default {
   },
   components: {
     Itinerary,
-    CreateItinerary
+    CreateItinerary,
   },
 };
 </script>
