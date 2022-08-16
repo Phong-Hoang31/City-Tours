@@ -18,7 +18,10 @@
         v-for="(landmark, index) in itinerary.landmarkList"
         :key="landmark.id"
       >
-        <h6>{{ index + 1 }}: {{ landmark.landmarkName }}</h6>
+        <h6>
+          {{ index + 1 }}: {{ landmark.landmarkName }}
+          <i class="fa-solid fa-trash-can"></i>
+        </h6>
       </div>
 
       <button

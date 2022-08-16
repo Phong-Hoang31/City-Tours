@@ -12,7 +12,11 @@
       <v-card-subtitle class="pb-0"
         >{{ itinerary.itineraryDate }}
       </v-card-subtitle>
-      <v-card-text id="card-text-grid" class="text--primary">
+      <v-card-text
+        v-if="grid - layout - toggler"
+        id="card-text-grid"
+        class="text--primary"
+      >
         <div id="card-info">This is an itinerary</div>
         <add-landmark-to-itinerary
           id="add-landmark-button"
@@ -22,6 +26,12 @@
           id="itinerary-details-button"
           :itinerary="itinerary"
         />
+      </v-card-text>
+      <v-card-text
+        v-if="!grid - layout - toggler"
+        id="card-text-grid-on-click"
+        class="text--primary"
+      >
       </v-card-text>
     </v-card>
   </div>
@@ -33,6 +43,11 @@ import itineraryServices from "../services/ItineraryServices";
 import AddLandmarkToItinerary from "@/components/AddLandmarkToItinerary.vue";
 
 export default {
+  data() {
+    return {
+      "grid-layout-toggler": true,
+    };
+  },
   components: { ItineraryDetails, AddLandmarkToItinerary },
   name: "Itinerary",
   props: {
@@ -81,6 +96,14 @@ export default {
   grid-template-areas:
     "ga-card-info ga-card-info"
     "ga-add-landmark-button ga-itinerary-details-button";
+}
+
+#card-text-grid-on-click {
+  display: grid;
+  grid-template-columns:
+    "ga-card-info ga-card-info"
+    "ga-itinerary-details-button"
+    "ga-add-landmark-button";
 }
 
 button {

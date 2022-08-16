@@ -54,7 +54,7 @@ public class JdbcItineraryDao implements ItineraryDao{
         jdbcTemplate.update(sql, itinerary_name, starting_point, localDate, user_id);
     }
 
-    public void addLandmarkToItinerary(Integer landmarkId, Integer itineraryId) {
+    public void addLandmarkToItinerary(Integer itineraryId, Integer landmarkId) {
 
         int itineraryLength = getItineraryById(itineraryId).getLandmarkList().size();
 
