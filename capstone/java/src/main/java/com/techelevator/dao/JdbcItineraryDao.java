@@ -54,7 +54,7 @@ public class JdbcItineraryDao implements ItineraryDao{
         jdbcTemplate.update(sql, itineraryName, startingPoint, localDate, userId);
     }
 
-    public void addLandmarkToItinerary(Integer landmarkId, Integer itineraryId) {
+    public void addLandmarkToItinerary(Integer itineraryId, Integer landmarkId) {
 
         int itineraryLength = getItineraryById(itineraryId).getLandmarkList().size();
 
@@ -75,7 +75,6 @@ public class JdbcItineraryDao implements ItineraryDao{
 
         String sql = "DELETE FROM itinerary WHERE itinerary_Id = ? ";
         jdbcTemplate.update(sql, itineraryId);
-
     }
 
     public void updateItineraryStartingPoint(Integer itineraryId, String startingPoint) {
