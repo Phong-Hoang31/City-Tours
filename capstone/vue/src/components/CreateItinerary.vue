@@ -81,7 +81,10 @@ export default {
         .createItinerary(this.itinerary)
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
-            this.$router.go();
+            itineraryServices.getAllItineraries().then((response) => {
+              this.$store.commit("POPULATE_ITINERARIES", response.data);
+              this.itinerary = {};
+            });
           }
         })
         .catch((error) => {
