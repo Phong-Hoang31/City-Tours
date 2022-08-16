@@ -14,13 +14,9 @@
       </v-card-subtitle>
       <v-card-text class="text--primary">
         <div>This is an itinerary</div>
-        <button
-          id="add-landmark-button"
-          type="button"
-          v-on:click.prevent="showForm = true"
-        >
-          Add Landmark
-        </button>
+        <add-landmark-to-itinerary
+          :itinerary="itinerary"
+        ></add-landmark-to-itinerary>
         <itinerary-details :itinerary="itinerary" />
       </v-card-text>
     </v-card>
@@ -30,9 +26,10 @@
 <script>
 import ItineraryDetails from "@/components/ItineraryDetails.vue";
 import itineraryServices from "../services/ItineraryServices";
+import AddLandmarkToItinerary from "@/components/AddLandmarkToItinerary.vue";
 
 export default {
-  components: { ItineraryDetails },
+  components: { ItineraryDetails, AddLandmarkToItinerary },
   name: "Itinerary",
   props: {
     itinerary: Object,

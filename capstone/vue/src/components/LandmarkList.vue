@@ -55,6 +55,10 @@ export default {
       },
     };
   },
+  /**
+   * Not sure if in production it makes sense to use created
+   * lifecycle hook in each component it is used individually.
+   */
   created() {
     landmarkServices.getLandmarks().then((response) => {
       this.$store.commit("POPULATE_LANDMARKS", response.data);
