@@ -23,8 +23,7 @@
           <h6>Open Hours:</h6>
           <li v-for="time in landmark.scheduleList" :key="time.id">
             <span>{{ time.dayName }}:</span>
-            {{ time.openTime }} -
-            {{ time.closeTime }}
+            {{ formatAMPM(time.openTime) }} - {{ formatAMPM(time.closeTime) }}
           </li>
         </ul>
       </div>
@@ -63,9 +62,11 @@ export default {
     cancelForm() {
       this.showForm = false;
     },
-    formatAMPM(date) {
-      var hours = date.getHours();
-      var minutes = date.getMinutes();
+    formatAMPM(time) {
+      var myArray = time.split(":");
+      let hours = myArray[1];
+
+      var minutes = myArray[2];
       var ampm = hours >= 12 ? "pm" : "am";
       hours = hours % 12;
       hours = hours ? hours : 12; // the hour '0' should be '12'
