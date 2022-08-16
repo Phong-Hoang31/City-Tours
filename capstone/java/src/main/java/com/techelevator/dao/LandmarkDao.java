@@ -13,4 +13,6 @@ public interface LandmarkDao {
     ArrayList<Schedule> getSchedulesByLandmarkId(int landmarkId);
     Landmark getLandmarksById(int landmarkId);
     ArrayList<Landmark> getLandmarksByItineraryId(int itineraryId);
+    Integer getRatingUpById (int landmarkId);
+    Integer getRatingDownById (int landmarkId);
 }

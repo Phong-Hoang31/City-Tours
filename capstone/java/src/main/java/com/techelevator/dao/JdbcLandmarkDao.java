@@ -70,7 +70,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
 
     @Override
     public Landmark getLandmarksById(int landmarkId) {
-        Landmark landmark = new Landmark();
+        Landmark landmark;
         String sql = "SELECT * FROM landmark \n" +
                 "WHERE landmark_id = ?";
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, landmarkId);
@@ -79,6 +79,19 @@ public class JdbcLandmarkDao implements LandmarkDao {
             return landmark;
         }
         return null;
+    }
+
+    @Override
+    public Integer getRatingUpById(int landmarkId) {
+        String sql = "SELECT up_ratings FROM landmark WHERE landmark_id = ?";
+        Integer upRatings = jdbcTemplate.queryForObject(sql, Integer.class, landmarkId);
+            return upRatings;
+        }
+    @Override
+    public Integer getRatingDownById(int landmarkId) {
+        String sql = "SELECT down_ratings FROM landmark WHERE landmark_id = ?";
+        Integer downRatings = jdbcTemplate.queryForObject(sql, Integer.class, landmarkId);
+            return downRatings;
     }
 
     private Landmark mapToRowSet(SqlRowSet sqlRowSet) {
