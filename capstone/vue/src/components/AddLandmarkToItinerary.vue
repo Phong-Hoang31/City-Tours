@@ -9,7 +9,7 @@
       Add Landmark
     </button>
     <form
-      id="detailsForm"
+      id="addLandmarkForm"
       v-on:submit.prevent="submitForm"
       v-if="showForm === true"
     >
@@ -77,7 +77,7 @@ export default {
 
 <style lang="scss" scoped>
 button {
-  width: 30%;
+  width: 80%;
   height: 40px;
   margin: 10px auto;
   justify-content: center;
@@ -98,5 +98,9 @@ h6:hover {
   cursor: pointer;
   background: yellow;
   display: inline-block;
+}
+
+#addLandmarkForm {
+  margin-top: 1rem;
 }
 </style>

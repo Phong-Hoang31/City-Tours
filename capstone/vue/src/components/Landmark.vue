@@ -1,17 +1,19 @@
 <template>
   <div class="wrapper">
     <v-card class="mx-auto" width="400">
-      <v-carousel :show-arrows="false">
+      <v-carousel
+        hide-delimiters
+        :show-arrows="false"
+        cycle
+        height="250px"
+        continuous
+        interval="4000"
+      >
         <v-carousel-item
-          v-for="(imageUrl, i) in landmark.imageUrlList"
-          :key="i"
+          v-for="imageUrl in landmark.imageUrlList"
+          :key="imageUrl"
           :src="imageUrl"
-          reverse-transition="fade-transition"
-          transition="fade-transition"
-          height="200px"
-          
         ></v-carousel-item>
-        
       </v-carousel>
       <!-- <v-img
         class="white--text align-end"

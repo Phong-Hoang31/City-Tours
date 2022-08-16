@@ -72,9 +72,18 @@ VALUES (1, 1, 1),
 
 INSERT INTO image(landmark_id, url)
 VALUES (1, 'https://cdn2.cincinnatimagazine.com/wp-content/uploads/sites/5/2019/07/AUG19_Tourist_CAM03.jpg'),
+(1, 'https://www.gannett-cdn.com/presto/2019/04/19/PCIN/6191cc52-e391-4560-bbb1-59ad42119450-Burning8.JPG?crop=5530,3138,x0,y566&width=3200&height=1816&format=pjpg&auto=webp'),
+(1, 'https://thewalters.org/wp-content/uploads/topic_collections.jpg'),
 (2, 'https://cloudfront-us-east-1.images.arcpublishing.com/coxohio/4EXWDQ5EWNYM6JL7UYDUHTMD5U.jpg'),
+(2, 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/the-great-american-ball-park-at-sunset-library-of-congress.jpg'),
+(2, 'https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w1024/mlb/djdwciyccf0fdnfuhxjd'),
 (3, 'https://www.skylinechili.com/wp-content/uploads/2019/03/menu-coney-rotated90.png'),
-(3, 'https://www.gannett-cdn.com/presto/2019/12/13/PCIN/79fb37ba-cf5b-48bc-a1c0-d1e6e909cdd6-Kaple.jpg?crop=2047,1151,x1,y597&width=2047&height=1151&format=pjpg&auto=webp'),
+(3, 'https://cincinnatiusa.com/sites/default/files/styles/Array/public/Venues/2%20ConeyMed.jpg'),
+(3, 'https://media.wdwnt.com/2022/07/skyline-chili.jpeg'),
 (4, 'https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/3/roebling-to-cincy-sunset-mountain-dreams.jpg'),
-(5, 'https://www.turnerconstruction.com/Files/ProjectImage?url=%2Fsites%2Fmarketingstories%2FMarketing%20Story%20Images%2Foriginal.4c4ef000-53a6-4820-b71b-9a9d81ca9df0.jpg&width=707&height=470&crop=True&jpegQuality=95');
+(4, 'https://roeblingbridge.org/Portals/0/EasyDNNRotator/1769/x3bgnbmb.jpg'),
+(4, 'https://www.soapboxmedia.com/images/Features/bridge05.jpg'),
+(5, 'https://www.turnerconstruction.com/Files/ProjectImage?url=%2Fsites%2Fmarketingstories%2FMarketing%20Story%20Images%2Foriginal.4c4ef000-53a6-4820-b71b-9a9d81ca9df0.jpg&width=707&height=470&crop=True&jpegQuality=95'),
+(5, 'https://img2.10bestmedia.com/Images/Photos/315493/p-Cincinnati-Zoo_55_660x440.JPG'),
+(5, 'https://cincinnatizoo.org/wp-content/uploads/2014/12/annnuals.jpg');
 COMMIT TRANSACTION;

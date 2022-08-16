@@ -12,12 +12,16 @@
       <v-card-subtitle class="pb-0"
         >{{ itinerary.itineraryDate }}
       </v-card-subtitle>
-      <v-card-text class="text--primary">
-        <div>This is an itinerary</div>
+      <v-card-text id="card-text-grid" class="text--primary">
+        <div id="card-info">This is an itinerary</div>
         <add-landmark-to-itinerary
+          id="add-landmark-button"
           :itinerary="itinerary"
         ></add-landmark-to-itinerary>
-        <itinerary-details :itinerary="itinerary" />
+        <itinerary-details
+          id="itinerary-details-button"
+          :itinerary="itinerary"
+        />
       </v-card-text>
     </v-card>
   </div>
@@ -57,6 +61,26 @@ export default {
   flex-direction: row;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+#card-info {
+  grid-area: ga-card-info;
+}
+
+#add-landmark-button {
+  grid-area: ga-add-landmark-button;
+}
+
+#itinerary-details-button {
+  grid-area: ga-itinerary-details-button;
+}
+
+#card-text-grid {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-areas:
+    "ga-card-info ga-card-info"
+    "ga-add-landmark-button ga-itinerary-details-button";
 }
 
 button {

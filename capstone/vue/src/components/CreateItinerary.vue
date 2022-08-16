@@ -4,7 +4,11 @@
       <v-expansion-panel>
         <v-expansion-panel-header>CREATE ITINERARY</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <form class="form" v-on:submit.prevent="submitForm">
+          <form
+            id="addItineraryForm"
+            class="form"
+            v-on:submit.prevent="submitForm"
+          >
             <div class="form-group">
               <label for="itineraryName">Itinerary Name: </label>
               <input
@@ -33,17 +37,19 @@
                 v-model="itinerary.itineraryDate"
               />
             </div>
-            <button class="btn btn-submit btn-info" type="submit">
-              Submit
-            </button>
-            <button
-              class="btn btn-cancel btn-secondary"
-              type="button"
-              value="cancel"
-              v-on:click="clearForm"
-            >
-              Clear
-            </button>
+            <div id="submitClearButtons">
+              <button class="btn btn-submit btn-info" type="submit">
+                Submit
+              </button>
+              <button
+                class="btn btn-cancel btn-secondary"
+                type="button"
+                value="cancel"
+                v-on:click="clearForm"
+              >
+                Clear
+              </button>
+            </div>
           </form>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -95,4 +101,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#addItineraryForm {
+  margin-top: 1rem;
+}
+
+#submitClearButtons {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
