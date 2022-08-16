@@ -14,6 +14,16 @@
       </v-card-subtitle>
       <v-card-text class="text--primary">
         <div>This is an itinerary</div>
+
+         <button
+      id="add-landmark-button"
+      type="button"
+      v-on:click.prevent="showForm = true"
+      @click =  
+    >
+      Add Landmark
+    </button>
+
          <itinerary-details :itinerary="itinerary" />
       </v-card-text>
 
@@ -34,6 +44,7 @@
 
 <script>
 import ItineraryDetails from "@/components/ItineraryDetails.vue";
+import itineraryServices from "../services/ItineraryServices";
 
 export default {
     components: { ItineraryDetails },
@@ -41,6 +52,20 @@ export default {
   props: {
     itinerary: Object,
   },
+  methods: {
+    addLandmarkToItinerary(itinerary, landmark) {
+      itineraryServices
+        .addLandmarkToItinerary(itinerary, landmark)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            this.$router.go();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
 };
 </script>
 

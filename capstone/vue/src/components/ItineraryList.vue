@@ -2,7 +2,7 @@
   <div id="grid">
     <img id="logo" src="\assets\Cincinnati Local Look-1 (2).png" alt="Logo" />
     <div id="itineraryListContainer">
-      <div v-for="itinerary of itineraries" :key="itinerary.id">
+      <div v-for="itinerary of $store.state.itineraries" :key="itinerary.id">
         <itinerary :itinerary="itinerary" />
       </div>
     </div>
