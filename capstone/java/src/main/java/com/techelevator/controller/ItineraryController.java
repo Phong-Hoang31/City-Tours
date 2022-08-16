@@ -54,4 +54,9 @@ public class ItineraryController {
         Itinerary itinerary = itineraryDao.getItineraryById(itineraryId);
         Landmark landmark = landmarkDao.getLandmarksById(landmarkId);
     }
+
+    @DeleteMapping (path = "/itineraries/{itineraryId}")
+    public void deleteItinerary(@PathVariable Integer itineraryId){
+        itineraryDao.deleteItinerary(itineraryId);
+    }
 }
