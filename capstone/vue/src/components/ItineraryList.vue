@@ -32,13 +32,15 @@ export default {
 <style lang="scss" scoped>
 #itineraryListContainer {
   grid-area: ga-itineraryList;
+  margin: 1rem;
 }
 
 #logo {
   grid-area: ga-logo;
-  max-block-size: 100px;
+  max-block-size: 150px;
   border-radius: 50%;
   justify-self: center;
+  margin: 1rem;
 }
 
 img {
@@ -51,12 +53,22 @@ img {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
-    "ga-logo . ."
-    ". ga-itineraryList ga-createItinerary";
+    "ga-logo ga-itineraryList ga-createItinerary"
+    ". ga-itineraryList .";
 }
 
 #createItinerary {
   grid-area: ga-createItinerary;
   justify-self: center;
+  margin: 1rem;
+}
+@media screen and (max-width: 800px) {
+  #grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "ga-logo"
+      "ga-createItinerary"
+      "ga-itineraryList";
+  }
 }
 </style>

@@ -20,7 +20,6 @@ export default {
 h3 {
   text-align: center;
   letter-spacing: 0.75rem;
-  font-size: 1rem;
-  width: 95%;
+  font-size: 1.5rem;
 }
 </style>
