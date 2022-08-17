@@ -30,19 +30,7 @@
       </v-card-text>
       <!--       
   Taking the up and down vote button functionality out of thumbnail card.
-  This will be implemented in detail view.
-
-      <v-card-actions>
-        <v-btn color="blue">
-          {{ landmark.upRatings }}
-          <i class="fa-regular fa-thumbs-up"></i>
-        </v-btn>
-
-        <v-btn color="red">
-          {{ landmark.downRatings }}
-          <i class="fa-regular fa-thumbs-down"></i>
-        </v-btn>
-      </v-card-actions> -->
+  This will be implemented in detail view. -->
     </v-card>
   </div>
 </template>

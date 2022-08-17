@@ -32,6 +32,17 @@
         <h6 for="landmarkPrice">Price:</h6>
         {{ landmark.price }}
       </div>
+      <v-card-actions>
+        <v-btn @click="toggleButton" :disabled="isDisabled ? true : false">
+          <i class="fa-regular fa-thumbs-up"></i>
+          {{ landmark.upRatings }}
+        </v-btn>
+
+        <v-btn @click="toggleButton" :disabled="isDisabled ? true : false">
+          <i class="fa-regular fa-thumbs-down"></i>
+          {{ landmark.downRatings }}
+        </v-btn>
+      </v-card-actions>
       <button
         class="btn btn-cancel btn-secondary"
         type="button"
@@ -51,6 +62,7 @@ export default {
   data() {
     return {
       showForm: false,
+      isDisabled: false,
       userId: null,
     };
   },
@@ -62,6 +74,12 @@ export default {
   methods: {
     cancelForm() {
       this.showForm = false;
+    },
+    /**
+     * Stops the same user from being able to vote multiple times on a landmark
+     */
+    toggleButton() {
+      this.isDisabled = !this.isDisabled;
     },
   },
 };
