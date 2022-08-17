@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <h3>CINCINNATI LOCAL LOOKS</h3>
-    <landmark-list />
-    <sidebar-display></sidebar-display>
+    <landmark-list class="list" />
+    <sidebar-display class="display"></sidebar-display>
   </div>
 </template>
 
