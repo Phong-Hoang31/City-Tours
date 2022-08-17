@@ -34,6 +34,7 @@
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   font-size: 2.5rem;
   text-align: center;
 }
@@ -43,8 +44,7 @@ a {
   color: black;
   position: relative;
   letter-spacing: 0.75rem;
-  font-size: 0.75rem;
-  font-weight: bold;
+  font-size: 1rem;
 }
 
 a::before {

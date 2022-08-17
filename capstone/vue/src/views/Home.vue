@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h3>CINCINNATI LOCAL LOOKS</h3>
-    <h5>"Come Explore the Queen City"</h5>
+    <h6>"Come Explore the Queen City"</h6>
     <landmark-list class="list" />
     <sidebar-display class="display"></sidebar-display>
   </div>
@@ -26,8 +26,10 @@ h3 {
   letter-spacing: 0.75rem;
 }
 
-h5 {
+h6 {
   text-align: center;
   font-style: italic;
+  font-weight: lighter;
+  letter-spacing: 0.25rem;
 }
 </style>
