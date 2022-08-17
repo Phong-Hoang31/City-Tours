@@ -145,7 +145,7 @@ ul {
 }
 
 .form-group:hover {
-  border-bottom: 1px solid black;
+  border-bottom: 1px dotted black;
 }
 
 .form-group:hover #icons {

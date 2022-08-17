@@ -13,6 +13,7 @@
       v-on:submit.prevent="submitForm"
       v-if="showForm === true"
     >
+      <h4 id="addLandmarksTitle">Landmarks to add...</h4>
       <div
         class="form-group"
         v-for="landmark in unselectedLandmarks"
@@ -20,7 +21,11 @@
       >
         <!-- Pull in list of landmarks from the store, then iterate through in select 
 element. Each option (v-for on the option) will be a landmark. -->
-        <h6 @click="addLandmarkToItinerary(itinerary.itineraryId, landmark.landmarkID)">
+        <h6
+          @click="
+            addLandmarkToItinerary(itinerary.itineraryId, landmark.landmarkID)
+          "
+        >
           {{ landmark.landmarkName }}
         </h6>
       </div>
@@ -59,7 +64,7 @@ export default {
       this.$store.commit("POPULATE_LANDMARKS", response.data);
     });
   },
-    computed: {
+  computed: {
     /**
      * unselectedLandmarks() first checks for the filter by category, if it is used
      * then we enter a nested conditional to account for the value bound to
@@ -68,11 +73,13 @@ export default {
      * the 'else if' statement.
      */
     unselectedLandmarks() {
-
-      let unselectedLandmarks = this.$store.state.landmarks.filter((Landmark) => 
-        !this.itinerary.landmarkList.find(lm => Landmark.landmarkID === lm.landmarkID)
+      let unselectedLandmarks = this.$store.state.landmarks.filter(
+        (Landmark) =>
+          !this.itinerary.landmarkList.find(
+            (lm) => Landmark.landmarkID === lm.landmarkID
+          )
       );
-      
+
       return unselectedLandmarks;
     },
   },
@@ -121,8 +128,13 @@ button {
 
 h6:hover {
   cursor: pointer;
-  background: yellow;
-  display: inline-block;
+  border-left: 1px black solid;
+  padding-left: 1rem;
+}
+
+#addLandmarksTitle {
+  padding: 1rem;
+  border-top: 1px black solid;
 }
 
 #addLandmarkForm {
