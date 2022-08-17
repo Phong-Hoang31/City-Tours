@@ -3,14 +3,27 @@
     <form id="detailsForm" v-on:submit.prevent="submitForm">
       <div
         class="form-group"
-        v-for="(landmark, index) in itinerary.landmarkList"
+        v-for="landmark in itinerary.landmarkList"
         :key="landmark.id"
       >
-        <h6>{{ index + 1 }}: {{ landmark.landmarkName }}</h6>
-        <i
-          @click="deleteLandmarkFromItinerary(itinerary, landmark)"
-          class="fa-solid fa-trash-can"
-        ></i>
+        <h6>{{ landmark.landmarkOrder + 1 }}: {{ landmark.landmarkName }}</h6>
+        <div id="icons">
+          <i
+            id="caret-up"
+            @click="decrementLandmarkOrder(itinerary, landmark)"
+            class="fa-solid fa-caret-up"
+          ></i>
+          <i
+            id="caret-down"
+            @click="incrementLandmarkOrder(itinerary, landmark)"
+            class="fa-solid fa-caret-down"
+          ></i>
+          <i
+            id="trashcan"
+            @click="deleteLandmarkFromItinerary(itinerary, landmark)"
+            class="fa-solid fa-trash-can"
+          ></i>
+        </div>
       </div>
     </form>
   </div>
@@ -31,6 +44,34 @@ export default {
             itineraryServices.getAllItineraries().then((response) => {
               this.$store.commit("POPULATE_ITINERARIES", response.data);
             });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    incrementLandmarkOrder(itinerary, landmark) {
+      itineraryServices
+        .incrementLandmarkOrder(itinerary.itineraryId, landmark.landmarkOrder)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            // itineraryServices.getAllItineraries().then((response) => {
+            //   this.$store.commit("POPULATE_ITINERARIES", response.data);
+            // });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    decrementLandmarkOrder(itinerary, landmark) {
+      itineraryServices
+        .decrementLandmarkOrder(itinerary.itineraryId, landmark.landmarkOrder)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            //   itineraryServices.getAllItineraries().then((response) => {
+            //     this.$store.commit("POPULATE_ITINERARIES", response.data);
+            //   });
           }
         })
         .catch((error) => {
@@ -65,16 +106,49 @@ button {
 }
 
 .form-group {
+  padding: 0.2rem;
   display: flex;
   justify-content: space-between;
+  align-content: center;
 }
 
 ul {
   list-style: none;
 }
 
-i:hover {
+#caret-up {
+  font-size: 1.25rem;
+}
+
+#caret-up:hover {
+  cursor: pointer;
+}
+
+#caret-down {
+  font-size: 1.25rem;
+}
+
+#caret-down:hover {
+  cursor: pointer;
+}
+
+#trashcan:hover {
   cursor: pointer;
   color: red;
+}
+
+#icons {
+  width: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  visibility: hidden;
+}
+
+.form-group:hover {
+  border-bottom: 1px solid black;
+}
+
+.form-group:hover #icons {
+  visibility: visible;
 }
 </style>
