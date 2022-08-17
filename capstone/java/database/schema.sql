@@ -30,8 +30,8 @@ CREATE TABLE image (
 
 CREATE TABLE schedule (
     landmark_id integer,
-    open_time time NOT NULL,
-    close_time time NOT NULL,
+    open_time varchar(50) NOT NULL,
+    close_time varchar(50) NOT NULL,
     day_of_week varchar(50) NOT NULL,
     FOREIGN KEY(landmark_id) references landmark(landmark_id)
 );

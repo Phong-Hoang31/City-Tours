@@ -114,12 +114,15 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return landmark;
     }
 
+
+
     private Schedule mapToSchedule(SqlRowSet sqlRowSet) {
         Schedule schedule = new Schedule();
 
         schedule.setDayName(sqlRowSet.getString("day_of_week"));
-        schedule.setOpenTime(sqlRowSet.getTime("open_time"));
-        schedule.setCloseTime(sqlRowSet.getTime("close_time"));
+        schedule.setOpenTime(sqlRowSet.getString("open_time"));
+        schedule.setCloseTime(sqlRowSet.getString("close_time"));
+        schedule.setCloseTime(sqlRowSet.getString("close_time"));
 
         return schedule;
     }
