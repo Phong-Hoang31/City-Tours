@@ -8,7 +8,9 @@ VALUES ('Cincinnati Art Museum', 'Art Museum', 'The Cincinnati Art Museum is an 
 ('Reds Stadium', 'Stadium', 'Great American Ball Park is a baseball stadium in Cincinnati, Ohio. It serves as the home stadium of the Cincinnati Reds of Major League Baseball, and opened on March 31, 2003, replacing Cinergy Field, the Reds home field from 1970 to 2002.', 245, 12,'100 Joe Nuxhall Way, Cincinnati, OH 45202','$$$'),
 ('Skyline Chili', 'Restaurant', 'Skyline Chili is a chain of Cincinnati-style chili restaurants based in Cincinnati, Ohio. Founded in 1949 by Greek immigrant Nicholas Lambrinides, Skyline Chili is named for the view of Cincinnatis skyline that Lambrinides could see from his first restaurant, opened in the section of town now known as Price Hill.', 9001, 10,'290 Ludlow Ave, Cincinnati, OH 45220','$$'),
 ('Roebling Suspension Bridge', 'Suspension Bridge', 'The John A. Roebling Suspension Bridge, originally known as the Cincinnati-Covington Bridge, spans the Ohio River between Cincinnati, Ohio, and Covington, Kentucky. ', 6001, 82,'John A. Roebling Suspension Bridge, Covington, KY 41011','$'),
-('Cincinnati Zoo & Botanical Garden', 'Zoo', 'The Cincinnati Zoo & Botanical Garden is the second oldest zoo in the United States, founded in 1873 and officially opening in 1875, after the Roger Williams Park Zoo. It is located in the Avondale neighborhood of Cincinnati, Ohio.', 405, 11,' 3400 Vine St, Cincinnati, OH 45220','$$$');
+('Cincinnati Zoo & Botanical Garden', 'Zoo', 'The Cincinnati Zoo & Botanical Garden is the second oldest zoo in the United States, founded in 1873 and officially opening in 1875, after the Roger Williams Park Zoo. It is located in the Avondale neighborhood of Cincinnati, Ohio.', 405, 11,' 3400 Vine St, Cincinnati, OH 45220','$$$'),
+('Lindner Family Tennis Center', 'Stadium', 'The Lindner Family Tennis Center is a tennis facility in Mason, Ohio. It is the home of the Western & Southern Open and is owned by Tennis for Charity, Inc.', 1027, 56, '5460 Courseview Dr, Mason, OH 45040', '$$$');
+
 
 INSERT INTO schedule(landmark_id, open_time, close_time, day_of_week)
 VALUES (1, '8:00 AM', '8:00 PM', 'Monday'),
@@ -45,7 +47,14 @@ VALUES (1, '8:00 AM', '8:00 PM', 'Monday'),
 (5, '9:00 AM', '11:00 PM', 'Thursday'),
 (5, '9:00 AM', '11:00 PM', 'Friday'),
 (5, '10:00 AM', '6:00 PM', 'Saturday'),
-(5, '10:00 AM', '6:00 PM', 'Sunday');
+(5, '10:00 AM', '6:00 PM', 'Sunday'),
+(6, '7:00 AM', '9:00 PM', 'Monday'),
+(6, '7:00 AM', '9:00 PM', 'Tuesday'),
+(6, '7:00 AM', '9:00 PM', 'Wednesday'),
+(6, '7:00 AM', '9:00 PM', 'Thursday'),
+(6, '7:30 AM', '8:00 PM', 'Friday'),
+(6, '8:00 AM', '7:30 PM', 'Saturday'),
+(6, '8:00 AM', '7:30 PM', 'Sunday');
 
 INSERT INTO city(city_name)
 VALUES ('Cincinnati'), ('Columbus');
@@ -85,5 +94,9 @@ VALUES (1, 'https://cdn2.cincinnatimagazine.com/wp-content/uploads/sites/5/2019/
 (4, 'https://www.soapboxmedia.com/images/Features/bridge05.jpg'),
 (5, 'https://www.turnerconstruction.com/Files/ProjectImage?url=%2Fsites%2Fmarketingstories%2FMarketing%20Story%20Images%2Foriginal.4c4ef000-53a6-4820-b71b-9a9d81ca9df0.jpg&width=707&height=470&crop=True&jpegQuality=95'),
 (5, 'https://img2.10bestmedia.com/Images/Photos/315493/p-Cincinnati-Zoo_55_660x440.JPG'),
-(5, 'https://cincinnatizoo.org/wp-content/uploads/2014/12/annnuals.jpg');
+(5, 'https://cincinnatizoo.org/wp-content/uploads/2014/12/annnuals.jpg'),
+(6, 'https://www.gannett-cdn.com/presto/2018/07/19/PCIN/e9efd373-f244-4bd2-92ba-f86460016725-071918_TENNIS_336B.JPG?crop=4991,2794,x0,y0&width=3200&height=1792&format=pjpg&auto=webp'),
+(6, 'https://www.tennistours.com/img/seating-guides/ws-open/image5.jpg'),
+(6, 'https://s3.amazonaws.com/ustaassets/assets/663/15/event_info_header.jpg');
+
 COMMIT TRANSACTION;

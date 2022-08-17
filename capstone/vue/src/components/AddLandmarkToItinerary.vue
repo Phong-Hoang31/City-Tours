@@ -139,5 +139,6 @@ h6:hover {
 
 #addLandmarkForm {
   margin-top: 1rem;
+  padding: 1rem;
 }
 </style>

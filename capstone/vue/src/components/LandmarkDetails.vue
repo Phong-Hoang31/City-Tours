@@ -60,7 +60,7 @@
         value="cancel"
         v-on:click="cancelForm"
       >
-        Hide Details
+        Hide
       </button>
     </form>
   </div>

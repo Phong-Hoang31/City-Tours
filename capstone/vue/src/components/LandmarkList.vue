@@ -102,10 +102,12 @@ export default {
       return filteredLandmarks;
     },
     landmarkCategories() {
-      // TODO: remove duplicates
+      //No duplicate categories
       let landmarkCategories = [];
       for (let landmark of this.$store.state.landmarks) {
-        landmarkCategories.push(landmark.category);
+        if (!landmarkCategories.includes(landmark.category)) {
+          landmarkCategories.push(landmark.category);
+        }
       }
       return landmarkCategories;
     },
