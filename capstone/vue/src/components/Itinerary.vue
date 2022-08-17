@@ -71,19 +71,16 @@ export default {
   computed: {
     itineraryImages() {
       let images = [];
-      for (let i = 0; i < this.itinerary.landmarkList[0]; i++) {
-        // for (
-        //   let nested_i = 0;
-        //   nested_i < this.itinerary.landmarkList[i].imageUrlList;
-        //   i++
-        // )
-        // {
-        //   images.push(this.itinerary.landmarkList[i].imageUrlList[nested_i]);
-        // }
-
-        images.push(this.itinerary.landmarkList[0].imageUrlList[i]);
+      for (let i = 0; i < this.itinerary.landmarkList.length; i++) {
+        for (
+          let nested_i = 0;
+          nested_i < this.itinerary.landmarkList[i].imageUrlList.length;
+          nested_i++
+        ) {
+          images.push(this.itinerary.landmarkList[i].imageUrlList[nested_i]);
+        }
       }
-      if (images > 0) {
+      if (images.length > 0) {
         return images;
       } else {
         return [
