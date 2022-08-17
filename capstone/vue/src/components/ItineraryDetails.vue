@@ -25,7 +25,7 @@ export default {
   methods: {
     deleteLandmarkFromItinerary(itinerary, landmark) {
       itineraryServices
-        .deleteLandmarkFromItinerary(itinerary, landmark)
+        .deleteLandmarkFromItinerary(itinerary.itineraryId, landmark.landmarkID)
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
             itineraryServices.getAllItineraries().then((response) => {

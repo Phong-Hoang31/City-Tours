@@ -38,7 +38,7 @@ export default {
   methods: {
     addLandmarkToItinerary(itinerary, landmark) {
       itineraryServices
-        .addLandmarkToItinerary(itinerary, landmark)
+        .addLandmarkToItinerary(itinerary.itineraryId, landmark.landmarkID)
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
             this.$router.go();

@@ -89,6 +89,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
         Integer upRatings = jdbcTemplate.queryForObject(sql, Integer.class, landmarkId);
             return upRatings;
         }
+
     @Override
     public Integer getRatingDownById(int landmarkId) {
         String sql = "SELECT down_ratings FROM landmark WHERE landmark_id = ?";
