@@ -82,19 +82,22 @@ public class JdbcLandmarkDao implements LandmarkDao {
         }
         return null;
     }
+    
+    @Override
+    public void updateUpRatings(int landmarkId) {
+        String sql = "UPDATE landmark\n " +
+                "SET up_ratings = up_ratings + 1\n " +
+                "WHERE landmark_id = ?;\n ";
+    jdbcTemplate.update(sql, landmarkId );
+    }
 
     @Override
-    public Integer getRatingUpById(int landmarkId) {
-        String sql = "SELECT up_ratings FROM landmark WHERE landmark_id = ?";
-        Integer upRatings = jdbcTemplate.queryForObject(sql, Integer.class, landmarkId);
-            return upRatings;
-        }
+    public void updateDownRatings(int landmarkId) {
+        String sql = "UPDATE landmark\n " +
+                "SET down_ratings = down_ratings + 1\n " +
+                "WHERE landmark_id = ?;\n ";
+        jdbcTemplate.update(sql, landmarkId );
 
-    @Override
-    public Integer getRatingDownById(int landmarkId) {
-        String sql = "SELECT down_ratings FROM landmark WHERE landmark_id = ?";
-        Integer downRatings = jdbcTemplate.queryForObject(sql, Integer.class, landmarkId);
-            return downRatings;
     }
 
     public Landmark mapToRowSet(SqlRowSet sqlRowSet) {
