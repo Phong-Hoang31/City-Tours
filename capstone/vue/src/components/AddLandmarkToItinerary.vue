@@ -15,7 +15,7 @@
     >
       <div
         class="form-group"
-        v-for="landmark in $store.state.landmarks"
+        v-for="landmark in unselectedLandmarks"
         :key="landmark.id"
       >
         <!-- Pull in list of landmarks from the store, then iterate through in select 
@@ -58,6 +58,23 @@ export default {
     landmarkServices.getLandmarks().then((response) => {
       this.$store.commit("POPULATE_LANDMARKS", response.data);
     });
+  },
+    computed: {
+    /**
+     * unselectedLandmarks() first checks for the filter by category, if it is used
+     * then we enter a nested conditional to account for the value bound to
+     * the searchbar (landmarkName). If we don't use the filter by category
+     * and only use the searchbar, then we bounce to the second check i.e.
+     * the 'else if' statement.
+     */
+    unselectedLandmarks() {
+
+      let unselectedLandmarks = this.$store.state.landmarks.filter((Landmark) => 
+        !this.itinerary.landmarkList.find(lm => Landmark.landmarkID === lm.landmarkID)
+      );
+      
+      return unselectedLandmarks;
+    },
   },
   methods: {
     cancelForm() {
