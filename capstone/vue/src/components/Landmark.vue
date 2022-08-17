@@ -88,7 +88,9 @@ button {
   margin-top: 1rem;
   color: #573b8a;
   justify-content: center;
+  white-space: nowrap;
 }
+
 /* 
 .container {
   padding: 1rem;
