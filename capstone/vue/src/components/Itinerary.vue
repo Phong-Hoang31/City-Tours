@@ -1,12 +1,26 @@
 <template>
   <div class="wrapper">
     <v-card class="mx-auto" width="400">
-      <v-img
+      <!-- <v-img
         class="white--text align-end"
         height="200px"
         src="https://best-itinerary.com/wp-content/uploads/2019/05/map-4x.png"
       >
-      </v-img>
+      </v-img> -->
+      <v-carousel
+        hide-delimiters
+        :show-arrows="false"
+        cycle
+        height="250px"
+        continuous
+        interval="4000"
+      >
+        <v-carousel-item
+          v-for="imageUrl in itineraryImages"
+          :key="imageUrl"
+          :src="imageUrl"
+        ></v-carousel-item>
+      </v-carousel>
 
       <v-card-title>{{ itinerary.itineraryName }}</v-card-title>
       <v-card-subtitle class="pb-0"
@@ -30,6 +44,11 @@ import itineraryServices from "../services/ItineraryServices";
 import AddLandmarkToItinerary from "@/components/AddLandmarkToItinerary.vue";
 
 export default {
+  data() {
+    return {
+      images: [],
+    };
+  },
   components: { ItineraryDetails, AddLandmarkToItinerary },
   name: "Itinerary",
   props: {
@@ -47,6 +66,30 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+  },
+  computed: {
+    itineraryImages() {
+      let images = [];
+      for (let i = 0; i < this.itinerary.landmarkList[0]; i++) {
+        // for (
+        //   let nested_i = 0;
+        //   nested_i < this.itinerary.landmarkList[i].imageUrlList;
+        //   i++
+        // )
+        // {
+        //   images.push(this.itinerary.landmarkList[i].imageUrlList[nested_i]);
+        // }
+
+        images.push(this.itinerary.landmarkList[0].imageUrlList[i]);
+      }
+      if (images > 0) {
+        return images;
+      } else {
+        return [
+          "https://hips.hearstapps.com/hmg-prod/images/tc-wtg-2019-index-1543252150.jpg",
+        ];
+      }
     },
   },
 };

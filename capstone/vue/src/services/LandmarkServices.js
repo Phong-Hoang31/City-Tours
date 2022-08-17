@@ -17,4 +17,12 @@ export default {
     getLandmark(landmarkId) {
         return http.get(`/landmarks/${landmarkId}`)
     },
+
+    updateUpRatingsForLandmark(landmarkId) {
+        return axios.put(`landmarks/${landmarkId}/upRatings`)
+    },
+
+    updateDownRatingsForLandmark(landmarkId) {
+        return axios.put(`landmarks/${landmarkId}/downRatings`)
+    },
 }

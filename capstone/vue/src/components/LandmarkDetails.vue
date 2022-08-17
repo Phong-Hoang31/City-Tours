@@ -32,12 +32,24 @@
         {{ landmark.price }}
       </div>
       <v-card-actions>
-        <v-btn @click="toggleButton" :disabled="isDisabled ? true : false">
+        <v-btn
+          @click="
+            toggleButton();
+            upVote();
+          "
+          :disabled="isDisabled ? true : false"
+        >
           <i class="fa-regular fa-thumbs-up"></i>
           {{ landmark.upRatings }}
         </v-btn>
 
-        <v-btn @click="toggleButton" :disabled="isDisabled ? true : false">
+        <v-btn
+          @click="
+            toggleButton();
+            downVote();
+          "
+          :disabled="isDisabled ? true : false"
+        >
           <i class="fa-regular fa-thumbs-down"></i>
           {{ landmark.downRatings }}
         </v-btn>
@@ -55,6 +67,8 @@
 </template>
 
 <script>
+import LandmarkServices from "@/services/LandmarkServices";
+
 export default {
   name: "landmark_details",
   props: ["landmark"],
@@ -76,9 +90,16 @@ export default {
     },
     /**
      * Stops the same user from being able to vote multiple times on a landmark
+     * but only for this session. If they reload or log back in they can vote again.
      */
     toggleButton() {
       this.isDisabled = !this.isDisabled;
+    },
+    upVote() {
+      LandmarkServices.updateUpRatingsForLandmark(this.landmark.landmarkID);
+    },
+    downVote() {
+      LandmarkServices.updateDownRatingsForLandmark(this.landmark.landmarkID);
     },
   },
 };
