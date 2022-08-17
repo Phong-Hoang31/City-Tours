@@ -34,7 +34,7 @@
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-around;
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
