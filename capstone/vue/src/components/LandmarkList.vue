@@ -143,7 +143,7 @@ export default {
 
 #logo {
   grid-area: ga-logo;
-  max-block-size: 100px;
+  max-block-size: 150px;
   border-radius: 50%;
   justify-self: center;
 }
@@ -174,5 +174,39 @@ export default {
 #createItinerary {
   grid-area: ga-createItinerary;
   justify-self: center;
+}
+
+@media screen and (max-width: 800px) {
+  #grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "ga-logo"
+      "ga-createItinerary"
+      "ga-searchBar"
+      "ga-radioSelector"
+      "ga-landmarkList";
+  }
+  #searchBar {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  #categorySelector {
+    padding-bottom: 1rem;
+    margin: 0.5rem;
+  }
+
+  #categoryFilterBox {
+    justify-self: center;
+    size: 80%;
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  #createItinerary {
+    justify-self: center;
+    margin: 0.5rem;
+  }
 }
 </style>

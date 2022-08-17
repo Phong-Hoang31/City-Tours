@@ -21,6 +21,9 @@
 </template>
 
 <style scoped>
+#app {
+  width: 100%;
+}
 .text-center {
   text-align: center;
 }
@@ -31,7 +34,8 @@
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-around;
-  font-size: 1rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 a {

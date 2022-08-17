@@ -1,8 +1,9 @@
 <template>
   <div class="home">
     <h3>CINCINNATI LOCAL LOOKS</h3>
-    <landmark-list />
-    <sidebar-display></sidebar-display>
+    <h5>"Come Explore the Queen City"</h5>
+    <landmark-list class="list" />
+    <sidebar-display class="display"></sidebar-display>
   </div>
 </template>
 
@@ -23,5 +24,10 @@ export default {
 h3 {
   text-align: center;
   letter-spacing: 0.75rem;
+}
+
+h5 {
+  text-align: center;
+  font-style: italic;
 }
 </style>

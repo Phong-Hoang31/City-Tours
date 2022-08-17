@@ -76,7 +76,7 @@ button {
   display: block;
   color: #fff;
   background: #573b8a;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
   margin-top: 20px;
   outline: none;

@@ -36,9 +36,10 @@ export default {
 
 #logo {
   grid-area: ga-logo;
-  max-block-size: 100px;
+  max-block-size: 150px;
   border-radius: 50%;
   justify-self: center;
+  margin: 1rem;
 }
 
 img {
@@ -58,5 +59,15 @@ img {
 #createItinerary {
   grid-area: ga-createItinerary;
   justify-self: center;
+  margin: 1rem;
+}
+@media screen and (max-width: 800px) {
+  #grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "ga-logo"
+      "ga-createItinerary"
+      "ga-itineraryList";
+  }
 }
 </style>
