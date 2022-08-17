@@ -35,6 +35,7 @@
   display: flex;
   justify-content: space-around;
   font-size: 2rem;
+  text-align: center;
 }
 
 a {
@@ -78,21 +79,5 @@ a::before {
   width: 100%;
   bottom: 0;
   height: 50px;
-}
-
-@media (min-width: 640px) {
-  #app {
-    font-size: 0.7rem;
-  }
-}
-@media (min-width: 960px) {
-  #app {
-    font-size: 1.1rem;
-  }
-}
-@media (min-width: 1100px) {
-  #app {
-    font-size: 1.2rem;
-  }
 }
 </style>

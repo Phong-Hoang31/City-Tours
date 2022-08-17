@@ -143,7 +143,7 @@ export default {
 
 #logo {
   grid-area: ga-logo;
-  max-block-size: 100px;
+  max-block-size: 150px;
   border-radius: 50%;
   justify-self: center;
 }
@@ -194,15 +194,19 @@ export default {
 
   #categorySelector {
     padding-bottom: 1rem;
+    margin: 0.5rem;
   }
 
   #categoryFilterBox {
     justify-self: center;
+    size: 80%;
     padding: 1rem;
+    margin: 0.5rem;
   }
 
   #createItinerary {
     justify-self: center;
+    margin: 0.5rem;
   }
 }
 </style>
