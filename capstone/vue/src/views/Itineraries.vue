@@ -21,6 +21,5 @@ h3 {
   text-align: center;
   letter-spacing: 0.75rem;
   font-size: 1.5rem;
-  width: 95%;
 }
 </style>

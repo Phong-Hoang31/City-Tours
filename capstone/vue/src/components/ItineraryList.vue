@@ -32,6 +32,7 @@ export default {
 <style lang="scss" scoped>
 #itineraryListContainer {
   grid-area: ga-itineraryList;
+  margin: 1rem;
 }
 
 #logo {
@@ -52,8 +53,8 @@ img {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
-    "ga-logo . ."
-    ". ga-itineraryList ga-createItinerary";
+    "ga-logo ga-itineraryList ga-createItinerary"
+    ". ga-itineraryList .";
 }
 
 #createItinerary {
