@@ -61,7 +61,7 @@ button {
   display: block;
   color: #fff;
   background: #573b8a;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
   margin-top: 20px;
   outline: none;
@@ -71,7 +71,7 @@ button {
   cursor: pointer;
 }
 .title {
-  font-size: 1.4em;
+  font-size: 1.4rem;
   font-weight: 750;
   margin-top: 1rem;
   color: #573b8a;

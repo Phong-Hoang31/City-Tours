@@ -10,12 +10,12 @@ export default {
         return axios.get('/itineraries')
     },
 
-    addLandmarkToItinerary(itinerary, landmark) {
-        return axios.post(`/itineraries/${itinerary.itineraryId}/${landmark.landmarkID}`)
+    addLandmarkToItinerary(itineraryId, landmarkId) {
+        return axios.post(`/itineraries/${itineraryId}/${landmarkId}`)
     },
 
-    deleteLandmarkFromItinerary(itinerary, landmark) {
-        return axios.delete(`/itineraries/${itinerary.itineraryId}/${landmark.landmarkID}`)
+    deleteLandmarkFromItinerary(itineraryId, landmarkId) {
+        return axios.delete(`/itineraries/${itineraryId}/${landmarkId}`)
     },
 
     updateItineraryStartingPoint(itineraryId, startingPoint) {

@@ -175,4 +175,34 @@ export default {
   grid-area: ga-createItinerary;
   justify-self: center;
 }
+
+@media screen and (max-width: 800px) {
+  #grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "ga-logo"
+      "ga-createItinerary"
+      "ga-searchBar"
+      "ga-radioSelector"
+      "ga-landmarkList";
+  }
+  #searchBar {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  #categorySelector {
+    padding-bottom: 1rem;
+  }
+
+  #categoryFilterBox {
+    justify-self: center;
+    padding: 1rem;
+  }
+
+  #createItinerary {
+    justify-self: center;
+  }
+}
 </style>

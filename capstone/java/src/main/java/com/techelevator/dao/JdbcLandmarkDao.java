@@ -82,8 +82,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
         }
         return null;
     }
-
-
+    
     @Override
     public void updateUpRatings(int landmarkId) {
         String sql = "UPDATE landmark\n " +
