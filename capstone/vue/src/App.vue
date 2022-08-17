@@ -31,6 +31,7 @@
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-around;
+  font-size: 1rem;
 }
 
 a {

@@ -11,10 +11,10 @@ public class Schedule {
     String openTime;
     String closeTime;
 
-    public Schedule(String dayName, Time openTime, Time closeTime) {
+    public Schedule(String dayName, String openTime, String closeTime) {
         this.dayName = dayName;
-        this.openTime = convertTime(openTime);
-        this.closeTime = convertTime(closeTime);
+        this.openTime = openTime;
+        this.closeTime = closeTime;
 
     }
 
@@ -45,17 +45,6 @@ public class Schedule {
         this.closeTime = closeTime;
     }
 
-    ;
-
-
-    public static String convertTime(Time time) {
-        DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-        long l = time.getTime();
-        String dateString = dateFormat.format(new Date(l)).toString();
-        return dateString;
-
-
-    }
 
     }
 
