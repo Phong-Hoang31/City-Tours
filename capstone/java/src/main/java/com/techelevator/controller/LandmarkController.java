@@ -35,15 +35,16 @@ public class LandmarkController {
     public Landmark getLandmarksById (@PathVariable int landmarkId) throws LandmarksNotFoundException {
         return landmarkDao.getLandmarksById(landmarkId);
     }
+    @PutMapping(path = "landmarks/{landmarkId}/upRatings")
+    public void updateUpRatings (@PathVariable int landmarkId) throws LandmarksNotFoundException{
+        landmarkDao.updateUpRatings(landmarkId);
+    }
+    @PutMapping(path = "landmarks/{landmarkId}/downRatings")
+    public void updateDownRatings (@PathVariable int landmarkId) throws LandmarksNotFoundException{
+        landmarkDao.updateDownRatings(landmarkId);
+    }
 
-    @GetMapping (path = "landmarks/upRatings/{landmarkId}")
-    public Integer getRatingUpById (@PathVariable int landmarkId) throws LandmarksNotFoundException{
-        return landmarkDao.getRatingUpById(landmarkId);
-    }
-    @GetMapping (path = "landmarks/downRatings/{landmarkId}")
-    public Integer getRatingDownById (@PathVariable int landmarkId) throws LandmarksNotFoundException{
-        return landmarkDao.getRatingDownById(landmarkId);
-    }
+
     }
 
 //    @GetMapping(path = "landmarks/{landmarkId}/images")

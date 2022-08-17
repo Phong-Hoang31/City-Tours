@@ -22,9 +22,8 @@
         <ul for="Schedule">
           <h6>Open Hours:</h6>
           <li v-for="time in landmark.scheduleList" :key="time.id">
-            <span>{{ time.dayName }}</span>
-            ({{ time.openTime | formatTime }} -
-            {{ time.closeTime | formatTime }})
+            <span>{{ time.dayName }}:</span>
+            {{ time.openTime }} - {{ time.closeTime }}
           </li>
         </ul>
       </div>
@@ -119,5 +118,8 @@ h6 {
 }
 ul {
   list-style: none;
+}
+span {
+  font-weight: 600;
 }
 </style>

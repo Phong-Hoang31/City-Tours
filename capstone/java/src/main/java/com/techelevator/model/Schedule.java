@@ -1,18 +1,25 @@
 package com.techelevator.model;
 
+import java.sql.Date;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 
 public class Schedule {
     String dayName;
-    Time openTime;
-    Time closeTime;
+    String openTime;
+    String closeTime;
 
-    public Schedule(String dayName, Time openTime, Time closeTime) {
+    public Schedule(String dayName, String openTime, String closeTime) {
         this.dayName = dayName;
         this.openTime = openTime;
         this.closeTime = closeTime;
+
     }
-    public Schedule() {};
+
+    public Schedule() {
+    }
 
     public String getDayName() {
         return dayName;
@@ -22,19 +29,23 @@ public class Schedule {
         this.dayName = dayName;
     }
 
-    public Time getOpenTime() {
+    public String getOpenTime() {
         return openTime;
     }
 
-    public void setOpenTime(Time openTime) {
+    public void setOpenTime(String openTime) {
         this.openTime = openTime;
     }
 
-    public Time getCloseTime() {
+    public String getCloseTime() {
         return closeTime;
     }
 
-    public void setCloseTime(Time closeTime) {
+    public void setCloseTime(String closeTime) {
         this.closeTime = closeTime;
     }
-}
+
+
+    }
+
+

@@ -72,9 +72,10 @@ button {
 }
 .title {
   font-size: 1.4em;
-  font-weight: 800;
+  font-weight: 750;
   margin-top: 1rem;
   color: #573b8a;
+  justify-content: center;
 }
 /* 
 .container {
