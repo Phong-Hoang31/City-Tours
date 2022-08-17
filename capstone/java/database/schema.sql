@@ -21,6 +21,14 @@ CREATE TABLE landmark (
 	price varchar(500) NOT NULL
     );
 
+CREATE TABLE landmark_user (
+	user_id integer,
+	landmark_id	integer, 
+	user_has_rated boolean DEFAULT false,
+	PRIMARY KEY(user_id, landmark_id)
+);
+
+
 CREATE TABLE image (
     landmark_id integer,
     url varchar(8000),

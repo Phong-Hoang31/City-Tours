@@ -15,6 +15,8 @@ public interface LandmarkDao {
     Landmark getLandmarksById(int landmarkId);
     ArrayList<Landmark> getLandmarksByItineraryId(int itineraryId);
     Landmark mapToRowSet(SqlRowSet sqlRowSet);
+    boolean getUserHasRated(int userId, int landmarkId);
+    void updateUserHasRated(int userId, int landmarkId);
     void updateUpRatings(int landmarkId);
     void updateDownRatings(int landmarkId);
 }
