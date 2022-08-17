@@ -82,13 +82,36 @@ public class JdbcLandmarkDao implements LandmarkDao {
         }
         return null;
     }
-    
+
+    @Override
+    public boolean getUserHasRated(int userId, int landmarkId) {
+        boolean userHasRated;
+        String sql = "SELECT user_has_rated\n " +
+                "FROM landmark_user\n " +
+                "WHERE user_id = ? AND landmark_id = ?;\n ";
+
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql, userId, landmarkId);
+
+        if (sqlRowSet.next()){
+            userHasRated = sqlRowSet.getBoolean("user_has_rated");
+            return userHasRated;
+        }
+        return false;
+    }
+
+    @Override
+    public void updateUserHasRated(int userId, int landmarkId) {
+        String sql = "INSERT INTO landmark_user(user_has_rated, user_id, landmark_id)\n" +
+                "VALUES (true, ?, ?);";
+        jdbcTemplate.update(sql, userId, landmarkId);
+    }
+
     @Override
     public void updateUpRatings(int landmarkId) {
         String sql = "UPDATE landmark\n " +
                 "SET up_ratings = up_ratings + 1\n " +
                 "WHERE landmark_id = ?;\n ";
-    jdbcTemplate.update(sql, landmarkId );
+        jdbcTemplate.update(sql, landmarkId);
     }
 
     @Override
@@ -96,8 +119,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
         String sql = "UPDATE landmark\n " +
                 "SET down_ratings = down_ratings + 1\n " +
                 "WHERE landmark_id = ?;\n ";
-        jdbcTemplate.update(sql, landmarkId );
-
+        jdbcTemplate.update(sql, landmarkId);
     }
 
     public Landmark mapToRowSet(SqlRowSet sqlRowSet) {
