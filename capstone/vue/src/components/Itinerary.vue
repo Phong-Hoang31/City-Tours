@@ -32,11 +32,11 @@
       </v-card-title>
 
       <v-card-subtitle class="pb-0">
-        <icon
+        <i
           id="deleteItineraryTrashcan"
           @click="deleteItinerary(itinerary)"
           class="fa-solid fa-trash-can"
-        ></icon>
+        ></i>
         <div id="card-info">Starting Point: {{ itinerary.startingPoint }}</div>
         {{ itinerary.itineraryDate }}
       </v-card-subtitle>
