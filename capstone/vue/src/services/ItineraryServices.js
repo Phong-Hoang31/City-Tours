@@ -18,8 +18,8 @@ export default {
         return axios.delete(`/itineraries/${itineraryId}/${landmarkId}`)
     },
 
-    updateItineraryStartingPoint(itineraryId, startingPoint) {
-        return axios.put(`/itineraries/${itineraryId}`, startingPoint)
+    updateItineraryName(itineraryId, itineraryName) {
+        return axios.put(`/itineraries/${itineraryId}`, itineraryName)
     },
 
     deleteItinerary(itineraryId) {

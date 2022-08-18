@@ -22,7 +22,14 @@
         ></v-carousel-item>
       </v-carousel>
 
-      <v-card-title>{{ itinerary.itineraryName }}</v-card-title>
+      <v-card-title>
+        <input
+          v-model="itineraryName"
+          @keydown.enter="updateItineraryName(itinerary)"
+          :placeholder="itinerary.itineraryName"
+        />
+      </v-card-title>
+
       <v-card-subtitle class="pb-0"
         >{{ itinerary.itineraryDate }}
       </v-card-subtitle>
@@ -46,7 +53,7 @@ import AddLandmarkToItinerary from "@/components/AddLandmarkToItinerary.vue";
 export default {
   data() {
     return {
-      images: [],
+      itineraryName: "",
     };
   },
   components: { ItineraryDetails, AddLandmarkToItinerary },
@@ -66,6 +73,14 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    updateItineraryName(itinerary) {
+      let itineraryId = itinerary.itineraryId;
+      let itineraryName = this.itineraryName;
+      this.$store.commit("UPDATE_ITINERARY_NAME", {
+        itineraryId: itineraryId,
+        itineraryName: itineraryName,
+      });
     },
   },
   computed: {
@@ -119,6 +134,17 @@ export default {
     "ga-card-info ga-card-info ga-card-info"
     "ga-itinerary-details ga-itinerary-details ga-itinerary-details"
     "ga-add-landmark-button ga-add-landmark-button ga-add-landmark-button";
+}
+
+input {
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 1rem;
+  resize: none;
+}
+
+input:hover {
+  border-bottom: 1px dotted black;
 }
 
 button {

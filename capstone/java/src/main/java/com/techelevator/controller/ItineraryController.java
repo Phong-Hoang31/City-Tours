@@ -52,8 +52,8 @@ public class ItineraryController {
     }
 
     @PutMapping (path = "/itineraries/{itineraryId}")
-    public void updateItineraryStartingPoint(@PathVariable Integer itineraryId, @RequestBody String startingPoint) {
-        itineraryDao.updateItineraryStartingPoint(itineraryId, startingPoint);
+    public void updateItineraryStartingPoint(@PathVariable Integer itineraryId, @RequestBody String itineraryName) {
+        itineraryDao.updateItineraryName(itineraryId, itineraryName);
     }
 
     @DeleteMapping (path = "/itineraries/{itineraryId}")

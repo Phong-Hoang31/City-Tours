@@ -84,5 +84,11 @@ export default new Vuex.Store({
       arrayMoveMutable(state.itineraries[itineraryIndex].landmarkList, landmarkIndex, landmarkIndex - 1);
 
     },
+    UPDATE_ITINERARY_NAME(state, payload) {
+      let itineraryIndex = state.itineraries.findIndex(object => {
+        return object.itineraryId == payload.itineraryId;
+      });
+      state.itineraries[itineraryIndex].itineraryName = payload.itineraryName;
+    }
   }
 })
