@@ -22,7 +22,14 @@
         ></v-carousel-item>
       </v-carousel>
 
-      <v-card-title>{{ itinerary.itineraryName }}</v-card-title>
+      <v-card-title
+        >{{ itinerary.itineraryName }}
+        <button
+          id="trashcan"
+          @click="deleteItinerary(itinerary)"
+          class="fa-solid fa-trash-can"
+        ></button>
+      </v-card-title>
       <v-card-subtitle class="pb-0"
         >{{ itinerary.itineraryDate }}
       </v-card-subtitle>
@@ -61,6 +68,20 @@ export default {
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
             this.$router.go();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    deleteItinerary(itinerary) {
+      itineraryServices
+        .deleteItinerary(itinerary.itineraryId)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            itineraryServices.getAllItineraries().then((response) => {
+              this.$store.commit("POPULATE_ITINERARIES", response.data);
+            });
           }
         })
         .catch((error) => {
@@ -137,5 +158,9 @@ button {
   border-radius: 5px;
   transition: 0.2s ease-in;
   cursor: pointer;
+}
+#trashcan {
+  display: flexbox;
+  margin: 0px 16px 0px;
 }
 </style>
