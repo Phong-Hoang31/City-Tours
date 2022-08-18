@@ -77,6 +77,7 @@ export default {
     updateItineraryName(itinerary) {
       let itineraryId = itinerary.itineraryId;
       let itineraryName = this.itineraryName;
+      itineraryServices.updateItineraryName(itinerary.itineraryId, itinerary);
       this.$store.commit("UPDATE_ITINERARY_NAME", {
         itineraryId: itineraryId,
         itineraryName: itineraryName,

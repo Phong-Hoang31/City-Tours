@@ -13,7 +13,7 @@ public interface ItineraryDao {
     public void addLandmarkToItinerary(int itineraryId, int landmarkId);
     public void deleteLandmarkFromItinerary(int itineraryId, int landmarkId);
     public void deleteItinerary (int itineraryId);
-    public void updateItineraryName(int itineraryId, String itineraryName);
+    public void updateItineraryName(int itineraryId, Itinerary itinerary);
     public void incrementLandmarkOrder(int itineraryId, int currentLandmarkOrder);
     public void decrementLandmarkOrder(int itineraryId, int currentLandmarkOrder);
 }
