@@ -80,6 +80,7 @@ h1 {
 }
 #login {
   text-align: center;
+  margin-bottom: 460px;
 }
 
 label {
