@@ -23,7 +23,9 @@
       </v-img> -->
 
       <v-card-title class="title">{{ landmark.landmarkName }}</v-card-title>
-      <v-card-subtitle class="pb-0">{{ landmark.category }} </v-card-subtitle>
+      <v-card-subtitle class="" id="category"
+        >{{ landmark.category }}
+      </v-card-subtitle>
       <v-card-text class="text--primary">
         <div>{{ landmark.description }}</div>
         <landmark-details :landmark="landmark" />
@@ -76,6 +78,11 @@ button {
   margin-top: 1rem;
   color: #573b8a;
   justify-content: center;
+}
+
+#category {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 /* 
 .container {
