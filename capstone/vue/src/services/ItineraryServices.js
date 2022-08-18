@@ -32,5 +32,6 @@ export default {
 
     decrementLandmarkOrder(itineraryId, landmarkOrder) {
         return axios.put(`/itineraries/${itineraryId}/${landmarkOrder}/decrement`)
-    }
+    },
+
 }
