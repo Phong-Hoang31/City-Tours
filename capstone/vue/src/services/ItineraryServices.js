@@ -27,11 +27,11 @@ export default {
     },
 
     incrementLandmarkOrder(itineraryId, landmarkOrder) {
-        return axios.put(`/ itineraries / ${itineraryId} / ${landmarkOrder} / increment`)
+        return axios.put(`/itineraries/${itineraryId}/${landmarkOrder}/increment`)
     },
 
     decrementLandmarkOrder(itineraryId, landmarkOrder) {
-        return axios.put(`/ itineraries / ${itineraryId} / ${landmarkOrder} / decrement`)
+        return axios.put(`/itineraries/${itineraryId}/${landmarkOrder}/decrement`)
     },
 
 }
