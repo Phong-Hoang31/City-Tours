@@ -25,6 +25,7 @@
               ></i>
             </div>
           </li>
+          <p>{{ landmark.description }}</p>
         </div>
       </ol>
     </form>
@@ -57,14 +58,10 @@ export default {
         .incrementLandmarkOrder(itinerary.itineraryId, landmark.landmarkOrder)
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
-            this.$store.commit(
-              "INCREMENT_LANDMARK_ORDER",
-              itinerary.itineraryId,
-              landmark.landmarkID
-            );
-            // itineraryServices.getAllItineraries().then((response) => {
-            //   this.$store.commit("POPULATE_ITINERARIES", response.data);
-            // });
+            this.$store.commit("INCREMENT_LANDMARK_ORDER", {
+              itineraryId: itinerary.itineraryId,
+              landmarkId: landmark.landmarkID,
+            });
           }
         })
         .catch((error) => {
@@ -76,9 +73,10 @@ export default {
         .decrementLandmarkOrder(itinerary.itineraryId, landmark.landmarkOrder)
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
-            //   itineraryServices.getAllItineraries().then((response) => {
-            //     this.$store.commit("POPULATE_ITINERARIES", response.data);
-            //   });
+            this.$store.commit("DECREMENT_LANDMARK_ORDER", {
+              itineraryId: itinerary.itineraryId,
+              landmarkId: landmark.landmarkID,
+            });
           }
         })
         .catch((error) => {
@@ -110,10 +108,12 @@ button {
 
 #detailsForm {
   margin-top: 1rem;
+  max-height: 350px;
+  overflow: auto;
 }
 
 .form-group {
-  padding: 0.2rem;
+  padding-top: 0.2rem;
   display: flex;
   justify-content: space-between;
   align-content: center;

@@ -67,18 +67,6 @@ VALUES (1, 1),
 (1, 2),
 (1, 5);
 
-INSERT INTO itinerary(itinerary_name, user_id, starting_point, itinerary_date)
-VALUES ('itinerary_1', 1, '42 Starting St.', '20220811');
-VALUES ('itinerary_2', 2, '43 Starting St.', '20220812');
-
-
-INSERT INTO itinerary_landmark(itinerary_id, landmark_id, landmark_order)
-VALUES (1, 1, 1),
-(1, 2, 2),
-(1, 3, 3),
-(2,4, 1),
-(2,5, 2);
-
 INSERT INTO image(landmark_id, url)
 VALUES (1, 'https://cdn2.cincinnatimagazine.com/wp-content/uploads/sites/5/2019/07/AUG19_Tourist_CAM03.jpg'),
 (1, 'https://www.gannett-cdn.com/presto/2019/04/19/PCIN/6191cc52-e391-4560-bbb1-59ad42119450-Burning8.JPG?crop=5530,3138,x0,y566&width=3200&height=1816&format=pjpg&auto=webp'),

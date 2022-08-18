@@ -12,6 +12,7 @@
             <div class="form-group">
               <label for="itineraryName">Itinerary Name: </label>
               <input
+                required
                 id="itineraryId"
                 type="text"
                 class="form-control"
@@ -22,6 +23,7 @@
             <div class="form-group">
               <label for="startingPoint">Starting Point: </label>
               <input
+                required
                 id="startPoint"
                 type="text"
                 class="form-control"
@@ -31,6 +33,7 @@
             <div class="form-group">
               <label for="itineraryDate">Date of Itinerary: </label>
               <input
+                required
                 id="itineraryDate"
                 type="date"
                 class="form-control"

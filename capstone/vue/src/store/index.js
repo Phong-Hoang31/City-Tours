@@ -62,16 +62,26 @@ export default new Vuex.Store({
       })
       state.landmarks[index].downRatings = (state.landmarks[index].downRatings) + 1;
     },
-    INCREMENT_LANDMARK_ORDER(state, itineraryId, landmarkID) {
-      console.log("INCREMENT mutation. ItineraryId: " + itineraryId + ". landmarkId: " + landmarkID);
+    INCREMENT_LANDMARK_ORDER(state, payload) {
       let itineraryIndex = state.itineraries.findIndex(object => {
-        return object.itineraryId == itineraryId;
+        return object.itineraryId == payload.itineraryId;
       });
 
       let landmarkIndex = state.itineraries[itineraryIndex].landmarkList.findIndex(object => {
-        return object.landmarkID == landmarkID;
+        return object.landmarkID == payload.landmarkId;
       });
       arrayMoveMutable(state.itineraries[itineraryIndex].landmarkList, landmarkIndex, landmarkIndex + 1);
+
+    },
+    DECREMENT_LANDMARK_ORDER(state, payload) {
+      let itineraryIndex = state.itineraries.findIndex(object => {
+        return object.itineraryId == payload.itineraryId;
+      });
+
+      let landmarkIndex = state.itineraries[itineraryIndex].landmarkList.findIndex(object => {
+        return object.landmarkID == payload.landmarkId;
+      });
+      arrayMoveMutable(state.itineraries[itineraryIndex].landmarkList, landmarkIndex, landmarkIndex - 1);
 
     },
   }
