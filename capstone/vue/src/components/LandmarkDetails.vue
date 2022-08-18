@@ -35,7 +35,7 @@
         <v-btn
           @click="
             toggleButton();
-            upVote();
+            upVote(landmark.landmarkID);
           "
           :disabled="isDisabled ? true : false"
         >
@@ -46,7 +46,7 @@
         <v-btn
           @click="
             toggleButton();
-            downVote();
+            downVote(landmark.landmarkID);
           "
           :disabled="isDisabled ? true : false"
         >
@@ -95,12 +95,15 @@ export default {
     toggleButton() {
       this.isDisabled = !this.isDisabled;
     },
-    upVote() {
+    upVote(landmarkID) {
+      this.$store.commit("ADD_TO_RATING", landmarkID);
       LandmarkServices.updateUpRatingsForLandmark(this.landmark.landmarkID);
-      LandmarkServices.getLandmarks();
+      console.log("upVote: " + landmarkID);
     },
-    downVote() {
+    downVote(landmarkID) {
       LandmarkServices.updateDownRatingsForLandmark(this.landmark.landmarkID);
+      this.$store.commit("SUBTRACT_FROM_RATING", landmarkID);
+      console.log("downVote: " + landmarkID);
     },
   },
 };

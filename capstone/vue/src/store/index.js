@@ -45,6 +45,20 @@ export default new Vuex.Store({
     },
     POPULATE_ITINERARIES(state, payload) {
       state.itineraries = payload;
-    }
+    },
+    ADD_TO_RATING(state, landmarkID) {
+      console.log("ADD_TO_RATING: " + landmarkID);
+      let index = state.landmarks.findIndex(object => {
+        return object.landmarkID == landmarkID;
+      })
+      state.landmarks[index].upRatings = (state.landmarks[index].upRatings) + 1;
+    },
+    SUBTRACT_FROM_RATING(state, landmarkID) {
+      console.log("ADD_TO_RATING: " + landmarkID);
+      let index = state.landmarks.findIndex(object => {
+        return object.landmarkID == landmarkID;
+      })
+      state.landmarks[index].downRatings = (state.landmarks[index].downRatings) + 1;
+    },
   }
 })
