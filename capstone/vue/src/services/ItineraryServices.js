@@ -33,7 +33,5 @@ export default {
     decrementLandmarkOrder(itineraryId, landmarkOrder) {
         return axios.put(`/itineraries/${itineraryId}/${landmarkOrder}/decrement`)
     },
-    deleteItinerary(itineraryId) {
-        return axios.delete(`/itineraries/${itineraryId}`)
-    },
+
 }
