@@ -22,6 +22,10 @@ export default {
         return axios.put(`/itineraries/${itineraryId}`, startingPoint)
     },
 
+    deleteItinerary(itineraryId) {
+        return axios.delete(`/itineraries/${itineraryId}`)
+    },
+
     incrementLandmarkOrder(itineraryId, landmarkOrder) {
         return axios.put(`/itineraries/${itineraryId}/${landmarkOrder}/increment`)
     },
