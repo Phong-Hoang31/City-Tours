@@ -97,6 +97,7 @@ export default {
     },
     upVote() {
       LandmarkServices.updateUpRatingsForLandmark(this.landmark.landmarkID);
+      LandmarkServices.getLandmarks();
     },
     downVote() {
       LandmarkServices.updateDownRatingsForLandmark(this.landmark.landmarkID);
