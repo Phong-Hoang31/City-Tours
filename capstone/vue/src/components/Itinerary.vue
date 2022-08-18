@@ -23,11 +23,12 @@
       </v-carousel>
 
       <v-card-title>{{ itinerary.itineraryName }}</v-card-title>
+      
       <v-card-subtitle class="pb-0"
-        >{{ itinerary.itineraryDate }}
+        >         <div id="card-info">Starting Point: {{ itinerary.startingPoint }}</div>
+{{ itinerary.itineraryDate }}
       </v-card-subtitle>
       <v-card-text id="card-text-grid" class="text--primary">
-        <div id="card-info"></div>
         <add-landmark-to-itinerary
           id="add-landmark-button"
           :itinerary="itinerary"
