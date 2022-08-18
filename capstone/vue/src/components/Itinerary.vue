@@ -8,6 +8,7 @@
       >
       </v-img> -->
       <v-carousel
+        id="carousel"
         hide-delimiters
         :show-arrows="false"
         cycle
@@ -30,11 +31,16 @@
         />
       </v-card-title>
 
-      <v-card-subtitle class="pb-0"
-        >{{ itinerary.itineraryDate }}
+      <v-card-subtitle class="pb-0">
+        <icon
+          id="deleteItineraryTrashcan"
+          @click="deleteItinerary(itinerary)"
+          class="fa-solid fa-trash-can"
+        ></icon>
+        <div id="card-info">Starting Point: {{ itinerary.startingPoint }}</div>
+        {{ itinerary.itineraryDate }}
       </v-card-subtitle>
       <v-card-text id="card-text-grid" class="text--primary">
-        <div id="card-info"></div>
         <add-landmark-to-itinerary
           id="add-landmark-button"
           :itinerary="itinerary"
@@ -82,6 +88,20 @@ export default {
         itineraryId: itineraryId,
         itineraryName: itineraryName,
       });
+    },
+    deleteItinerary(itinerary) {
+      itineraryServices
+        .deleteItinerary(itinerary.itineraryId)
+        .then((response) => {
+          if (response.status === 201 || response.status === 200) {
+            itineraryServices.getAllItineraries().then((response) => {
+              this.$store.commit("POPULATE_ITINERARIES", response.data);
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   computed: {
@@ -163,6 +183,21 @@ button {
   border: none;
   border-radius: 5px;
   transition: 0.2s ease-in;
+  cursor: pointer;
+}
+#trashcan {
+  display: flexbox;
+  margin: 0px 16px 0px;
+}
+
+#deleteItineraryTrashcan {
+  display: block;
+  position: absolute;
+  right: 20px;
+}
+
+#deleteItineraryTrashcan:hover {
+  color: red;
   cursor: pointer;
 }
 </style>
