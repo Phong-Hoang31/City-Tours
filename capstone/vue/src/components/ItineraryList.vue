@@ -40,7 +40,6 @@ export default {
   max-block-size: 150px;
   border-radius: 50%;
   justify-self: center;
-  margin: 1rem;
 }
 
 img {

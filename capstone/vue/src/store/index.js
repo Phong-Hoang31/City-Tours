@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { arrayMoveMutable } from 'array-move';
+
 
 Vue.use(Vuex)
 
@@ -59,6 +61,18 @@ export default new Vuex.Store({
         return object.landmarkID == landmarkID;
       })
       state.landmarks[index].downRatings = (state.landmarks[index].downRatings) + 1;
+    },
+    INCREMENT_LANDMARK_ORDER(state, itineraryId, landmarkID) {
+      console.log("INCREMENT mutation. ItineraryId: " + itineraryId + ". landmarkId: " + landmarkID);
+      let itineraryIndex = state.itineraries.findIndex(object => {
+        return object.itineraryId == itineraryId;
+      });
+
+      let landmarkIndex = state.itineraries[itineraryIndex].landmarkList.findIndex(object => {
+        return object.landmarkID == landmarkID;
+      });
+      arrayMoveMutable(state.itineraries[itineraryIndex].landmarkList, landmarkIndex, landmarkIndex + 1);
+
     },
   }
 })

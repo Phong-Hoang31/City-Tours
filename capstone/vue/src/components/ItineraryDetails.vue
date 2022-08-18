@@ -1,30 +1,32 @@
 <template>
   <div class="body">
     <form id="detailsForm" v-on:submit.prevent="submitForm">
-      <div
-        class="form-group"
-        v-for="landmark in itinerary.landmarkList"
-        :key="landmark.id"
-      >
-        <h6>{{ landmark.landmarkOrder + 1 }}: {{ landmark.landmarkName }}</h6>
-        <div id="icons">
-          <i
-            id="caret-up"
-            @click="decrementLandmarkOrder(itinerary, landmark)"
-            class="fa-solid fa-caret-up"
-          ></i>
-          <i
-            id="caret-down"
-            @click="incrementLandmarkOrder(itinerary, landmark)"
-            class="fa-solid fa-caret-down"
-          ></i>
-          <i
-            id="trashcan"
-            @click="deleteLandmarkFromItinerary(itinerary, landmark)"
-            class="fa-solid fa-trash-can"
-          ></i>
+      <ol>
+        <div v-for="landmark in itinerary.landmarkList" :key="landmark.id">
+          <li class="form-group">
+            <h6>
+              {{ landmark.landmarkName }}
+            </h6>
+            <div id="icons">
+              <i
+                id="caret-up"
+                @click="decrementLandmarkOrder(itinerary, landmark)"
+                class="fa-solid fa-caret-up"
+              ></i>
+              <i
+                id="caret-down"
+                @click="incrementLandmarkOrder(itinerary, landmark)"
+                class="fa-solid fa-caret-down"
+              ></i>
+              <i
+                id="trashcan"
+                @click="deleteLandmarkFromItinerary(itinerary, landmark)"
+                class="fa-solid fa-trash-can"
+              ></i>
+            </div>
+          </li>
         </div>
-      </div>
+      </ol>
     </form>
   </div>
 </template>
@@ -55,6 +57,11 @@ export default {
         .incrementLandmarkOrder(itinerary.itineraryId, landmark.landmarkOrder)
         .then((response) => {
           if (response.status === 201 || response.status === 200) {
+            this.$store.commit(
+              "INCREMENT_LANDMARK_ORDER",
+              itinerary.itineraryId,
+              landmark.landmarkID
+            );
             // itineraryServices.getAllItineraries().then((response) => {
             //   this.$store.commit("POPULATE_ITINERARIES", response.data);
             // });
@@ -110,10 +117,6 @@ button {
   display: flex;
   justify-content: space-between;
   align-content: center;
-}
-
-ul {
-  list-style: none;
 }
 
 #caret-up {
