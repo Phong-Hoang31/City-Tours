@@ -13,7 +13,7 @@
       v-on:submit.prevent="submitForm"
       v-if="showForm === true"
     >
-      <h4 id="addLandmarksTitle">Landmarks to add...</h4>
+      <h5 id="addLandmarksTitle">LANDMARKS TO ADD</h5>
       <div
         class="form-group"
         v-for="landmark in unselectedLandmarks"
@@ -134,7 +134,9 @@ h6:hover {
 
 #addLandmarksTitle {
   padding: 1rem;
+  text-align: center;
   border-top: 1px black solid;
+  letter-spacing: 0.25rem;
 }
 
 #addLandmarkForm {

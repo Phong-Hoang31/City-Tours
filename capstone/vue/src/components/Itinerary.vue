@@ -27,7 +27,7 @@
         >{{ itinerary.itineraryDate }}
       </v-card-subtitle>
       <v-card-text id="card-text-grid" class="text--primary">
-        <div id="card-info">This is an itinerary</div>
+        <div id="card-info"></div>
         <add-landmark-to-itinerary
           id="add-landmark-button"
           :itinerary="itinerary"
