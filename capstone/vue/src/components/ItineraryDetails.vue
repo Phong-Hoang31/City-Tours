@@ -69,6 +69,9 @@ export default {
         });
     },
     decrementLandmarkOrder(itinerary, landmark) {
+      console.log(
+        itinerary.itineraryId + " id then order" + landmark.landmarkOrder
+      );
       itineraryServices
         .decrementLandmarkOrder(itinerary.itineraryId, landmark.landmarkOrder)
         .then((response) => {

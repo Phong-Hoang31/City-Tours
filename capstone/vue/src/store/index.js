@@ -74,6 +74,7 @@ export default new Vuex.Store({
 
     },
     DECREMENT_LANDMARK_ORDER(state, payload) {
+      console.log(payload.landmarkId);
       let itineraryIndex = state.itineraries.findIndex(object => {
         return object.itineraryId == payload.itineraryId;
       });
